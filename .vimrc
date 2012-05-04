@@ -129,3 +129,7 @@ set lcs=tab:\ \ ,eol:$,trail:~,extends:>,precedes:<
 set novisualbell  " No blinking .
 set noerrorbells  " No noise.
 set laststatus=2  " Always show status line.
+
+let mapleader = ","
+
+nmap <silent> <leader>s :set spell!<CR>
