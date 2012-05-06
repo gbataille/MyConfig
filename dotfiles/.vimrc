@@ -15,6 +15,7 @@ if v:progname =~? "evim"
 endif
 
 " Pathogen activation to load plugins. Must be at the start of the file
+runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
 " Use Vim settings, rather than Vi settings (much better!).
@@ -141,4 +142,8 @@ if has("autocmd")
   autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
+"Project plugin launcher on F2
+nnoremap <F2> :Project<CR>
+"Remap autocompletion key
+inoremap <C-y> <C-n>
 
