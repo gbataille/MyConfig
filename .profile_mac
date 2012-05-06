@@ -1,0 +1,5 @@
+export SCALA_HOME=/usr/local/bin/
+export PATH=/Users/gregou/scripts:/usr/local/Cellar/ruby/1.9.2-p290/bin:/opt/local/bin:/opt/local/sbin:$PATH
+
+alias ls='ls -G'
+alias ll='ls -Gla'
