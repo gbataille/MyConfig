@@ -3,3 +3,5 @@ export PATH=/Users/gregou/scripts:/usr/local/Cellar/ruby/1.9.2-p290/bin:/opt/loc
 
 alias ls='ls -G'
 alias ll='ls -Gla'
+alias cdm='cd ~/Documents/Prog/MyConfig'
+alias cdp='cd ~/Documents/Prog/'

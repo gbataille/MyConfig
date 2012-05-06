@@ -1,0 +1,7 @@
+directory=/Users/gregou/Downloads/torrents
+session=/Users/gregou/Downloads/torrents/session
+upload_rate=30
+download_rate=600
+schedule = watch_directory,5,5,load_start=/Users/gregou/Downloads/torrents/torrent_files/*.torrent
+schedule = untied_directory,5,5,stop_untied=
+schedule = tied_directory,5,5,start_tied=
