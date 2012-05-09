@@ -45,7 +45,7 @@ set smarttab
 set expandtab
 set nowrap
 set autowrite  " Writes on make/shell commands
-set timeoutlen=250  " Time to wait after ESC (default causes an annoying delay)
+set timeoutlen=500  " Time to wait after ESC (default causes an annoying delay)
 
 " Load matchit (% to bounce from do to end, etc.)
 runtime! macros/matchit.vim
@@ -73,6 +73,7 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 colorscheme desert
+" color blackboard
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -140,7 +141,11 @@ nmap <silent> <leader>s :set spell!<CR>
 
 if has("autocmd")
   autocmd bufwritepost .vimrc source $MYVIMRC
+  "Automatically close fugitive buffer when browsing Git objects
+  autocmd BufReadPost fugitive://* set bufhidden=delete
 endif
+"Show branch name in the status bar
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 "Project plugin launcher on F2
 nnoremap <F2> :Project<CR>
