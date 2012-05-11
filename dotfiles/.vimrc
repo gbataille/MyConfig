@@ -72,8 +72,7 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-colorscheme desert
-" color blackboard
+colorscheme jellybeans
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -154,4 +153,5 @@ nnoremap <F3> :Gstatus<CR>
 nnoremap <F4> :Gcommit<CR>
 "Remap autocompletion key
 inoremap <C-y> <C-n>
-
+"Remap Rails autocompletion
+inoremap <C-a> <C-x><C-u>
