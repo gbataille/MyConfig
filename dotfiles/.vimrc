@@ -149,6 +149,9 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 "Project plugin launcher on F2
 nnoremap <F2> :Project<CR>
+"Shortcuts for Git actions
+nnoremap <F3> :Gstatus<CR>
+nnoremap <F4> :Gcommit<CR>
 "Remap autocompletion key
 inoremap <C-y> <C-n>
 
