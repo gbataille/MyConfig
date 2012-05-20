@@ -1,3 +1,8 @@
 [user]
 	name = Gregory Bataille
 	email = gbataille.dev@gmail.com
+[alias]
+	st = status
+	co = checkout
+	cob = checkout -b
+	p = push
