@@ -7,3 +7,5 @@
 	cob = checkout -b
 	p = push
 	b = branch
+[core]
+	excludesfile = /Users/gregou/.gitignore_global
