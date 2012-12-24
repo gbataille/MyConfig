@@ -22,6 +22,3 @@
 [submodule "dotfiles/.vim/bundle/vim-rooter"]
 	path = dotfiles/.vim/bundle/vim-rooter
 	url = https://github.com/airblade/vim-rooter.git
-[submodule "dotfiles/.vim/bundle/vim-peepcode"]
-	path = dotfiles/.vim/bundle/vim-peepcode
-	url = https://github.com/shemerey/vim-peepopen.git
