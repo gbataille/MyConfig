@@ -155,3 +155,6 @@ nnoremap <F4> :Gcommit<CR>
 inoremap <C-y> <C-n>
 "Remap Rails autocompletion
 inoremap <C-a> <C-x><C-u>
+
+"Shut down peepcode while leaving vi
+let p:peepopen_quit = 1
