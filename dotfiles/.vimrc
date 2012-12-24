@@ -155,3 +155,6 @@ nnoremap <F4> :Gcommit<CR>
 inoremap <C-y> <C-n>
 "Remap Rails autocompletion
 inoremap <C-a> <C-x><C-u>
+
+"Remap Tcomment
+map <leader>c <c-_><c-_>

@@ -22,3 +22,6 @@
 [submodule "dotfiles/.vim/bundle/vim-rooter"]
 	path = dotfiles/.vim/bundle/vim-rooter
 	url = https://github.com/airblade/vim-rooter.git
+[submodule "dotfiles/.vim/bundle/tcomment"]
+	path = dotfiles/.vim/bundle/tcomment
+	url = https://github.com/tomtom/tcomment_vim.git
