@@ -146,8 +146,8 @@ endif
 "Show branch name in the status bar
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
-"Project plugin launcher on F2
-nnoremap <F2> :Project<CR>:set winfixwidth<CR>
+"NerdTree plugin launcher on F2
+nnoremap <F2> :NERDTree<CR>
 "Shortcuts for Git actions
 nnoremap <F3> :Gstatus<CR>
 nnoremap <F4> :Gcommit<CR>

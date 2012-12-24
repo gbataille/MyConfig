@@ -1,9 +1,6 @@
 [submodule "dotfiles/.vim/bundle/snipmate"]
 	path = dotfiles/.vim/bundle/snipmate
 	url = https://github.com/msanders/snipmate.vim.git
-[submodule "dotfiles/.vim/bundle/project"]
-	path = dotfiles/.vim/bundle/project
-	url = https://github.com/shemerey/vim-project.git
 [submodule "dotfiles/.vim/bundle/rails"]
 	path = dotfiles/.vim/bundle/rails
 	url = https://github.com/tpope/vim-rails.git
@@ -25,3 +22,6 @@
 [submodule "dotfiles/.vim/bundle/tcomment"]
 	path = dotfiles/.vim/bundle/tcomment
 	url = https://github.com/tomtom/tcomment_vim.git
+[submodule "dotfiles/.vim/bundle/nerdtree"]
+	path = dotfiles/.vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
