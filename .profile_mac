@@ -1,5 +1,5 @@
 export SCALA_HOME=/usr/local/bin/
-export PATH=/Users/gregou/scripts:/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=~/Documents/Prog/MyConfig/scripts:/opt/local/bin:/opt/local/sbin:$PATH
 
 alias ls='ls -G'
 alias ll='ls -Gla'
