@@ -72,7 +72,11 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-colorscheme jellybeans
+
+" colorscheme jellybeans
+set background=dark
+colorscheme solarized
+" let g:solarized_termcolors=256
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
