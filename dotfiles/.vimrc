@@ -155,6 +155,8 @@ nnoremap <F2> :NERDTree<CR>
 "Shortcuts for Git actions
 nnoremap <F3> :Gstatus<CR>
 nnoremap <F4> :Gcommit<CR>
+"remap toggle folding to the space bar
+nnoremap <Space> za
 "Remap autocompletion key
 inoremap <C-y> <C-n>
 "Remap Rails autocompletion

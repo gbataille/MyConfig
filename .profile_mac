@@ -1,5 +1,6 @@
 export SCALA_HOME=/usr/local/bin/
 export PATH=~/Documents/Prog/MyConfig/scripts:/opt/local/bin:/opt/local/sbin:$PATH
+export PS1="[\A] \u \W\$ "
 
 alias ls='ls -G'
 alias ll='ls -Gla'
