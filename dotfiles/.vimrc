@@ -155,3 +155,5 @@ inoremap <C-a> <C-x><C-u>
 map <leader>c <c-_><c-_>
 "map a buffer cycling shortcut
 map <leader>n :bnext<CR>
+"map a quick buffer close key
+map <leader>q :BD<CR>
