@@ -138,6 +138,7 @@ if has("autocmd")
 endif
 "Show branch name in the status bar
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+set wildmenu
 
 "NerdTree plugin launcher on F2
 nnoremap <F2> :NERDTree<CR>
