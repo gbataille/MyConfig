@@ -139,6 +139,7 @@ endif
 "Show branch name in the status bar
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set wildmenu
+set wildmode=list:longest
 
 "NerdTree plugin launcher on F2
 nnoremap <F2> :NERDTree<CR>
@@ -158,3 +159,9 @@ map <leader>c <c-_><c-_>
 map <leader>n :bnext<CR>
 "map a quick buffer close key
 map <leader>q :BD<CR>
+
+" Move between splits with <c-hjkl>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
