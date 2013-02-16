@@ -158,3 +158,5 @@ map <leader>c <c-_><c-_>
 map <leader>n :bnext<CR>
 "map a quick buffer close key
 map <leader>q :BD<CR>
+"map a quick window cycle key
+map <leader>w <C-w><C-w>
