@@ -146,8 +146,15 @@ nnoremap <F2> :NERDTree<CR>
 "Shortcuts for Git actions
 nnoremap <F3> :Gstatus<CR>
 nnoremap <F4> :Gcommit<CR>
+
+"Folding setup
+set foldmethod=indent
+set foldnestmax=3
+set foldcolumn=3
+set nofoldenable
 "remap toggle folding to the space bar
 nnoremap <Space> za
+
 "Remap autocompletion key
 inoremap <C-y> <C-n>
 "Remap Rails autocompletion
@@ -161,6 +168,8 @@ map <leader>n :bnext<CR>
 map <leader>q :BD<CR>
 "map a quick window cycle key
 map <leader>w <C-w><C-w>
+"Remove spaces on empty lines
+map <leader><Space> :%s/^ *$//g<CR>
 
 " Move between splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
