@@ -155,8 +155,6 @@ set nofoldenable
 "remap toggle folding to the space bar
 nnoremap <Space> za
 
-"Remap autocompletion key
-inoremap <C-y> <C-n>
 "Remap Rails autocompletion
 inoremap <C-a> <C-x><C-u>
 
