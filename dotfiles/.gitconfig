@@ -9,3 +9,5 @@
 	b = branch
 [core]
 	excludesfile = /Users/gregou/.gitignore_global
+[push]
+	default = simple

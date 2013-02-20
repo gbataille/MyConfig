@@ -65,7 +65,7 @@ endif
 " colorscheme jellybeans
 set background=dark
 colorscheme solarized
-" let g:solarized_termcolors=256
+let g:solarized_termcolors=256
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -94,6 +94,8 @@ if has("autocmd")
     \ endif
 
   augroup END
+
+  autocmd BufReadPost fugitive://* set bufhidden=delete
 
 else
 
