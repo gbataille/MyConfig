@@ -5,7 +5,7 @@ endif
 
 " Pathogen activation to load plugins. Must be at the start of the file
 runtime bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
+execute pathogen#infect()
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -54,9 +54,9 @@ if has('mouse')
   set mouse=a
 endif
 
-"if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
-"  set t_Co=256
-"endif
+if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+  set t_Co=256
+endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -67,9 +67,9 @@ endif
 
 
 " colorscheme jellybeans
-set background=dark
 colorscheme solarized
 let g:solarized_termcolors=256
+set background=dark
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -169,8 +169,8 @@ inoremap <C-a> <C-x><C-u>
 nnoremap <leader>c <c-_><c-_>
 "map a buffer cycling shortcut
 nnoremap <leader>n :bnext<CR>
-"nnoremap <leader>p :bprevious<CR>
-"nnoremap <leader>l :ls<CR>:b<Space>
+nnoremap <leader>p :bprevious<CR>
+nnoremap <leader>l :ls<CR>:b<Space>
 "map a quick buffer close key
 nnoremap <leader>q :BD<CR>
 "map a quick window cycle key
