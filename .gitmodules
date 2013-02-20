@@ -34,3 +34,6 @@
 [submodule "dotfiles/.vim/bundle/vim-colors-nazca"]
 	path = dotfiles/.vim/bundle/vim-colors-nazca
 	url = https://github.com/jelera/vim-nazca-colorscheme.git
+[submodule "dotfiles/.vim/bundle/vim-unimpaired"]
+	path = dotfiles/.vim/bundle/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
