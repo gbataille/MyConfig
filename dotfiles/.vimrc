@@ -68,7 +68,7 @@ endif
 
 " colorscheme jellybeans
 colorscheme solarized
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 set background=dark
 
 " Only do this part when compiled with support for autocommands.
