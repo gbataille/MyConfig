@@ -54,6 +54,10 @@ if has('mouse')
   set mouse=a
 endif
 
+"if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+"  set t_Co=256
+"endif
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
@@ -94,8 +98,6 @@ if has("autocmd")
     \ endif
 
   augroup END
-
-  autocmd BufReadPost fugitive://* set bufhidden=delete
 
 else
 
@@ -157,19 +159,24 @@ set nofoldenable
 "remap toggle folding to the space bar
 nnoremap <Space> za
 
+"Remap Ctrl-C to go back to normal mode
+inoremap <C-c> <Esc>
+
 "Remap Rails autocompletion
 inoremap <C-a> <C-x><C-u>
 
 "Remap Tcomment
-map <leader>c <c-_><c-_>
+nnoremap <leader>c <c-_><c-_>
 "map a buffer cycling shortcut
-map <leader>n :bnext<CR>
+nnoremap <leader>n :bnext<CR>
+"nnoremap <leader>p :bprevious<CR>
+"nnoremap <leader>l :ls<CR>:b<Space>
 "map a quick buffer close key
-map <leader>q :BD<CR>
+nnoremap <leader>q :BD<CR>
 "map a quick window cycle key
-map <leader>w <C-w><C-w>
+nnoremap <leader>w <C-w><C-w>
 "Remove spaces on empty lines
-map <leader><Space> :%s/^ *$//g<CR>
+nnoremap <leader><Space> :%s/^ *$//g<CR>
 
 " Move between splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
