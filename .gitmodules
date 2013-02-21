@@ -37,3 +37,6 @@
 [submodule "dotfiles/.vim/bundle/vim-unimpaired"]
 	path = dotfiles/.vim/bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "dotfiles/.vim/bundle/syntactic"]
+	path = dotfiles/.vim/bundle/syntactic
+	url = https://github.com/scrooloose/syntastic.git
