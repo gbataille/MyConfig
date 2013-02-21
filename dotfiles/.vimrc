@@ -174,7 +174,7 @@ inoremap <C-c> <Esc>
 inoremap <C-a> <C-x><C-u>
 
 "Remap Tcomment
-nnoremap <leader>c <c-_><c-_>
+nmap <leader>c <c-_><c-_>
 "map a buffer cycling shortcut
 nnoremap <leader>n :bnext<CR>
 nnoremap <leader>p :bprevious<CR>
