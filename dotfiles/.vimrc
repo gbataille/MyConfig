@@ -6,10 +6,14 @@ endif
 " Pathogen activation to load plugins. Must be at the start of the file
 runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
+execute pathogen#helptags()
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+
+" Allows unsaved buffer to exist
+set hidden
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -33,6 +37,7 @@ set softtabstop=2
 set smarttab
 set expandtab
 set nowrap
+set smartcase
 set autowrite  " Writes on make/shell commands
 set timeoutlen=500  " Time to wait after ESC (default causes an annoying delay)
 
@@ -124,6 +129,8 @@ set history=256  " Number of things to remember in history.
 set showmatch  " Show matching brackets.
 set mat=5  " Bracket blinking.
 set list
+"set listchars=tab:>.,trail:.     to change the marker used. I like the
+"defaults.
 
 " Show $ at end of line and trailing space as ~
 set lcs=tab:\ \ ,eol:$,trail:~,extends:>,precedes:<
@@ -144,6 +151,7 @@ endif
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set wildmenu
 set wildmode=full
+set wildignore=*.swp,*.back,*.class
 
 "NerdTree plugin launcher on F2
 nnoremap <F2> :NERDTree<CR>
@@ -177,6 +185,8 @@ nnoremap <leader>q :BD<CR>
 nnoremap <leader>w <C-w><C-w>
 "Remove spaces on empty lines
 nnoremap <leader><Space> :%s/^ *$//g<CR>
+"remove current highlighted text
+nnoremap <silent> <leader>/ :nohlsearch<CR>
 
 " Move between splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
