@@ -1,9 +1,12 @@
 export SCALA_HOME=/usr/local/bin/
 export PATH=~/Documents/Prog/MyConfig/scripts:/opt/local/bin:/opt/local/sbin:$PATH
 export PS1="[\A] \u \W\$ "
+export EDITOR=vim
 
 alias ls='ls -G'
 alias ll='ls -Gla'
 alias cdm='cd ~/Documents/Prog/MyConfig'
 alias cdp='cd ~/Documents/Prog/'
 alias cdg='cd ~/Documents/Prog/GregsSandbox/'
+alias vi='vim'
+export TZ=Europe/Paris
