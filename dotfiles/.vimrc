@@ -72,6 +72,7 @@ endif
 
 
 " colorscheme jellybeans
+let g:solarized_diffmode="high"
 colorscheme solarized
 "let g:solarized_termcolors=256
 set background=dark
