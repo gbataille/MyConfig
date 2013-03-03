@@ -32,7 +32,7 @@ Bundle 'airblade/vim-rooter'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'vim-scripts/bufkill'
+Bundle 'vim-scripts/bufkill.vim'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'scrooloose/syntastic'
 
@@ -72,6 +72,8 @@ endif " has("autocmd")
 
 " Allows unsaved buffer to exist
 set hidden
+" Displays the 80 columns in color for wrapping indication
+set colorcolumn=80
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
