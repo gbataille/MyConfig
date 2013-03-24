@@ -91,6 +91,7 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set number		" show line number
+set relativenumber  "show line number relative to cursor position
 set ts=2		" set tabstop size
 set shiftwidth=2
 set softtabstop=2
