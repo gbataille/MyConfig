@@ -35,6 +35,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/bufkill.vim'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'scrooloose/syntastic'
+Bundle 'roman/golden-ratio'
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
