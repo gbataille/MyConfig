@@ -73,9 +73,6 @@ endif " has("autocmd")
 
 " Allows unsaved buffer to exist
 set hidden
-" Displays the 80 columns in color for wrapping indication
-set colorcolumn=80
-
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -223,3 +220,7 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
+" Displays the 80 columns in color for wrapping indication
+set colorcolumn=80
+highlight ColorColumn ctermbg=7
