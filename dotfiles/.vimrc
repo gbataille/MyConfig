@@ -35,6 +35,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/bufkill.vim'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'scrooloose/syntastic'
+Bundle 'Lokaltog/vim-easymotion'
 Bundle 'roman/golden-ratio'
 
 " Only do this part when compiled with support for autocommands.
@@ -223,4 +224,9 @@ nnoremap <c-l> <c-w>l
 
 " Displays the 80 columns in color for wrapping indication
 set colorcolumn=80
-highlight ColorColumn ctermbg=7
+if $TERM == 'xterm-256color'
+  "works with a terminal configured with solarized colors.
+  highlight ColorColumn ctermbg=12
+else
+  highlight ColorColumn ctermbg=7
+end
