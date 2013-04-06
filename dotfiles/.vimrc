@@ -212,7 +212,7 @@ nnoremap <leader>q :BD<CR>
 "map a quick window cycle key
 nnoremap <leader>w <C-w><C-w>
 "Remove spaces on empty lines
-nnoremap <leader><Space> :%s/^ *$//g<CR>
+nnoremap <leader><Space> :%s/ *$//g<CR>
 "remove current highlighted text
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 
