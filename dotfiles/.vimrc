@@ -90,7 +90,11 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set number		" show line number
-set relativenumber  "show line number relative to cursor position
+
+if exists('+relativenumber')
+  set relativenumber  "show line number relative to cursor position
+endif
+
 set ts=2		" set tabstop size
 set shiftwidth=2
 set softtabstop=2
@@ -223,7 +227,10 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " Displays the 80 columns in color for wrapping indication
-set colorcolumn=80
+if exists('+colorcolumn')
+  set colorcolumn=80
+endif
+
 if $TERM == 'xterm-256color'
   "works with a terminal configured with solarized colors.
   highlight ColorColumn ctermbg=12
