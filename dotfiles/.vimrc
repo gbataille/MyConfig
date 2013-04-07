@@ -37,6 +37,7 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'roman/golden-ratio'
+Bundle 'tpope/vim-dispatch'
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -53,6 +54,9 @@ if has("autocmd")
 
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
+  " Configure vim-dispatch
+  autocmd FileType ruby let b:dispatch = 'ruby -c %'
+  autocmd FileType java let b:dispatch = 'javac %'
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
