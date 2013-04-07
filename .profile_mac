@@ -1,5 +1,5 @@
 export SCALA_HOME=/usr/local/bin/
-export PATH=~/Documents/Prog/MyConfig/scripts:/Applications/MacVim.app/Contents/MacOS/:/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=~/Documents/Prog/MyConfig/scripts:/opt/local/bin:/opt/local/sbin:/usr/local/bin:$PATH
 export PS1="[\A] \u \W\$ "
 export EDITOR=vim
 
@@ -8,5 +8,5 @@ alias ll='ls -Gla'
 alias cdm='cd ~/Documents/Prog/MyConfig'
 alias cdp='cd ~/Documents/Prog/'
 alias cdg='cd ~/Documents/Prog/GregsSandbox/'
-alias vi='Vim'
+alias vi='vim'
 export TZ=Europe/Paris
