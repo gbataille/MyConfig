@@ -3,6 +3,8 @@ export PATH=~/Documents/Prog/MyConfig/scripts:/opt/local/bin:/opt/local/sbin:/us
 export PS1="[\A] \u \W\$ "
 export EDITOR=vim
 
+set -o vi
+
 alias ls='ls -G'
 alias ll='ls -Gla'
 alias cdm='cd ~/Documents/Prog/MyConfig'
