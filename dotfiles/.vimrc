@@ -157,7 +157,8 @@ endif
 set viminfo^=!
 
 set cf  " Enable error files & error jumping.
-set clipboard+=unnamed  " Yanks go on clipboard instead.
+" set clipboard+=unnamed  " Yanks go on clipboard instead. Does not work in
+" tmux
 set history=256  " Number of things to remember in history.
 
 " Visual
@@ -237,7 +238,7 @@ endif
 
 if $TERM == 'xterm-256color'
   "works with a terminal configured with solarized colors.
-  highlight ColorColumn ctermbg=12
+  highlight ColorColumn ctermbg=15
 else
   highlight ColorColumn ctermbg=7
 end
