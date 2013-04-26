@@ -38,6 +38,22 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'roman/golden-ratio'
 Bundle 'tpope/vim-dispatch'
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
+
+" Gist setup
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+
+" Mac specific config
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    " Do Mac stuff here
+    " Put the Gist in the clipboard
+    let g:gist_clip_command = 'pbcopy'
+  endif
+endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
