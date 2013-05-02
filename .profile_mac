@@ -1,5 +1,5 @@
 export SCALA_HOME=/usr/local/bin/
-export PATH=~/Documents/Prog/MyConfig/scripts:/opt/local/bin:/opt/local/sbin:/usr/local/bin:$PATH
+export PATH=~/Documents/Prog/MyConfig/scripts:/usr/local/bin:$PATH
 export PS1="[\A] \u \W\$ "
 export EDITOR=vim
 
