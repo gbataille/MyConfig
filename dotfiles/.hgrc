@@ -1,2 +1,3 @@
 [ui]
 username = Gregory Bataille <gbataille.dev@gmail.com>
+ignore = ~/.hgignore_global

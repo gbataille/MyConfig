@@ -1,0 +1,7 @@
+syntax: glob
+
+*~
+*.orig
+.DS_Store
+build_dir/**
+build_dir_old/**
