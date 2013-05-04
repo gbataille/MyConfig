@@ -1,3 +1,23 @@
 [ui]
 username = Gregory Bataille <gbataille.dev@gmail.com>
 ignore = ~/.hgignore_global
+editor=vim
+slash=True
+#logtemplate="{node|short} ({phase}): {desc}\n"
+
+[extensions]
+hgk=
+transplant=
+churn=
+progress=
+mq=
+color=
+purge=
+extdiff=
+record=
+graphlog=
+rebase=
+patchbomb=
+bookmarks=
+histedit=
+pager=
