@@ -40,6 +40,7 @@ Bundle 'roman/golden-ratio'
 Bundle 'tpope/vim-dispatch'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
+Bundle 'kien/ctrlp.vim'
 
 " Gist setup
 let g:gist_detect_filetype = 1
@@ -258,3 +259,8 @@ if $TERM == 'xterm-256color'
 else
   highlight ColorColumn ctermbg=7
 end
+
+" Ctrlp setup
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
