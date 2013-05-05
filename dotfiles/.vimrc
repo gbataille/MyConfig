@@ -196,7 +196,6 @@ let mapleader = ","
 nmap <silent> <leader>s :set spell!<CR>
 
 if has("autocmd")
-  autocmd bufwritepost .vimrc source $MYVIMRC
   "Automatically close fugitive buffer when browsing Git objects
   autocmd BufReadPost fugitive://* set bufhidden=delete
 endif
@@ -260,7 +259,14 @@ else
   highlight ColorColumn ctermbg=7
 end
 
-" Ctrlp setup
+"############################################
+"###########    Ctrlp setup   ###############
+"############################################
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
+
+"############################################
+"###########    Syntastic setup   ###########
+"############################################
+let g:syntastic_check_on_open = 1
