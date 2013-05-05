@@ -41,6 +41,7 @@ Bundle 'tpope/vim-dispatch'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'kien/ctrlp.vim'
+Bundle 'Valloric/YouCompleteMe'
 
 " Gist setup
 let g:gist_detect_filetype = 1
@@ -270,3 +271,10 @@ let g:ctrlp_working_path_mode = 'ra'
 "###########    Syntastic setup   ###########
 "############################################
 let g:syntastic_check_on_open = 1
+
+"############################################
+"##############    YCM setup   ##############
+"############################################
+let g:ycm_filepath_completion_use_working_dir = 1
+let g:ycm_register_as_syntastic_checker = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
