@@ -42,6 +42,7 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'ciaranm/detectindent'
 
 " Gist setup
 let g:gist_detect_filetype = 1
@@ -168,7 +169,7 @@ set background=dark
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+    \ | wincmd p | diffthis
 endif
 
 " Add recently accessed projects menu (project plugin)
@@ -183,11 +184,9 @@ set history=256  " Number of things to remember in history.
 set showmatch  " Show matching brackets.
 set mat=5  " Bracket blinking.
 set list
-"set listchars=tab:>.,trail:.     to change the marker used. I like the
-"defaults.
 
 " Show $ at end of line and trailing space as ~
-set lcs=tab:\ \ ,eol:$,trail:~,extends:>,precedes:<
+set lcs=tab:¬\ ,eol:$,trail:~,extends:>,precedes:<
 set novisualbell  " No blinking .
 set noerrorbells  " No noise.
 set laststatus=2  " Always show status line.
@@ -278,3 +277,10 @@ let g:syntastic_check_on_open = 1
 let g:ycm_filepath_completion_use_working_dir = 1
 let g:ycm_register_as_syntastic_checker = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
+
+"############################################
+"########## DetectIndent setup ##############
+"############################################
+if has('autocmd')
+  autocmd BufReadPost * :DetectIndent
+endif
