@@ -225,6 +225,8 @@ inoremap <C-c> <Esc>
 "Remap Rails autocompletion
 inoremap <C-a> <C-x><C-u>
 
+"Remap CtrlP
+nnoremap <leader>e :CtrlP<CR>
 "Remap Tcomment
 nmap <leader>c <c-_><c-_>
 vmap <leader>c <c-_><c-_>
@@ -265,6 +267,11 @@ end
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+  \ 'file': '\.exe$\|\.so$\|\.dll$\|\.o$\|\.dylib$\|\.d$\|\.dia$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 "############################################
 "###########    Syntastic setup   ###########
