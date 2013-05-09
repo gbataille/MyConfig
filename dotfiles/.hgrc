@@ -21,3 +21,4 @@ patchbomb=
 bookmarks=
 histedit=
 pager=
+hgshelve=~/.hgext/hgshelve.py
