@@ -24,13 +24,11 @@ Bundle 'gmarik/vundle'
 "
 " original repos on github
 Bundle 'tpope/vim-fugitive'
-Bundle 'msanders/snipmate.vim'
 Bundle 'tpope/vim-rails'
 Bundle 'godlygeek/tabular'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'airblade/vim-rooter'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/bufkill.vim'
 Bundle 'tpope/vim-unimpaired'
@@ -41,8 +39,9 @@ Bundle 'tpope/vim-dispatch'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'Valloric/YouCompleteMe'
 Bundle 'ciaranm/detectindent'
+Bundle 'SirVer/ultisnips'
+Bundle 'Valloric/YouCompleteMe'
 
 " Gist setup
 let g:gist_detect_filetype = 1
@@ -205,8 +204,6 @@ set wildmenu
 set wildmode=full
 set wildignore=*.swp,*.back,*.class
 
-"NerdTree plugin launcher on F2
-nnoremap <F2> :NERDTree<CR>
 "Shortcuts for Git actions
 nnoremap <F3> :Gstatus<CR>
 nnoremap <F4> :Gcommit<CR>
@@ -290,4 +287,33 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 "############################################
 if has('autocmd')
   autocmd BufReadPost * :DetectIndent
+endif
+"############################################
+"############ UltiSnips setup ###############
+"############################################
+" Forces Tab to be used for both YCM and UtilSnips
+" let g:UltiSnipsExpandTrigger = '<c-l>'
+" let g:UltiSnipsJumpForwardTrigger = '<c-l>'
+" let g:UltiSnipsJumpBackwardTrigger = '<c-p>'
+" let g:UltiSnipsListSnippets = '<c-m>'
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+
+function! g:UltiSnips_Complete()
+    call UltiSnips_ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips_JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
+
+if has('autocmd')
+  au BufReadPost,BufNewFile * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 endif
