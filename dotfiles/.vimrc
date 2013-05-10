@@ -209,10 +209,17 @@ nnoremap <F3> :Gstatus<CR>
 nnoremap <F4> :Gcommit<CR>
 
 "Folding setup
-set foldmethod=indent
-set foldnestmax=3
+set foldmethod=manual
 set foldcolumn=3
-set nofoldenable
+" Intelligently set the fold to syntax before opening a buffer to compute the
+" syntax folds and then revert to manual to allow custom folds creation
+" Also expands all the folds at the start
+if has('autocmd')
+  au BufReadPre * setlocal foldmethod=syntax
+  au BufReadPost * set foldlevel=99
+  au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
+endif
+
 "remap toggle folding to the space bar
 nnoremap <Space> za
 
@@ -239,6 +246,8 @@ nnoremap <leader>w <C-w><C-w>
 nnoremap <leader><Space> :%s/ *$//g<CR>
 "remove current highlighted text
 nnoremap <silent> <leader>/ :nohlsearch<CR>
+"map a quick recursive grep
+nnoremap <leader>g :grep -R<Space>
 
 " Move between splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
