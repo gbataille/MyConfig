@@ -42,6 +42,10 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'ciaranm/detectindent'
 Bundle 'SirVer/ultisnips'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'tpope/vim-speeddating'
+Bundle 'mattn/calendar-vim'
+Bundle 'vim-scripts/utl.vim'
+Bundle 'jceb/vim-orgmode'
 
 " Gist setup
 let g:gist_detect_filetype = 1
@@ -308,10 +312,6 @@ endif
 "############ UltiSnips setup ###############
 "############################################
 " Forces Tab to be used for both YCM and UtilSnips
-" let g:UltiSnipsExpandTrigger = '<c-l>'
-" let g:UltiSnipsJumpForwardTrigger = '<c-l>'
-" let g:UltiSnipsJumpBackwardTrigger = '<c-p>'
-" let g:UltiSnipsListSnippets = '<c-m>'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 
@@ -332,4 +332,11 @@ endfunction
 
 if has('autocmd')
   au BufReadPost,BufNewFile * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+endif
+
+"############################################
+"############ Org-mode setup ################
+"############################################
+if has('autocmd')
+  au FileType org let maplocalleader = '.'
 endif
