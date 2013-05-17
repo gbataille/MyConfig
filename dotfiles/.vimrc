@@ -46,10 +46,7 @@ Bundle 'tpope/vim-speeddating'
 Bundle 'mattn/calendar-vim'
 Bundle 'vim-scripts/utl.vim'
 Bundle 'jceb/vim-orgmode'
-
-" Gist setup
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
+Bundle 'FredKSchott/CoVim'
 
 " Mac specific config
 if has("unix")
@@ -224,7 +221,7 @@ if has('autocmd')
   au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
 endif
 
-function MyFoldText()
+function! MyFoldText()
   let line = getline(v:foldstart)
   let sub = substitute(line, '/\*\|\*/\|{{{\d\=', '', 'g')
   return v:folddashes . sub . ' :  ' . (v:foldend - v:foldstart) . ' lines '
@@ -308,6 +305,7 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 if has('autocmd')
   autocmd BufReadPost * :DetectIndent
 endif
+
 "############################################
 "############ UltiSnips setup ###############
 "############################################
@@ -337,6 +335,11 @@ endif
 "############################################
 "############ Org-mode setup ################
 "############################################
-if has('autocmd')
-  au FileType org let maplocalleader = '.'
-endif
+let g:org_indent=0
+
+"############################################
+"############## Gist setup ##################
+"############################################
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+
