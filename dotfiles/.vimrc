@@ -3,11 +3,6 @@ if v:progname =~? "evim"
   finish
 endif
 
-" Pathogen activation to load plugins. Must be at the start of the file
-" runtime bundle/pathogen/autoload/pathogen.vim
-" execute pathogen#infect()
-" execute pathogen#helptags()
-
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -46,7 +41,7 @@ Bundle 'tpope/vim-speeddating'
 Bundle 'mattn/calendar-vim'
 Bundle 'vim-scripts/utl.vim'
 Bundle 'jceb/vim-orgmode'
-Bundle 'FredKSchott/CoVim'
+Bundle 'jnwhiteh/vim-golang'
 
 " Mac specific config
 if has("unix")
@@ -233,6 +228,7 @@ nnoremap <Space> za
 
 "Remap Ctrl-C to go back to normal mode
 inoremap <C-c> <Esc>
+inoremap hh <Esc>
 
 "Remap Rails autocompletion
 inoremap <C-a> <C-x><C-u>
