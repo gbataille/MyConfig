@@ -42,6 +42,7 @@ Bundle 'mattn/calendar-vim'
 Bundle 'vim-scripts/utl.vim'
 Bundle 'jceb/vim-orgmode'
 Bundle 'jnwhiteh/vim-golang'
+Bundle 'kadimisetty/vim-simplebar'
 
 " Mac specific config
 if has("unix")
