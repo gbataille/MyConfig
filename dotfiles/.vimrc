@@ -299,6 +299,9 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 "############################################
 "########## DetectIndent setup ##############
 "############################################
+let g:detectindent_preferred_expandtab = 1
+let g:detectindent_preferred_indent = 2
+
 if has('autocmd')
   autocmd BufReadPost * :DetectIndent
 endif
