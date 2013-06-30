@@ -4,3 +4,4 @@
 *.a
 *.dylib
 Gemfile.lock
+*.gem
