@@ -336,6 +336,9 @@ endif
 "############ Org-mode setup ################
 "############################################
 let g:org_indent=0
+let g:org_todo_keywords = [['TODO(t)', 'WIP(w)', '|', 'DONE(d)'],
+    \ ['REPORT(r)', 'BUG(b)', 'KNOWNCAUSE(k)', '|', 'FIXED(f)'],
+    \ ['CANCELED(c)']]
 
 "############################################
 "############## Gist setup ##################
