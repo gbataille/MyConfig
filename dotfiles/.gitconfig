@@ -19,3 +19,5 @@
 	trustExitCode = true
 [github]
 	user = gbataille
+[color]
+	ui = true
