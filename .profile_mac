@@ -11,6 +11,11 @@ export CC=clang
 export TZ=Europe/Paris
 export LANG=en_US
 
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
+
 set -o vi
 
 alias ls='ls -G'
