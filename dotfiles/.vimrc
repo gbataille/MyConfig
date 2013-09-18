@@ -20,6 +20,7 @@ Bundle 'gmarik/vundle'
 " original repos on github
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-markdown'
 Bundle 'godlygeek/tabular'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'airblade/vim-rooter'
@@ -278,6 +279,7 @@ end
 "############################################
 if has('autocmd')
   au BufReadPost Guardfile set ft=ruby
+  au FileType markdown set tw=78
 endif
 
 "############################################
