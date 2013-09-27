@@ -7,6 +7,7 @@
 	cob = checkout -b
 	p = push
 	b = branch
+	t = tag -a
 [core]
 	excludesfile = ~/.gitignore_global
 [push]
