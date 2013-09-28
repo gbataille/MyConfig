@@ -4,7 +4,7 @@ function parse_git_branch_and_add_brackets {
 
 export SCALA_HOME=/usr/local/bin/
 export PATH=~/Documents/Prog/MyConfig/scripts:/usr/local/bin:$PATH
-export PS1="[\A] \u \W\[\033[0;32m\]\$(parse_git_branch_and_add_brackets)\[\033[0m\]\$ "
+export PS1="[\A] \[\033[0;34m\]\u\[\033[0m\] \W\[\033[0;32m\]\$(parse_git_branch_and_add_brackets)\[\033[0m\]\$ "
 export EDITOR=vim
 export GOPATH=~/Documents/Prog/GregsSandbox/CodeJam/go
 export CC=clang
