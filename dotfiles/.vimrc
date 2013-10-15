@@ -44,7 +44,6 @@ Bundle 'mattn/calendar-vim'
 Bundle 'vim-scripts/utl.vim'
 Bundle 'jceb/vim-orgmode'
 Bundle 'jnwhiteh/vim-golang'
-" Bundle 'kadimisetty/vim-simplebar'
 Bundle 'itchyny/lightline.vim'
 
 " Mac specific config
@@ -71,7 +70,7 @@ if has("autocmd")
   au!
 
   " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+  autocmd FileType text, html, markdown setlocal textwidth=78
   " Configure vim-dispatch
   autocmd FileType ruby let b:dispatch = 'ruby -c %'
   autocmd FileType java let b:dispatch = 'javac %'
