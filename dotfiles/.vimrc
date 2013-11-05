@@ -24,7 +24,6 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'airblade/vim-rooter'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/bufkill.vim'
@@ -45,6 +44,7 @@ Bundle 'vim-scripts/utl.vim'
 Bundle 'jceb/vim-orgmode'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'itchyny/lightline.vim'
+Bundle 'airblade/vim-rooter'
 
 " Mac specific config
 if has("unix")
@@ -356,6 +356,24 @@ let g:org_todo_keywords = [['TODO(t)', 'WIP(w)', '|', 'DONE(d)'],
 "############################################
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
+
+"############################################
+"############## Rooter setup ################
+"############################################
+let g:rooter_patterns = ['.root', '.git/', '.git', '_darcs/', '.hg/', '.bzr/', '.svn/']
+"For a reason that I have not explained, this same autocmd in the vim-rooter
+"plugin does not always work. Forcing it in there
+if has('autocmd')
+  augroup gxbRooter
+    autocmd BufEnter *.rb,*.py,
+          \*.html,*.haml,*.erb,
+          \*.css,*.scss,*.sass,*.less,
+          \*.js,*.rjs,*.coffee,
+          \*.php,*.xml,*.yaml,
+          \*.markdown,*.md
+          \ :Rooter
+  augroup END
+endif
 
 "############################################
 "############ Lightline setup ###############
