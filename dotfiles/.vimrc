@@ -29,15 +29,15 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/bufkill.vim'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'scrooloose/syntastic'
-Bundle 'Lokaltog/vim-easymotion'
+" Bundle 'Lokaltog/vim-easymotion'
 Bundle 'roman/golden-ratio'
-Bundle 'tpope/vim-dispatch'
+" Bundle 'tpope/vim-dispatch'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'ciaranm/detectindent'
-Bundle 'SirVer/ultisnips'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-speeddating'
 Bundle 'mattn/calendar-vim'
 Bundle 'vim-scripts/utl.vim'
@@ -45,6 +45,8 @@ Bundle 'jceb/vim-orgmode'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'itchyny/lightline.vim'
 Bundle 'airblade/vim-rooter'
+Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'jelera/vim-javascript-syntax'
 
 " Mac specific config
 if has("unix")
@@ -69,11 +71,6 @@ if has("autocmd")
   augroup vimrcEx
   au!
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text     setlocal textwidth=78
-  autocmd FileType html     setlocal textwidth=78
-  autocmd FileType markdown setlocal textwidth=78
-  autocmd FileType org      setlocal textwidth=78
   " Configure vim-dispatch
   autocmd FileType ruby let b:dispatch = 'ruby -c %'
   autocmd FileType java let b:dispatch = 'javac %'
@@ -83,7 +80,7 @@ if has("autocmd")
   " (happens when dropping a file on gvim).
   " Also don't do it when the mark is in the first line, that is the default
   " position when opening a file.
-  autocmd BufReadPost *
+  autocmd BufRead *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
@@ -198,7 +195,7 @@ nmap <silent> <leader>s :set spell!<CR>
 
 if has("autocmd")
   "Automatically close fugitive buffer when browsing Git objects
-  autocmd BufReadPost fugitive://* set bufhidden=delete
+  autocmd BufRead fugitive://* set bufhidden=delete
 endif
 "Show branch name in the status bar
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
@@ -218,7 +215,7 @@ set foldcolumn=3
 " Also expands all the folds at the start
 if has('autocmd')
   au BufReadPre * setlocal foldmethod=syntax
-  au BufReadPost * set foldlevel=99
+  au BufRead * set foldlevel=99
   au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
 endif
 
@@ -281,9 +278,8 @@ end
 "######## Special file configuration ########
 "############################################
 if has('autocmd')
-  au BufReadPost Guardfile set ft=ruby
-  au BufReadPost *.thor set ft=ruby
-  au FileType markdown set tw=78
+  au BufRead Guardfile set ft=ruby
+  au BufRead *.thor set ft=ruby
 endif
 
 "############################################
@@ -318,7 +314,7 @@ let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 2
 
 if has('autocmd')
-  autocmd BufReadPost * :DetectIndent
+  autocmd BufRead * :DetectIndent
 endif
 
 "############################################
@@ -344,7 +340,7 @@ function! g:UltiSnips_Complete()
 endfunction
 
 if has('autocmd')
-  au BufReadPost,BufNewFile * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+  au BufRead,BufNewFile * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 endif
 
 "############################################
@@ -377,6 +373,13 @@ if has('autocmd')
           \*.markdown,*.md
           \ :Rooter
   augroup END
+endif
+
+"############################################
+"############ javascript setup ##############
+"############################################
+if has('autocmd')
+  au BufRead *.js call JavaScriptFold()
 endif
 
 "############################################
