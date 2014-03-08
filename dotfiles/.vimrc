@@ -255,6 +255,8 @@ nnoremap <leader><Space> :%s/ *$//g<CR>:nohlsearch<CR>
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 "map a quick recursive grep
 nnoremap <leader>g :grep -R<Space>
+"reindent the entire buffer
+nnoremap <leader>= gg=G
 
 " Move between splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
