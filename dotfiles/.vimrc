@@ -250,7 +250,7 @@ nnoremap <leader>q :BD<CR>
 "map a quick window cycle key
 nnoremap <leader>w <C-w><C-w>
 "Remove spaces on empty lines
-nnoremap <leader><Space> :%s/ *$//g<CR>:nohlsearch<CR>
+nnoremap <leader><Space> mz:%s/ *$//g<CR>:nohlsearch<CR>`z
 "remove current highlighted text
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 "map a quick recursive grep
