@@ -1,6 +1,5 @@
 [user]
-	name = Gregory Bataille
-	email = gbataille.dev@gmail.com
+	name = Grégory Bataille
 [alias]
 	st = status
 	co = checkout
@@ -25,3 +24,5 @@
 	user = gbataille
 [color]
 	ui = true
+[init]
+	templatedir = ~/.git/templates

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+EMAIL=$(git config user.email)
+
+if [ -z "$EMAIL" ]; then
+  echo "ERROR: [pre-commit hook] Aborting commit because user.email is missing. Configure user.email for this repository."
+  exit 1
+else
+  exit 0
+fi
