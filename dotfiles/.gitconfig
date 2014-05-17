@@ -26,3 +26,5 @@
 	ui = true
 [init]
 	templatedir = ~/.git/templates
+[pull]
+	rebase = preserve
