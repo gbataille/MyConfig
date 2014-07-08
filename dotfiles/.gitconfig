@@ -28,3 +28,5 @@
 	templatedir = ~/.git/templates
 [pull]
 	rebase = preserve
+[rerere]
+	enabled = true
