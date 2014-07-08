@@ -342,7 +342,7 @@ function! g:UltiSnips_Complete()
 endfunction
 
 if has('autocmd')
-  au BufRead,BufNewFile * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+  au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 endif
 
 "############################################
@@ -373,6 +373,8 @@ if has('autocmd')
           \*.js,*.rjs,*.coffee,
           \*.php,*.xml,*.yaml,
           \*.markdown,*.md
+          \*.txt
+          \*.hs
           \ :Rooter
   augroup END
 endif
@@ -383,6 +385,45 @@ endif
 if has('autocmd')
   au BufRead *.js call JavaScriptFold()
 endif
+
+"############################################
+"############ json pretty-print #############
+"############################################
+function! DoPrettyJson()
+  clone the current buffer, we want a scratch buffer.
+  badd %
+  setlocal buftype=nofile bufhidden=wipe nobuflisted
+  noswapfile nowrap
+  silent %!python -m json.tool 
+  silent %<
+endfunction
+command! Json call DoPrettyJson()
+
+"############################################
+"############ XML pretty-print ##############
+"############################################
+function! DoPrettyXML()
+  " clone the current buffer, we want a scratch buffer.
+  badd %
+  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+  " save the filetype so we can restore it later
+  let l:origft = &ft 
+  set ft= 
+  " delete the xml header if it exists. This will
+  " permit us to surround the document with fake tags
+  " without creating invalid xml.
+  1s/<?xml .*?>//e
+  "read !xml-parser % " This is for Mac os x
+  silent %!tidy -xml -utf8 -i -q -
+  " restore the 'normal' indentation, which is one extra level
+  " too deep due to the extra tags we wrapped around the document.
+  "silent %<
+  " back to home
+  1
+  " restore the filetype
+  exe "set ft=" . l:origft
+endfunction
+command! Xml call DoPrettyXML()
 
 "############################################
 "############ Lightline setup ###############
