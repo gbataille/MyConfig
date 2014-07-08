@@ -47,6 +47,7 @@ Bundle 'itchyny/lightline.vim'
 Bundle 'airblade/vim-rooter'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'jelera/vim-javascript-syntax'
+Bundle 'mileszs/ack.vim'
 
 " Mac specific config
 if has("unix")
