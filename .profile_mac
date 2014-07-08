@@ -15,15 +15,11 @@ export PATH=${PATH}:${GLASSFISH_HOME}/bin
 export JBOSS_HOME=/usr/local/opt/wildfly-as/libexec
 export PATH=${PATH}:${JBOSS_HOME}/bin
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
-
-
 set -o vi
 
 alias ls='ls -G'
 alias ll='ls -Gla'
+alias l='ls -Gla'
 alias cdm='cd ~/Documents/Prog/MyConfig'
 alias cdp='cd ~/Documents/Prog/'
 alias cdg='cd ~/Documents/Prog/GregsSandbox/'
