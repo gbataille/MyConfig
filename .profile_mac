@@ -3,7 +3,7 @@ function parse_git_branch_and_add_brackets {
 }
 
 export SCALA_HOME=/usr/local/bin/
-export PATH=~/Documents/Prog/MyConfig/scripts:/usr/local/bin:$PATH
+export PATH=~/Documents/Prog/MyConfig/scripts:/usr/local/bin:~/.cabal/bin:$PATH
 export PS1="\[\033[0;37m\][\A]\[\033[0m\] \[\033[0;36m\]\u\[\033[0m\] \W\[\033[0;32m\]\$(parse_git_branch_and_add_brackets)\[\033[0m\]\$ "
 export EDITOR=vim
 export GOPATH=~/Documents/Prog/GregsSandbox/CodeJam/go
@@ -12,7 +12,7 @@ export TZ=Europe/Paris
 export LANG=en_US
 export GLASSFISH_HOME=/usr/local/opt/glassfish/libexec
 export PATH=${PATH}:${GLASSFISH_HOME}/bin
-export JBOSS_HOME=/usr/local/opt/jboss-as/libexec
+export JBOSS_HOME=/usr/local/opt/wildfly-as/libexec
 export PATH=${PATH}:${JBOSS_HOME}/bin
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
