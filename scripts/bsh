@@ -1,0 +1,2 @@
+#!/bin/sh
+java -cp ~/Documents/Prog/MyConfig/scripts/BeanShell/bsh-2.0b4.jar bsh.Interpreter
