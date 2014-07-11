@@ -429,6 +429,8 @@ command! Xml call DoPrettyXML()
 "############################################
 "############ Lightline setup ###############
 "############################################
+set enc=utf8
+
 let g:lightline = {
   \ 'colorscheme': 'solarized',
   \ 'mode_map': { 'c': 'NORMAL' },
