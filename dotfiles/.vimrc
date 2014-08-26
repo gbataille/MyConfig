@@ -233,6 +233,7 @@ nnoremap <Space> za
 "Remap Ctrl-C to go back to normal mode
 inoremap <C-c> <Esc>
 inoremap hh <Esc>
+inoremap <leader>h <Esc>
 
 "Remap Rails autocompletion
 inoremap <C-a> <C-x><C-u>
