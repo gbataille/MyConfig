@@ -30,7 +30,11 @@ Bundle 'vim-scripts/bufkill.vim'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'scrooloose/syntastic'
 " Bundle 'Lokaltog/vim-easymotion'
-Bundle 'roman/golden-ratio'
+if &diff
+  "nothing
+else
+  Bundle 'roman/golden-ratio'
+endif
 " Bundle 'tpope/vim-dispatch'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
