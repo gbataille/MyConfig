@@ -264,7 +264,7 @@ nnoremap <leader>g :grep -R<Space>
 "reindent the entire buffer
 nnoremap <leader>= gg=G
 "shortcut for Tabularize
-vnoremap t :Tabularize /
+vnoremap <leader>t :Tabularize /
 
 " Move between splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
