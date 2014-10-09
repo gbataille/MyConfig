@@ -63,7 +63,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/bin:/Users/gbataille/.rvm/gems/ruby-2.1.2/bin:/Users/gbataille/.rvm/gems/ruby-2.1.2@global/bin:/Users/gbataille/.rvm/rubies/ruby-2.1.2/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/opt/glassfish/libexec/bin:/usr/local/opt/wildfly-as/libexec/bin:/Users/gbataille/.rvm/bin:/usr/local/opt/glassfish/libexec/bin:/usr/local/opt/wildfly-as/libexec/bin"
+export PATH="$PATH:$HOME/rvm/bin:/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/opt/glassfish/libexec/bin:/usr/local/opt/wildfly-as/libexec/bin:/Users/gbataille/.rvm/bin:/usr/local/opt/glassfish/libexec/bin:/usr/local/opt/wildfly-as/libexec/bin"
 
 if [ -f ~/.profile ]; then
   source ~/.profile

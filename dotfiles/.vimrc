@@ -52,6 +52,7 @@ Bundle 'airblade/vim-rooter'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'mileszs/ack.vim'
+Bundle 'dag/vim2hs'
 
 " Mac specific config
 if has("unix")
