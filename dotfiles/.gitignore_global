@@ -3,6 +3,5 @@
 *.o
 *.a
 *.dylib
-Gemfile.lock
 *.gem
 *.iml
