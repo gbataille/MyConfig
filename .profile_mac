@@ -25,3 +25,5 @@ alias cdg='cd ~/Documents/Prog/GregsSandbox/'
 alias vi='/usr/bin/vi'
 alias c='clear'
 alias ..='cd ..'
+
+export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
