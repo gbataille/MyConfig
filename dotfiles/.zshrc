@@ -57,13 +57,14 @@ ZSH_THEME="gba"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git autojump brew mercurial pip cabal pyenv pylint python rails ruby rvm svn vi-mode)
+plugins=(git gitfast autojump brew mercurial pip cabal pyenv pylint python rails ruby rvm svn vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="$PATH:$HOME/rvm/bin:/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/opt/glassfish/libexec/bin:/usr/local/opt/wildfly-as/libexec/bin:/Users/gbataille/.rvm/bin:/usr/local/opt/glassfish/libexec/bin:/usr/local/opt/wildfly-as/libexec/bin"
+export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
+export PATH="$PATH:/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/opt/glassfish/libexec/bin:/usr/local/opt/wildfly-as/libexec/bin"
 
 if [ -f ~/.profile ]; then
   source ~/.profile
@@ -85,3 +86,4 @@ fi
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
