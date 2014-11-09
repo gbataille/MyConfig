@@ -25,3 +25,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 local return_status="%{$fg[red]%}%(?..⤬)%{$reset_color%}"
 RPROMPT='%{$fg_bold[white]%}%T%{$reset_color%} ${return_status}'
+
+bindkey '^U' backward-kill-line
+bindkey '^Y' yank
+
