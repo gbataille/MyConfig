@@ -9,7 +9,7 @@ MAX_RIGHT_LENGTH = 18
 path = os.getcwd()
 userdir = os.environ['HOME']
 
-if path.index(userdir) >= 0:
+if path.find(userdir) >= 0:
   path = path.replace(userdir, '~')
 
 if len(path) > MAX_LENGTH:
