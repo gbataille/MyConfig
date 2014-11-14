@@ -63,8 +63,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
-export PATH="$PATH:/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/opt/glassfish/libexec/bin:/usr/local/opt/wildfly-as/libexec/bin"
+export PATH="$HOME/.rvm/bin:$PATH:/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/opt/glassfish/libexec/bin:/usr/local/opt/wildfly-as/libexec/bin"
 
 if [ -f ~/.profile ]; then
   source ~/.profile
