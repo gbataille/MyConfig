@@ -12,6 +12,7 @@
 	lg = !"git lg1"
 	d = diff -w
 	dt = difftool
+	dc = diff --cached -w
 [core]
 	excludesfile = /Users/gbataille/.gitignore_global
 [push]
@@ -25,7 +26,7 @@
 [pull]
 	rebase = preserve
 [rerere]
-	enabled = true
+	enabled = false
 [diff]
 	tool = vimdiff
 [difftool]
@@ -33,3 +34,9 @@
 	tool = vimdiff
 [mergetool]
 	tool = vimdiff
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
