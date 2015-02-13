@@ -19,6 +19,7 @@ Bundle 'gmarik/vundle'
 "
 " original repos on github
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rbenv'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-surround'
@@ -238,7 +239,6 @@ nnoremap <Space> za
 "Remap Ctrl-C to go back to normal mode
 inoremap <C-c> <Esc>
 inoremap hh <Esc>
-inoremap <leader>h <Esc>
 
 "Remap Rails autocompletion
 inoremap <C-a> <C-x><C-u>
@@ -310,6 +310,7 @@ let g:ctrlp_custom_ignore = {
 "############################################
 let g:syntastic_check_on_open = 1
 let g:syntastic_javascript_checkers = ['jsl']
+let g:syntastic_haskell_checkers = ['hlint']
 
 "############################################
 "##############    YCM setup   ##############
