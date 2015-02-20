@@ -208,7 +208,7 @@ endif
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set wildmenu
 set wildmode=full
-set wildignore=*.swp,*.back,*.class
+set wildignore+=*.swp,*.back,*.class,*/tmp/*,*.o
 
 "Shortcuts for Git actions
 nnoremap <F3> :Gstatus<CR>
@@ -300,7 +300,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|dist$',
   \ 'file': '\.exe$\|\.so$\|\.dll$\|\.o$\|\.dylib$\|\.d$\|\.dia$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
