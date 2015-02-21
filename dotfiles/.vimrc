@@ -53,7 +53,14 @@ Bundle 'airblade/vim-rooter'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'mileszs/ack.vim'
-Bundle 'dag/vim2hs'
+" Bundle 'dag/vim2hs'
+" Bundle 'begriffs/haskell-vim-now'
+Bundle 'raichoo/haskell-vim'
+Bundle 'enomsg/vim-haskellConcealPlus'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'eagletmt/ghcmod-vim'
+Bundle 'eagletmt/neco-ghc'
+Bundle 'nathanaelkane/vim-indent-guides'
 
 " Mac specific config
 if has("unix")
@@ -179,6 +186,12 @@ endif
 
 " Add recently accessed projects menu (project plugin)
 set viminfo^=!
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+
+" Regexp magic by default
+set magic
 
 set cf  " Enable error files & error jumping.
 " set clipboard+=unnamed  " Yanks go on clipboard instead. Does not work in
@@ -434,6 +447,31 @@ function! DoPrettyXML()
   exe "set ft=" . l:origft
 endfunction
 command! Xml call DoPrettyXML()
+
+"############################################
+"########### vim-indent-guides ##############
+"############################################
+
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=8
+
+"############################################
+"########### haskell-vim setup ##############
+"############################################
+
+let g:haskell_enable_quantification = 1
+let g:haskell_enable_recursivedo = 1
+let g:haskell_enable_arrowsyntax = 1
+let g:haskell_enable_pattern_synonyms = 1
+let g:haskell_enable_typeroles = 1
+
+let g:haskell_indent_if = 3
+let g:haskell_indent_case = 5
+let g:haskell_indent_let = 4
+let g:haskell_indent_where = 6
+let g:haskell_indent_do = 3
+let g:haskell_indent_in = 1
 
 "############################################
 "############ Lightline setup ###############
