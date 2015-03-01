@@ -53,14 +53,15 @@ Bundle 'airblade/vim-rooter'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'mileszs/ack.vim'
-" Bundle 'dag/vim2hs'
-" Bundle 'begriffs/haskell-vim-now'
 Bundle 'raichoo/haskell-vim'
 Bundle 'enomsg/vim-haskellConcealPlus'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'eagletmt/ghcmod-vim'
 Bundle 'eagletmt/neco-ghc'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'vim-scripts/gitignore'
+Bundle 'int3/vim-extradite'
+Bundle 'bitc/vim-hdevtools'
 
 " Mac specific config
 if has("unix")
@@ -325,6 +326,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_javascript_checkers = ['jsl']
 let g:syntastic_haskell_checkers = ['hlint']
 
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
+
 "############################################
 "##############    YCM setup   ##############
 "############################################
@@ -472,6 +477,12 @@ let g:haskell_indent_let = 4
 let g:haskell_indent_where = 6
 let g:haskell_indent_do = 3
 let g:haskell_indent_in = 1
+
+"############################################
+"############### hdevtools ##################
+"############################################
+
+let g:hdevtools_options = '-g-isrc -g-Wall'
 
 "############################################
 "############ Lightline setup ###############
