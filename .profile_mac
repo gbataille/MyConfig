@@ -25,5 +25,6 @@ alias cdg='cd ~/Documents/Prog/GregsSandbox/'
 alias vi='/usr/bin/vi'
 alias c='clear'
 alias ..='cd ..'
+alias gitk='gitk --all'
 
 export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
