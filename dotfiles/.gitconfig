@@ -32,6 +32,7 @@
 [difftool]
 	prompt = false
 	tool = vimdiff
+	trustExitCode = true
 [mergetool]
 	tool = vimdiff
 [difftool "sourcetree"]
