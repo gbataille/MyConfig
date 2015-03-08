@@ -62,6 +62,7 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'vim-scripts/gitignore'
 Bundle 'int3/vim-extradite'
 Bundle 'bitc/vim-hdevtools'
+Bundle 'majutsushi/tagbar'
 
 " Mac specific config
 if has("unix")
@@ -258,7 +259,7 @@ inoremap hh <Esc>
 inoremap <C-a> <C-x><C-u>
 
 " Tags
-set tags+=gems.tags
+" set tags+=gems.tags
 
 "Remap CtrlP
 nnoremap <leader>e :CtrlP<CR>
@@ -481,6 +482,11 @@ let g:haskell_indent_let = 4
 let g:haskell_indent_where = 6
 let g:haskell_indent_do = 2
 let g:haskell_indent_in = 2
+
+"############################################
+"################# tagbar ###################
+"############################################
+nmap <F8> :TagbarToggle<CR>
 
 "############################################
 "############### hdevtools ##################
