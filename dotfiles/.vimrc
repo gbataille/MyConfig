@@ -257,6 +257,9 @@ inoremap hh <Esc>
 "Remap Rails autocompletion
 inoremap <C-a> <C-x><C-u>
 
+" Tags
+set tags+=gems.tags
+
 "Remap CtrlP
 nnoremap <leader>e :CtrlP<CR>
 nnoremap <C-o> :CtrlPTag<CR>
