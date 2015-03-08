@@ -5,3 +5,5 @@
 *.dylib
 *.gem
 *.iml
+tags
+!tags/

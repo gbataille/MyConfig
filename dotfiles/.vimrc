@@ -259,6 +259,7 @@ inoremap <C-a> <C-x><C-u>
 
 "Remap CtrlP
 nnoremap <leader>e :CtrlP<CR>
+nnoremap <C-o> :CtrlPTag<CR>
 "Remap Tcomment
 nmap <leader>c <c-_><c-_>
 vmap <leader>c <c-_><c-_>
@@ -471,12 +472,12 @@ let g:haskell_enable_arrowsyntax = 1
 let g:haskell_enable_pattern_synonyms = 1
 let g:haskell_enable_typeroles = 1
 
-let g:haskell_indent_if = 3
-let g:haskell_indent_case = 5
+let g:haskell_indent_if = 2
+let g:haskell_indent_case = 4
 let g:haskell_indent_let = 4
 let g:haskell_indent_where = 6
-let g:haskell_indent_do = 3
-let g:haskell_indent_in = 1
+let g:haskell_indent_do = 2
+let g:haskell_indent_in = 2
 
 "############################################
 "############### hdevtools ##################
