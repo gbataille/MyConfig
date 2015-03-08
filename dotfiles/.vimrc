@@ -12,7 +12,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
@@ -48,7 +48,7 @@ Bundle 'mattn/calendar-vim'
 Bundle 'vim-scripts/utl.vim'
 Bundle 'jceb/vim-orgmode'
 Bundle 'jnwhiteh/vim-golang'
-Bundle 'itchyny/lightline.vim'
+" Bundle 'itchyny/lightline.vim'
 Bundle 'airblade/vim-rooter'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'jelera/vim-javascript-syntax'
@@ -63,6 +63,7 @@ Bundle 'vim-scripts/gitignore'
 Bundle 'int3/vim-extradite'
 Bundle 'bitc/vim-hdevtools'
 Bundle 'majutsushi/tagbar'
+Bundle 'bling/vim-airline'
 
 " Mac specific config
 if has("unix")
@@ -427,7 +428,7 @@ function! DoPrettyJson()
   badd %
   setlocal buftype=nofile bufhidden=wipe nobuflisted
   noswapfile nowrap
-  silent %!python -m json.tool 
+  silent %!python -m json.tool
   silent %<
 endfunction
 command! Json call DoPrettyJson()
@@ -440,8 +441,8 @@ function! DoPrettyXML()
   badd %
   setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
   " save the filetype so we can restore it later
-  let l:origft = &ft 
-  set ft= 
+  let l:origft = &ft
+  set ft=
   " delete the xml header if it exists. This will
   " permit us to surround the document with fake tags
   " without creating invalid xml.
@@ -489,6 +490,14 @@ let g:haskell_indent_in = 2
 nmap <F8> :TagbarToggle<CR>
 
 "############################################
+"################# airline ##################
+"############################################
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#left = ' '
+let g:airline_powerline_fonts = 1
+
+"############################################
 "############### hdevtools ##################
 "############################################
 
@@ -497,61 +506,61 @@ let g:hdevtools_options = '-g-isrc -g-Wall'
 "############################################
 "############ Lightline setup ###############
 "############################################
-set enc=utf8
-
-let g:lightline = {
-  \ 'colorscheme': 'solarized',
-  \ 'mode_map': { 'c': 'NORMAL' },
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
-  \ },
-  \ 'component_function': {
-  \   'modified': 'MyModified',
-  \   'readonly': 'MyReadonly',
-  \   'fugitive': 'MyFugitive',
-  \   'filename': 'MyFilename',
-  \   'fileformat': 'MyFileformat',
-  \   'filetype': 'MyFiletype',
-  \   'fileencoding': 'MyFileencoding',
-  \   'mode': 'MyMode',
-  \ },
-  \ 'separator': { 'left': '⮀', 'right': '⮂' },
-  \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
-  \ }
-
-function! MyModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! MyReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '⭤' : ''
-endfunction
-
-function! MyFilename()
-  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
-        \  &ft == 'unite' ? unite#get_status_string() : 
-        \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') : 
-        \ '' != expand('%t') ? expand('%t') : '[No Name]') .
-        \ ('' != MyModified() ? ' ' . MyModified() : '')
-endfunction
-
-function! MyFugitive()
-  return &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head') && strlen(fugitive#head()) ? '⭠ '.fugitive#head() : ''
-endfunction
-
-function! MyFileformat()
-  return winwidth('.') > 70 ? &fileformat : ''
-endfunction
-
-function! MyFiletype()
-  return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! MyFileencoding()
-  return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! MyMode()
-  return winwidth('.') > 60 ? lightline#mode() : ''
-endfunction
+" set enc=utf8
+"
+" let g:lightline = {
+"   \ 'colorscheme': 'solarized',
+"   \ 'mode_map': { 'c': 'NORMAL' },
+"   \ 'active': {
+"   \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+"   \ },
+"   \ 'component_function': {
+"   \   'modified': 'MyModified',
+"   \   'readonly': 'MyReadonly',
+"   \   'fugitive': 'MyFugitive',
+"   \   'filename': 'MyFilename',
+"   \   'fileformat': 'MyFileformat',
+"   \   'filetype': 'MyFiletype',
+"   \   'fileencoding': 'MyFileencoding',
+"   \   'mode': 'MyMode',
+"   \ },
+"   \ 'separator': { 'left': '⮀', 'right': '⮂' },
+"   \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+"   \ }
+"
+" function! MyModified()
+"   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+" endfunction
+"
+" function! MyReadonly()
+"   return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '⭤' : ''
+" endfunction
+"
+" function! MyFilename()
+"   return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+"         \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+"         \  &ft == 'unite' ? unite#get_status_string() :
+"         \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
+"         \ '' != expand('%t') ? expand('%t') : '[No Name]') .
+"         \ ('' != MyModified() ? ' ' . MyModified() : '')
+" endfunction
+"
+" function! MyFugitive()
+"   return &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head') && strlen(fugitive#head()) ? '⭠ '.fugitive#head() : ''
+" endfunction
+"
+" function! MyFileformat()
+"   return winwidth('.') > 70 ? &fileformat : ''
+" endfunction
+"
+" function! MyFiletype()
+"   return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+" endfunction
+"
+" function! MyFileencoding()
+"   return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+" endfunction
+"
+" function! MyMode()
+"   return winwidth('.') > 60 ? lightline#mode() : ''
+" endfunction
