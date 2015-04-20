@@ -64,6 +64,7 @@ Bundle 'int3/vim-extradite'
 Bundle 'bitc/vim-hdevtools'
 Bundle 'majutsushi/tagbar'
 Bundle 'bling/vim-airline'
+Bundle 'mustache/vim-mustache-handlebars'
 
 " Mac specific config
 if has("unix")
@@ -264,7 +265,7 @@ inoremap <C-a> <C-x><C-u>
 
 "Remap CtrlP
 nnoremap <leader>e :CtrlP<CR>
-nnoremap <C-o> :CtrlPTag<CR>
+nnoremap <C-t> :CtrlPTag<CR>
 "Remap Tcomment
 nmap <leader>c <c-_><c-_>
 vmap <leader>c <c-_><c-_>
@@ -320,8 +321,8 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|dist$',
-  \ 'file': '\.exe$\|\.so$\|\.dll$\|\.o$\|\.dylib$\|\.d$\|\.dia$',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|dist$\|bower_components$\|node_modules$',
+  \ 'file': '\.exe$\|\.so$\|\.dll$\|\.o$\|\.dylib$\|\.d$\|\.dia$\|Icon$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
@@ -418,6 +419,13 @@ endif
 "############################################
 if has('autocmd')
   au BufRead *.js call JavaScriptFold()
+endif
+
+"############################################
+"########### coffeescript setup ##############
+"############################################
+if has('autocmd')
+  autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent
 endif
 
 "############################################
