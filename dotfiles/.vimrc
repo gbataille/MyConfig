@@ -63,6 +63,7 @@ Bundle 'vim-scripts/gitignore'
 Bundle 'int3/vim-extradite'
 Bundle 'bitc/vim-hdevtools'
 Bundle 'majutsushi/tagbar'
+" Bundle 'lukaszkorecki/CoffeeTags'
 Bundle 'bling/vim-airline'
 Bundle 'mustache/vim-mustache-handlebars'
 
@@ -321,7 +322,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|dist$\|bower_components$\|node_modules$',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|dist$\|bower_components$\|node_modules$\|\.docsets$',
   \ 'file': '\.exe$\|\.so$\|\.dll$\|\.o$\|\.dylib$\|\.d$\|\.dia$\|Icon$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
@@ -496,6 +497,14 @@ let g:haskell_indent_in = 2
 "################# tagbar ###################
 "############################################
 nmap <F8> :TagbarToggle<CR>
+
+"############################################
+"############### CoffeeTags #################
+"############################################
+" let g:CoffeeAutoTagDisabled=0     " Disables autotaging on save (Default: 0 [false])
+" let g:CoffeeAutoTagFile=<filename>       " Name of the generated tag file (Default: ./tags)
+" let g:CoffeeAutoTagIncludeVars=<0 or 1>  " Includes variables (Default: 0 [false])
+" let g:CoffeeAutoTagTagRelative=<0 or 1>  " Sets file names to the relative path from the tag file location to the tag file location (Default: 1 [true])
 
 "############################################
 "################# airline ##################

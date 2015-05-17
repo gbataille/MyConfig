@@ -1,7 +1,6 @@
 .DS_Store
 *.pyc
 *.o
-*.a
 *.dylib
 *.gem
 *.iml
@@ -9,3 +8,4 @@ tags
 !tags/
 gems.tags
 Icon
+*.docsets/
