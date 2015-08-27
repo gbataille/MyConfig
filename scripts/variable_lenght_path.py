@@ -3,8 +3,8 @@
 # Used in the zsh prompt to give a not too long path
 import os
 
-MAX_LENGTH = 30
-MAX_RIGHT_LENGTH = 18
+MAX_LENGTH = 20
+MAX_RIGHT_LENGTH = 15
 
 path = os.getcwd()
 userdir = os.environ['HOME']
