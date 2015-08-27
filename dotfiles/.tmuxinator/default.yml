@@ -1,0 +1,53 @@
+# ~/.tmuxinator/default.yml
+
+name: default
+root: ~/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+startup_window: speedyrating-app
+
+windows:
+  - sandbox:
+      root: ~/Documents/Prog/Perso/GregsSandbox
+      layout: main-vertical
+      panes:
+        - clear
+  - config:
+      root: ~/Documents/Prog/MyConfig
+      layout: main-vertical
+      panes:
+        - clear
+  - speedyrating-app:
+      root: ~/Documents/Prog/Speedyrating/sr_survey_app
+      layout: 7122,238x60,0,0{122x60,0,0[122x51,0,0,2,122x8,0,52,7],115x60,123,0[115x29,123,0,3,115x30,123,30,4]}
+      panes:
+        - clear
+        - clear
+        - clear
+        - clear
+  - speedyrating-server:
+      root: ~/Documents/Prog/Speedyrating/sr_survey_app
+      layout: main-vertical
+      panes:
+        - clear
+  - pandoc:
+      root: ~/Documents/Prog/Perso/pandoc
+      layout: main-vertical
+      panes:
+        - clear
+
