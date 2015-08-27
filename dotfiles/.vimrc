@@ -63,7 +63,7 @@ Bundle 'vim-scripts/gitignore'
 Bundle 'int3/vim-extradite'
 Bundle 'bitc/vim-hdevtools'
 Bundle 'majutsushi/tagbar'
-" Bundle 'lukaszkorecki/CoffeeTags'
+Bundle 'lukaszkorecki/CoffeeTags'
 Bundle 'bling/vim-airline'
 Bundle 'mustache/vim-mustache-handlebars'
 
@@ -241,6 +241,7 @@ set foldcolumn=3
 if has('autocmd')
   au BufReadPre * setlocal foldmethod=syntax
   au BufRead * set foldlevel=99
+  au BufRead * set foldlevelstart=99
   au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
 endif
 
