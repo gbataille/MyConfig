@@ -23,7 +23,7 @@ startup_window: speedyrating-app
 
 windows:
   - sandbox:
-      root: ~/Documents/Prog/Perso/GregsSandbox
+      root: ~/Documents/Prog/Perso
       layout: main-vertical
       panes:
         - clear
@@ -34,9 +34,8 @@ windows:
         - clear
   - speedyrating-app:
       root: ~/Documents/Prog/Speedyrating/sr_survey_app
-      layout: 7122,238x60,0,0{122x60,0,0[122x51,0,0,2,122x8,0,52,7],115x60,123,0[115x29,123,0,3,115x30,123,30,4]}
+      layout: 54df,272x62,0,0{114x62,0,0,2,157x62,115,0[157x50,115,0,6,157x11,115,51,7]}
       panes:
-        - clear
         - clear
         - clear
         - clear
