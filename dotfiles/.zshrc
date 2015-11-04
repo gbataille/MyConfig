@@ -69,6 +69,9 @@ export PATH="$HOME/.rvm/bin:$PATH:/Users/gbataille/Documents/Prog/MyConfig/scrip
 
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home"
 
+export GIT_RADAR_FORMAT="  %{remote} [%{branch}] %{local} %{changes} %{stash}"
+export GIT_RADAR_FETCH_TIME=30
+
 if [ -f ~/.profile ]; then
   source ~/.profile
 fi
