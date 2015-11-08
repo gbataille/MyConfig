@@ -66,6 +66,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'lukaszkorecki/CoffeeTags'
 Bundle 'bling/vim-airline'
 Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'osyo-manga/vim-over'
 
 " Mac specific config
 if has("unix")
@@ -289,6 +290,8 @@ nnoremap <leader>g :grep -R<Space>
 nnoremap <leader>= gg=G
 "shortcut for Tabularize
 vnoremap <leader>t :Tabularize /
+"shortcut for replace with preview
+nnoremap <leader>r :OverCommandLine<CR>:%s/
 
 " Move between splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
