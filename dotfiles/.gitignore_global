@@ -9,3 +9,5 @@ tags
 gems.tags
 Icon
 *.docsets/
+.vagrant/
+.stack-work
