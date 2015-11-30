@@ -10,12 +10,8 @@ function shorter_path {
     echo `variable_lenght_path.py` 2>/dev/null
 }
 
-# %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}$(git_prompt_info) \
-
 PROMPT='
-%{$fg[cyan]%}%n%{$reset_color%} \
-%{$fg_bold[green]%}$(shorter_path)%{$reset_color%}$(git-radar --zsh --fetch) \
-$(virtualenv_info)%(?,,%{${fg_bold[blue]}%}[%?]%{$reset_color%} )$ '
+%{$fg[cyan]%}%n%{$reset_color%} %{$fg_bold[green]%}$(shorter_path)%{$reset_color%}$(git_prompt_info) $(virtualenv_info)%(?,,%{${fg_bold[blue]}%}[%?]%{$reset_color%} )$ '
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
@@ -28,4 +24,3 @@ RPROMPT='%{$fg_bold[white]%}%T%{$reset_color%} ${return_status}'
 
 bindkey '^U' backward-kill-line
 bindkey '^Y' yank
-
