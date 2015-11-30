@@ -22,30 +22,15 @@ root: ~/
 startup_window: speedyrating-app
 
 windows:
-  - sandbox:
-      root: ~/Documents/Prog/Perso
-      layout: main-vertical
-      panes:
-        - clear
-  - config:
-      root: ~/Documents/Prog/MyConfig
-      layout: main-vertical
-      panes:
-        - clear
   - speedyrating-app:
       root: ~/Documents/Prog/Speedyrating/sr_survey_app
-      layout: 54df,272x62,0,0{114x62,0,0,2,157x62,115,0[157x50,115,0,6,157x11,115,51,7]}
+      layout: f6d2,208x57,0,0{92x57,0,0,2,115x57,93,0[115x46,93,0,5,115x10,93,47,6]}
       panes:
         - clear
         - clear
         - clear
   - speedyrating-server:
       root: ~/Documents/Prog/Speedyrating/sr_survey_app
-      layout: main-vertical
-      panes:
-        - clear
-  - pandoc:
-      root: ~/Documents/Prog/Perso/pandoc
       layout: main-vertical
       panes:
         - clear
