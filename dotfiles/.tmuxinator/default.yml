@@ -22,6 +22,11 @@ root: ~/
 startup_window: speedyrating-app
 
 windows:
+  - config:
+      root: ~/Documents/Prog/MyConfig
+      layout: main-vertical
+      panes:
+        - clear
   - speedyrating-app:
       root: ~/Documents/Prog/Speedyrating/sr_survey_app
       layout: f6d2,208x57,0,0{92x57,0,0,2,115x57,93,0[115x46,93,0,5,115x10,93,47,6]}
