@@ -30,25 +30,22 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/bufkill.vim'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'scrooloose/syntastic'
-" Bundle 'Lokaltog/vim-easymotion'
 if &diff
   "nothing
 else
   Bundle 'roman/golden-ratio'
 endif
-" Bundle 'tpope/vim-dispatch'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'ciaranm/detectindent'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'SirVer/ultisnips'
+" Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-speeddating'
 Bundle 'mattn/calendar-vim'
 Bundle 'vim-scripts/utl.vim'
 Bundle 'jceb/vim-orgmode'
 Bundle 'jnwhiteh/vim-golang'
-" Bundle 'itchyny/lightline.vim'
 Bundle 'airblade/vim-rooter'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'jelera/vim-javascript-syntax'
@@ -284,8 +281,6 @@ nnoremap <leader>w <C-w><C-w>
 nnoremap <leader><Space> mz:%s/ *$//g<CR>:nohlsearch<CR>`z
 "remove current highlighted text
 nnoremap <silent> <leader>/ :nohlsearch<CR>
-"map a quick recursive grep
-nnoremap <leader>g :grep -R<Space>
 "reindent the entire buffer
 nnoremap <leader>= gg=G
 "shortcut for Tabularize
@@ -359,32 +354,32 @@ if has('autocmd')
   autocmd BufRead * :DetectIndent
 endif
 
-"############################################
-"############ UltiSnips setup ###############
-"############################################
-" Forces Tab to be used for both YCM and UtilSnips
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
-
-if has('autocmd')
-  au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-endif
-
+" "############################################
+" "############ UltiSnips setup ###############
+" "############################################
+" " Forces Tab to be used for both YCM and UtilSnips
+" let g:UltiSnipsExpandTrigger = "<tab>"
+" let g:UltiSnipsJumpForwardTrigger = "<tab>"
+"
+" function! g:UltiSnips_Complete()
+"     call UltiSnips#ExpandSnippet()
+"     if g:ulti_expand_res == 0
+"         if pumvisible()
+"             return "\<C-n>"
+"         else
+"             call UltiSnips#JumpForwards()
+"             if g:ulti_jump_forwards_res == 0
+"                return "\<TAB>"
+"             endif
+"         endif
+"     endif
+"     return ""
+" endfunction
+"
+" if has('autocmd')
+"   au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+" endif
+"
 "############################################
 "############ Org-mode setup ################
 "############################################
@@ -522,66 +517,7 @@ let g:airline_powerline_fonts = 1
 "############### hdevtools ##################
 "############################################
 
-let g:hdevtools_options = '-g-isrc -g-Wall'
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 
-"############################################
-"############ Lightline setup ###############
-"############################################
-" set enc=utf8
-"
-" let g:lightline = {
-"   \ 'colorscheme': 'solarized',
-"   \ 'mode_map': { 'c': 'NORMAL' },
-"   \ 'active': {
-"   \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
-"   \ },
-"   \ 'component_function': {
-"   \   'modified': 'MyModified',
-"   \   'readonly': 'MyReadonly',
-"   \   'fugitive': 'MyFugitive',
-"   \   'filename': 'MyFilename',
-"   \   'fileformat': 'MyFileformat',
-"   \   'filetype': 'MyFiletype',
-"   \   'fileencoding': 'MyFileencoding',
-"   \   'mode': 'MyMode',
-"   \ },
-"   \ 'separator': { 'left': '⮀', 'right': '⮂' },
-"   \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
-"   \ }
-"
-" function! MyModified()
-"   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-" endfunction
-"
-" function! MyReadonly()
-"   return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '⭤' : ''
-" endfunction
-"
-" function! MyFilename()
-"   return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-"         \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-"         \  &ft == 'unite' ? unite#get_status_string() :
-"         \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
-"         \ '' != expand('%t') ? expand('%t') : '[No Name]') .
-"         \ ('' != MyModified() ? ' ' . MyModified() : '')
-" endfunction
-"
-" function! MyFugitive()
-"   return &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head') && strlen(fugitive#head()) ? '⭠ '.fugitive#head() : ''
-" endfunction
-"
-" function! MyFileformat()
-"   return winwidth('.') > 70 ? &fileformat : ''
-" endfunction
-"
-" function! MyFiletype()
-"   return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-" endfunction
-"
-" function! MyFileencoding()
-"   return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-" endfunction
-"
-" function! MyMode()
-"   return winwidth('.') > 60 ? lightline#mode() : ''
-" endfunction
