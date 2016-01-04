@@ -11,3 +11,4 @@ Icon
 *.docsets/
 .vagrant/
 .stack-work
+node_modules/
