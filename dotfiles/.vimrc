@@ -290,6 +290,9 @@ nnoremap <leader>= gg=G
 vnoremap <leader>t :Tabularize /
 "shortcut for replace with preview
 nnoremap <leader>r :OverCommandLine<CR>:%s/
+"shortcut to GhcMod
+nnoremap <leader>g :GhcModType<CR>
+nnoremap <leader>f :GhcModTypeClear<CR>
 
 " Move between splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
@@ -335,14 +338,12 @@ let g:ctrlp_custom_ignore = {
 let g:syntastic_check_on_open = 1
 
 let g:syntastic_javascript_checkers = ['jsl']
-let g:syntastic_haskell_checkers = ['hlint']
 
-au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
-au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
-au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 let g:syntastic_typescript_checkers = ['tslint']
 let g:syntastic_typescript_tsc_fname = ''
 
+let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
+let g:syntastic_haskell_hdevtools_arg = '-g-isrc -g-Wall'
 
 let g:syntastic_html_tidy_exec = '/usr/local/Cellar/tidy-html5/5.0.0/bin/tidy'
 let g:syntastic_html_tidy_ignore_errors = []
@@ -357,7 +358,8 @@ let g:ycm_filepath_completion_use_working_dir = 1
 let g:ycm_register_as_syntastic_checker = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_semantic_triggers = {
-  \ 'typescript': ['.']
+  \ 'typescript': ['.'],
+  \ 'haskell': ['.']
   \ }
 " Oddly enough, it seems that the semantic completion triggers for ruby while
 " YCM has no logic to handle it. Gives odd results
@@ -365,6 +367,11 @@ let g:ycm_filetype_specific_completion_to_disable = {
   \ 'gitcommit': 1,
   \ 'ruby': 1
   \ }
+
+"############################################
+"##############    Neco-GHC    ##############
+"############################################
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 "############################################
 "########## DetectIndent setup ##############
@@ -500,7 +507,6 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=8
 "############################################
 "########### haskell-vim setup ##############
 "############################################
-
 let g:haskell_enable_quantification = 1
 let g:haskell_enable_recursivedo = 1
 let g:haskell_enable_arrowsyntax = 1
@@ -514,10 +520,44 @@ let g:haskell_indent_where = 6
 let g:haskell_indent_do = 2
 let g:haskell_indent_in = 2
 
+" To let NecoGHC run the omnifunc
+let g:haskellmode_completion_ghc = 0
+
 "############################################
 "################# tagbar ###################
 "############################################
 nmap <F8> :TagbarToggle<CR>
+let g:tagbar_type_haskell = {
+    \ 'ctagsbin'  : 'hasktags',
+    \ 'ctagsargs' : '-x -c -o-',
+    \ 'kinds'     : [
+        \  'm:modules:0:1',
+        \  'd:data: 0:1',
+        \  'd_gadt: data gadt:0:1',
+        \  't:type names:0:1',
+        \  'nt:new types:0:1',
+        \  'c:classes:0:1',
+        \  'cons:constructors:1:1',
+        \  'c_gadt:constructor gadt:1:1',
+        \  'c_a:constructor accessors:1:1',
+        \  'ft:function types:1:1',
+        \  'fi:function implementations:0:1',
+        \  'o:others:0:1'
+    \ ],
+    \ 'sro'        : '.',
+    \ 'kind2scope' : {
+        \ 'm' : 'module',
+        \ 'c' : 'class',
+        \ 'd' : 'data',
+        \ 't' : 'type'
+    \ },
+    \ 'scope2kind' : {
+        \ 'module' : 'm',
+        \ 'class'  : 'c',
+        \ 'data'   : 'd',
+        \ 'type'   : 't'
+    \ }
+\ }
 
 "############################################
 "############### CoffeeTags #################
