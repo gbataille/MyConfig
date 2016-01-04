@@ -64,6 +64,9 @@ Bundle 'lukaszkorecki/CoffeeTags'
 Bundle 'bling/vim-airline'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'osyo-manga/vim-over'
+" Typescript
+Bundle 'leafgarland/typescript-vim'
+Bundle 'Quramy/tsuquyomi'
 
 " Mac specific config
 if has("unix")
@@ -330,12 +333,22 @@ let g:ctrlp_custom_ignore = {
 "###########    Syntastic setup   ###########
 "############################################
 let g:syntastic_check_on_open = 1
+
 let g:syntastic_javascript_checkers = ['jsl']
 let g:syntastic_haskell_checkers = ['hlint']
 
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
+let g:syntastic_typescript_checkers = ['tslint']
+let g:syntastic_typescript_tsc_fname = ''
+
+
+let g:syntastic_html_tidy_exec = '/usr/local/Cellar/tidy-html5/5.0.0/bin/tidy'
+let g:syntastic_html_tidy_ignore_errors = []
+let g:syntastic_html_tidy_quiet_messages = {
+  \ "regex": '\m^<.*> is not recognized!'
+  \ }
 
 "############################################
 "##############    YCM setup   ##############
@@ -343,6 +356,15 @@ au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 let g:ycm_filepath_completion_use_working_dir = 1
 let g:ycm_register_as_syntastic_checker = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_semantic_triggers = {
+  \ 'typescript': ['.']
+  \ }
+" Oddly enough, it seems that the semantic completion triggers for ruby while
+" YCM has no logic to handle it. Gives odd results
+let g:ycm_filetype_specific_completion_to_disable = {
+  \ 'gitcommit': 1,
+  \ 'ruby': 1
+  \ }
 
 "############################################
 "########## DetectIndent setup ##############
