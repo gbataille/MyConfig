@@ -67,6 +67,8 @@ Bundle 'osyo-manga/vim-over'
 " Typescript
 Bundle 'leafgarland/typescript-vim'
 Bundle 'Quramy/tsuquyomi'
+" Editorconfig
+Bundle 'editorconfig/editorconfig-vim'
 
 " Mac specific config
 if has("unix")
@@ -583,3 +585,9 @@ au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 
+"############################################
+"############## editorconfig ################
+"############################################
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
