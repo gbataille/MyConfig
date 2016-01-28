@@ -341,7 +341,7 @@ let g:syntastic_check_on_open = 1
 
 let g:syntastic_javascript_checkers = ['jsl']
 
-let g:syntastic_typescript_checkers = ['tslint']
+let g:syntastic_typescript_checkers = ['tsc', 'tslint']
 let g:syntastic_typescript_tsc_fname = ''
 
 let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
@@ -591,3 +591,8 @@ au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
+
+"############################################
+"############### tsuquyomi ##################
+"############################################
+let g:tsuquyomi_disable_quickfix = 1
