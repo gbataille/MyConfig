@@ -30,11 +30,6 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/bufkill.vim'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'scrooloose/syntastic'
-if &diff
-  "nothing
-else
-  Bundle 'roman/golden-ratio'
-endif
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'kien/ctrlp.vim'
@@ -61,7 +56,8 @@ Bundle 'int3/vim-extradite'
 Bundle 'bitc/vim-hdevtools'
 Bundle 'majutsushi/tagbar'
 Bundle 'lukaszkorecki/CoffeeTags'
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'osyo-manga/vim-over'
 " Typescript
@@ -238,6 +234,7 @@ nnoremap <F4> :Gcommit<CR>
 "Folding setup
 set foldmethod=manual
 set foldcolumn=3
+set nofoldenable
 " Intelligently set the fold to syntax before opening a buffer to compute the
 " syntax folds and then revert to manual to allow custom folds creation
 " Also expands all the folds at the start
@@ -314,6 +311,19 @@ else
   highlight ColorColumn ctermbg=7
 end
 
+"######################################################################
+"####### Qargs - transform the quickfix list into an args list ########
+"######################################################################
+command! -nargs=0 -bar Qargs execute 'args ' . QuickfixFilenames()
+function! QuickfixFilenames()
+  " Building a hash ensures we get each buffer only once
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(values(buffer_numbers))
+endfunction
+
 "############################################
 "######## Special file configuration ########
 "############################################
@@ -341,7 +351,7 @@ let g:syntastic_check_on_open = 1
 
 let g:syntastic_javascript_checkers = ['jsl']
 
-let g:syntastic_typescript_checkers = ['tsc', 'tslint']
+let g:syntastic_typescript_checkers = ['tslint']
 let g:syntastic_typescript_tsc_fname = ''
 
 let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
@@ -573,9 +583,8 @@ let g:tagbar_type_haskell = {
 "################# airline ##################
 "############################################
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#left = ' '
 let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
 
 "############################################
 "############### hdevtools ##################
