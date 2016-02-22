@@ -93,3 +93,11 @@ fi
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+
+export NVM_DIR="/Users/gbataille/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# DART / Angular2 install
+export DARTIUM_BIN="/usr/local/opt/dart/Chromium.app/Contents/MacOS/Chromium"
+export DART_SDK="/usr/local/bin/dart"
+export PUB_CACHE="/Users/gbataille/.pub-cache"
