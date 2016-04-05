@@ -11,7 +11,7 @@ function shorter_path {
 }
 
 PROMPT='
-%{$fg[cyan]%}%n%{$reset_color%} %{$fg_bold[green]%}$(shorter_path)%{$reset_color%} $(~/.local/bin/gitHUD zsh)%{$(virtualenv_info)%}%(?,,%{${fg_bold[blue]}%}[%?]%{$reset_color%} )$ '
+%{$fg[cyan]%}%n%{$reset_color%} %{$fg_bold[green]%}$(shorter_path)%{$reset_color%} $(~/.local/bin/gitHUD zsh)%(?,,%{${fg_bold[blue]}%}[%?]%{$reset_color%} )$ '
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
