@@ -65,6 +65,7 @@ Bundle 'leafgarland/typescript-vim'
 Bundle 'Quramy/tsuquyomi'
 " Editorconfig
 Bundle 'editorconfig/editorconfig-vim'
+Bundle 'tmhedberg/SimpylFold'
 
 " Mac specific config
 if has("unix")
@@ -252,6 +253,13 @@ function! MyFoldText()
 endfunction
 set foldtext=MyFoldText()
 
+"#############################
+"####### SimplyFold ##########
+"#############################
+let g:SimpylFold_docstring_preview = 1
+autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
+
 "remap toggle folding to the space bar
 nnoremap <Space> za
 
@@ -265,33 +273,41 @@ inoremap <C-a> <C-x><C-u>
 " Tags
 " set tags+=gems.tags
 
-"Remap CtrlP
-nnoremap <leader>e :CtrlP<CR>
-nnoremap <C-t> :CtrlPTag<CR>
-"Remap Tcomment
-nmap <leader>c <c-_><c-_>
-vmap <leader>c <c-_><c-_>
-"map a buffer cycling shortcut
-nnoremap <leader>n :bnext<CR>
-nnoremap <leader>p :bprevious<CR>
-nnoremap <leader>l :ls<CR>:b<Space>
-"map a quick buffer close key
-nnoremap <leader>q :BD<CR>
-"map a quick window cycle key
-nnoremap <leader>w <C-w><C-w>
 "Remove spaces on empty lines
 nnoremap <leader><Space> mz:%s/ *$//g<CR>:nohlsearch<CR>`z
 "remove current highlighted text
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 "reindent the entire buffer
 nnoremap <leader>= gg=G
-"shortcut for Tabularize
-vnoremap <leader>t :Tabularize /
+"Remap Tcomment
+nmap <leader>c <c-_><c-_>
+vmap <leader>c <c-_><c-_>
+" shortcut for python doc
+au BufNewFile,BufRead *.py
+      \ nnoremap <leader>d :YcmCompleter GetDoc<CR>
+"Remap CtrlP
+nnoremap <leader>e :CtrlP<CR>
+nnoremap <C-t> :CtrlPTag<CR>
+"shortcut to GhcMod
+au BufNewFile,BufRead *.hs
+      \ nnoremap <leader>f :GhcModTypeClear<CR>
+au BufNewFile,BufRead *.hs
+      \ nnoremap <leader>g :GhcModType<CR>
+"shortcut to Python goto definition
+au BufNewFile,BufRead *.py
+      \ nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"map a buffer cycling shortcut
+nnoremap <leader>l :ls<CR>:b<Space>
+nnoremap <leader>n :bnext<CR>
+nnoremap <leader>p :bprevious<CR>
 "shortcut for replace with preview
 nnoremap <leader>r :OverCommandLine<CR>:%s/
-"shortcut to GhcMod
-nnoremap <leader>g :GhcModType<CR>
-nnoremap <leader>f :GhcModTypeClear<CR>
+"shortcut for Tabularize
+vnoremap <leader>t :Tabularize /
+"map a quick buffer close key
+nnoremap <leader>q :BD<CR>
+"map a quick window cycle key
+nnoremap <leader>w <C-w><C-w>
 
 " Move between splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
@@ -310,6 +326,22 @@ if $TERM == 'xterm-256color'
 else
   highlight ColorColumn ctermbg=7
 end
+
+"########################
+"####### Python #########
+"########################
+"python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
+
+let python_highlight_all=1
+let g:ycm_python_binary_path = '/usr/local/bin/python3'
 
 "######################################################################
 "####### Qargs - transform the quickfix list into an args list ########
@@ -357,6 +389,8 @@ let g:syntastic_typescript_tsc_fname = ''
 let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
 let g:syntastic_haskell_hdevtools_arg = '-g-isrc -g-Wall'
 
+let g:syntastic_python_checkers = ['flake8', 'python']
+
 let g:syntastic_html_tidy_exec = '/usr/local/Cellar/tidy-html5/5.0.0/bin/tidy'
 let g:syntastic_html_tidy_ignore_errors = []
 let g:syntastic_html_tidy_quiet_messages = {
@@ -366,6 +400,9 @@ let g:syntastic_html_tidy_quiet_messages = {
 "############################################
 "##############    YCM setup   ##############
 "############################################
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
 let g:ycm_filepath_completion_use_working_dir = 1
 let g:ycm_register_as_syntastic_checker = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -393,6 +430,15 @@ let g:detectindent_preferred_indent = 2
 
 if has('autocmd')
   autocmd BufRead * :DetectIndent
+
+  " Python special setup
+  au BufNewFile,BufRead *.py set tabstop=4
+  au BufNewFile,BufRead *.py set softtabstop=4
+  au BufNewFile,BufRead *.py set shiftwidth=4
+  au BufNewFile,BufRead *.py set textwidth=79
+  au BufNewFile,BufRead *.py set expandtab
+  au BufNewFile,BufRead *.py set autoindent
+  au BufNewFile,BufRead *.py set fileformat=unix
 endif
 
 " "############################################
