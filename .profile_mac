@@ -14,6 +14,13 @@ export GLASSFISH_HOME=/usr/local/opt/glassfish/libexec
 
 set -o vi
 
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+  source /usr/local/bin/virtualenvwrapper.sh
+fi
+
 alias ls='ls -G'
 alias ll='ls -Gla'
 alias l='ls -Gla'
@@ -26,3 +33,5 @@ alias gitk='gitk --all'
 alias ctest='cabal test --show-details=streaming'
 alias npmr='npm run'
 alias npmrs='npm run -s'
+alias py='python3'
+alias pm='python3 manage.py'
