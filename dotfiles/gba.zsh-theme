@@ -10,7 +10,11 @@ function shorter_path {
     echo `variable_lenght_path.py` 2>/dev/null
 }
 
-PROMPT='
+function docker-machine-prompt-display {
+    [ $DOCKER_MACHINE_NAME ] && echo '\n[DOCKER-MACHINE: '`docker-machine active`']'
+}
+
+PROMPT='%{$fg[green]%}$(docker-machine-prompt-display)%{$reset_color%}
 %{$fg[cyan]%}%n%{$reset_color%} %{$fg_bold[green]%}$(shorter_path)%{$reset_color%} $(~/.local/bin/gitHUD zsh)%(?,,%{${fg_bold[blue]}%}[%?]%{$reset_color%} )$ '
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
@@ -24,3 +28,7 @@ RPROMPT='%{$fg_bold[white]%}%T%{$reset_color%} ${return_status}'
 
 bindkey '^U' backward-kill-line
 bindkey '^Y' yank
+
+dm-set() {
+  eval "$(docker-machine env $1)"
+}
