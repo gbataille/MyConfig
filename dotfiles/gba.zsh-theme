@@ -1,5 +1,5 @@
-function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
+function virtualenv-prompt-display {
+    [ $VIRTUAL_ENV ] && echo '[virtualenv: '`basename $VIRTUAL_ENV`'] '
 }
 
 function box_name {
@@ -11,10 +11,21 @@ function shorter_path {
 }
 
 function docker-machine-prompt-display {
-    [ $DOCKER_MACHINE_NAME ] && echo '\n[DOCKER-MACHINE: '`docker-machine active`']'
+    [ $DOCKER_MACHINE_NAME ] && echo '[DOCKER-MACHINE: '`docker-machine active`'] '
 }
 
-PROMPT='%{$fg[green]%}$(docker-machine-prompt-display)%{$reset_color%}
+function nvm-prompt-display {
+  command -v nvm 2>/dev/null 1>&2 && echo '[nvm: '`nvm current`'] '
+}
+
+function rvm-prompt-display {
+  command -v rvm 2>/dev/null 1>&2 && echo '[rvm: '`rvm current`'] '
+}
+
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+PROMPT='
+%{$fg[green]%}$(docker-machine-prompt-display)$(nvm-prompt-display)$(rvm-prompt-display)$(virtualenv-prompt-display)%{$reset_color%}
 %{$fg[cyan]%}%n%{$reset_color%} %{$fg_bold[green]%}$(shorter_path)%{$reset_color%} $(~/.local/bin/gitHUD zsh)%(?,,%{${fg_bold[blue]}%}[%?]%{$reset_color%} )$ '
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
