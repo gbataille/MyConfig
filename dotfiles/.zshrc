@@ -55,12 +55,15 @@ ZSH_THEME="gba"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+if [ -f ~/.profile ]; then
+  source ~/.profile
+fi
+
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(docker docker-compose git gitfast autojump brew mercurial pip cabal pyenv pylint python rails ruby rvm svn vi-mode)
-
+plugins=(docker docker-compose git gitfast autojump brew mercurial pip cabal pyenv pylint python rails ruby rvm svn vi-mode virtualenvwrapper)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -69,12 +72,6 @@ export PATH="$HOME/.rvm/bin:$PATH:/Users/gbataille/.local/bin:/Users/gbataille/D
 
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home"
 
-export GIT_RADAR_FORMAT="  %{remote} [%{branch}] %{local} %{changes} %{stash}"
-export GIT_RADAR_FETCH_TIME=30
-
-if [ -f ~/.profile ]; then
-  source ~/.profile
-fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
