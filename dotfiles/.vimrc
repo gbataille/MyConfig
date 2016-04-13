@@ -35,7 +35,7 @@ Bundle 'mattn/gist-vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'ciaranm/detectindent'
 Bundle 'Valloric/YouCompleteMe'
-" Bundle 'SirVer/ultisnips'
+Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-speeddating'
 Bundle 'mattn/calendar-vim'
 Bundle 'vim-scripts/utl.vim'
@@ -442,31 +442,31 @@ if has('autocmd')
   au BufNewFile,BufRead *.py set fileformat=unix
 endif
 
-" "############################################
-" "############ UltiSnips setup ###############
-" "############################################
-" " Forces Tab to be used for both YCM and UtilSnips
-" let g:UltiSnipsExpandTrigger = "<tab>"
-" let g:UltiSnipsJumpForwardTrigger = "<tab>"
-"
-" function! g:UltiSnips_Complete()
-"     call UltiSnips#ExpandSnippet()
-"     if g:ulti_expand_res == 0
-"         if pumvisible()
-"             return "\<C-n>"
-"         else
-"             call UltiSnips#JumpForwards()
-"             if g:ulti_jump_forwards_res == 0
-"                return "\<TAB>"
-"             endif
-"         endif
-"     endif
-"     return ""
-" endfunction
-"
-" if has('autocmd')
-"   au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-" endif
+"############################################
+"############ UltiSnips setup ###############
+"############################################
+" Forces Tab to be used for both YCM and UtilSnips
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+
+function! g:UltiSnips_Complete()
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips#JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
+
+if has('autocmd')
+  au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+endif
 "
 "############################################
 "############ Org-mode setup ################
