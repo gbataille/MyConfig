@@ -177,8 +177,11 @@ endif
 
 " colorscheme jellybeans
 let g:solarized_diffmode="high"
+let g:solarized_visibility = "low"
+let g:solarized_contrast = "high"
+let g:solarized_termcolors=16
+let g:solarized_termtrans = 1
 colorscheme solarized
-"let g:solarized_termcolors=256
 set background=dark
 
 " Convenient command to see the difference between the current buffer and the
