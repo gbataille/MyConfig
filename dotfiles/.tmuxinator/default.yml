@@ -28,7 +28,7 @@ windows:
         - cdm
   - speedyrating-app:
       root: ~/Documents/Prog/Speedyrating/sr_survey_app
-      layout: f6d2,208x57,0,0{92x57,0,0,2,115x57,93,0[115x46,93,0,5,115x10,93,47,6]}
+      layout: 8c58,238x60,0,0{107x60,0,0,1,130x60,108,0[130x48,108,0,5,130x11,108,49,6]}
       panes:
         - clear
         - clear
@@ -40,15 +40,14 @@ windows:
         - clear
   - sr-angular:
       root: ~/Documents/Prog/Speedyrating/sr_angular_app
-      layout: 96fc,208x57,0,0{114x57,0,0,7,93x57,115,0[93x28,115,0,10,93x28,115,29,11]}
+      layout: 6cee,238x60,0,0{129x60,0,0,3,108x60,130,0[108x45,130,0,7,108x14,130,46,8]}
       panes:
         - clear
         - npm test
         - clear
   - sr-angular_server:
       root: ~/Documents/Prog/Speedyrating/sr_angular_app
-      layout: e90b,208x57,0,0{104x57,0,0,9,103x57,105,0,12}
+      layout: 6f3c,238x60,0,0{119x60,0,0,4,118x60,120,0,9}
       panes:
         - npmrs server:protractor
         - clear
-
