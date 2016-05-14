@@ -393,6 +393,7 @@ let g:syntastic_typescript_tsc_fname = ''
 let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
 let g:syntastic_haskell_hdevtools_arg = '-g-isrc -g-Wall'
 
+let g:syntastic_python_python_exec = 'python3'
 let g:syntastic_python_checkers = ['flake8', 'python']
 
 let g:syntastic_html_tidy_exec = '/usr/local/Cellar/tidy-html5/5.0.0/bin/tidy'
