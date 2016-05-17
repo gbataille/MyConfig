@@ -12,3 +12,4 @@ Icon
 .vagrant/
 .stack-work
 node_modules/
+.ropeproject/
