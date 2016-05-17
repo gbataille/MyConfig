@@ -670,7 +670,7 @@ let g:pymode_lint_ignore = "E129"
 let g:pymode_rope_goto_definition_bind = "<C-]>"
 
 " Override run current python file key shortcut to Ctrl-Shift-e
-let g:pymode_run_bind = "<C-S-r>"
-let g:pymode_breakpoint_bind = '<C-S-d>'
-let g:pymode_doc_bind = ""
+let g:pymode_run_bind = "<C-F5>"
+let g:pymode_breakpoint_bind = '<C-F6>'
+let g:pymode_doc_bind = "<C-F7>"
 
