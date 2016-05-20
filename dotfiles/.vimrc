@@ -67,7 +67,7 @@ Bundle 'Quramy/tsuquyomi'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'tmhedberg/SimpylFold'
 " Python
-Bundle 'klen/python-mode'
+Bundle 'hynek/vim-python-pep8-indent'
 
 " Mac specific config
 if has("unix")
@@ -380,7 +380,7 @@ let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
 let g:syntastic_haskell_hdevtools_arg = '-g-isrc -g-Wall'
 
 let g:syntastic_python_python_exec = 'python3'
-let g:syntastic_python_checkers = []
+let g:syntastic_python_checkers = ['flake8', 'pylint', 'python']
 
 let g:syntastic_html_tidy_exec = '/usr/local/Cellar/tidy-html5/5.0.0/bin/tidy'
 let g:syntastic_html_tidy_ignore_errors = []
@@ -646,31 +646,15 @@ let g:tsuquyomi_disable_quickfix = 1
 "########################
 "####### Python #########
 "########################
-" TODO: gbataille - should be done by python-mode now
-"python with virtualenv support
-" py << EOF
-" import os
-" import sys
-" if 'VIRTUAL_ENV' in os.environ:
-"   project_base_dir = os.environ['VIRTUAL_ENV']
-"   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"   execfile(activate_this, dict(__file__=activate_this))
-" EOF
+" python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
 
 let python_highlight_all=1
 let g:ycm_python_binary_path = '/usr/local/bin/python3'
-
-"############################################
-"############## python-mode #################
-"############################################
-let g:pymode_lint_unmodified = 1
-let g:pymode_lint_ignore = "E129"
-
-" Override go-to.definition key shortcut to Ctrl-]
-let g:pymode_rope_goto_definition_bind = "<C-]>"
-
-" Override run current python file key shortcut to Ctrl-Shift-e
-let g:pymode_run_bind = "<C-F5>"
-let g:pymode_breakpoint_bind = '<C-F6>'
-let g:pymode_doc_bind = "<C-F7>"
-
