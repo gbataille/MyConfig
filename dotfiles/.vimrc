@@ -327,7 +327,7 @@ endif
 
 if $TERM == 'xterm-256color'
   "works with a terminal configured with solarized colors.
-  highlight ColorColumn ctermbg=15
+  highlight ColorColumn ctermbg=11
 else
   highlight ColorColumn ctermbg=7
 end
