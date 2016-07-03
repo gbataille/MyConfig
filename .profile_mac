@@ -9,7 +9,7 @@ export GOPATH=~/Documents/Prog/GregsSandbox/CodeJam/go
 export CC=clang
 export TZ=Europe/Paris
 export LANG=en_US.UTF-8
-export LC_CTYPE=UTF-8
+export LC_CTYPE=en_US.UTF-8
 export GLASSFISH_HOME=/usr/local/opt/glassfish/libexec
 
 set -o vi
@@ -35,3 +35,4 @@ alias npmr='npm run'
 alias npmrs='npm run -s'
 alias py='python3'
 alias pm='python3 manage.py'
+alias droptestdb='dropdb test_pix4ddb'
