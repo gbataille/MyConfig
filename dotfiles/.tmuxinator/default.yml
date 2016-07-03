@@ -43,7 +43,7 @@ windows:
       layout: 6cee,238x60,0,0{129x60,0,0,3,108x60,130,0[108x45,130,0,7,108x14,130,46,8]}
       panes:
         - clear
-        - npm test
+        - clear
         - clear
   - sr-angular_server:
       root: ~/Documents/Prog/Speedyrating/sr_angular_app
