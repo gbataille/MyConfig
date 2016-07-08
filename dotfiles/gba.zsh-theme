@@ -26,7 +26,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 PROMPT='
 %{$fg[green]%}$(docker-machine-prompt-display)$(nvm-prompt-display)$(rvm-prompt-display)$(virtualenv-prompt-display)%{$reset_color%}
-%{$fg[cyan]%}%n%{$reset_color%} %{$fg_bold[green]%}$(shorter_path)%{$reset_color%} $(~/.local/bin/gitHUD zsh)%(?,,%{${fg_bold[blue]}%}[%?]%{$reset_color%} )$ '
+%{$fg[cyan]%}%n%{$reset_color%} %{$fg_bold[green]%}$(shorter_path)%{$reset_color%} $(/usr/local/bin/githud zsh)%(?,,%{${fg_bold[blue]}%}[%?]%{$reset_color%} )$ '
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
