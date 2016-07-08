@@ -15,11 +15,16 @@ export GLASSFISH_HOME=/usr/local/opt/glassfish/libexec
 set -o vi
 
 export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
   source /usr/local/bin/virtualenvwrapper.sh
 fi
+
+source $HOME/.rvm/scripts/rvm
+
+BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-solarized-dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 alias ls='ls -G'
 alias ll='ls -Gla'
@@ -36,3 +41,4 @@ alias npmrs='npm run -s'
 alias py='python3'
 alias pm='python3 manage.py'
 alias droptestdb='dropdb test_pix4ddb'
+alias vi='/usr/local/bin/vim'
