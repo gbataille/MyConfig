@@ -8,66 +8,70 @@ endif
 set nocompatible
 filetype off      "mandatory for vundle init
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
-" My Bundles here:
+" My Plugins here:
 "
 " original repos on github
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rbenv'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-surround'
-Bundle 'godlygeek/tabular'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'vim-scripts/bufkill.vim'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'scrooloose/syntastic'
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'ciaranm/detectindent'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'SirVer/ultisnips'
-Bundle 'tpope/vim-speeddating'
-Bundle 'mattn/calendar-vim'
-Bundle 'vim-scripts/utl.vim'
-Bundle 'jceb/vim-orgmode'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'airblade/vim-rooter'
-Bundle 'othree/javascript-libraries-syntax.vim'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'mileszs/ack.vim'
-Bundle 'raichoo/haskell-vim'
-Bundle 'enomsg/vim-haskellConcealPlus'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'eagletmt/ghcmod-vim'
-Bundle 'eagletmt/neco-ghc'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'vim-scripts/gitignore'
-Bundle 'int3/vim-extradite'
-Bundle 'bitc/vim-hdevtools'
-Bundle 'majutsushi/tagbar'
-Bundle 'lukaszkorecki/CoffeeTags'
-Bundle 'vim-airline/vim-airline'
-Bundle 'vim-airline/vim-airline-themes'
-Bundle 'mustache/vim-mustache-handlebars'
-Bundle 'osyo-manga/vim-over'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rbenv'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-surround'
+Plugin 'godlygeek/tabular'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/base16-vim'
+Plugin 'vim-scripts/bufkill.vim'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'scrooloose/syntastic'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'ciaranm/detectindent'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'tpope/vim-speeddating'
+Plugin 'mattn/calendar-vim'
+Plugin 'vim-scripts/utl.vim'
+Plugin 'jceb/vim-orgmode'
+Plugin 'jnwhiteh/vim-golang'
+Plugin 'airblade/vim-rooter'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'mileszs/ack.vim'
+Plugin 'raichoo/haskell-vim'
+Plugin 'enomsg/vim-haskellConcealPlus'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'eagletmt/neco-ghc'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'vim-scripts/gitignore'
+Plugin 'int3/vim-extradite'
+Plugin 'bitc/vim-hdevtools'
+Plugin 'majutsushi/tagbar'
+Plugin 'lukaszkorecki/CoffeeTags'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'osyo-manga/vim-over'
 " Typescript
-Bundle 'leafgarland/typescript-vim'
-Bundle 'Quramy/tsuquyomi'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Quramy/tsuquyomi'
 " Editorconfig
-Bundle 'editorconfig/editorconfig-vim'
-Bundle 'tmhedberg/SimpylFold'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'tmhedberg/SimpylFold'
 " Python
-Bundle 'hynek/vim-python-pep8-indent'
+Plugin 'hynek/vim-python-pep8-indent'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 " Mac specific config
 if has("unix")
@@ -183,7 +187,9 @@ let g:solarized_visibility = "low"
 let g:solarized_contrast = "high"
 let g:solarized_termcolors=16
 let g:solarized_termtrans = 1
-colorscheme solarized
+" colorscheme solarized
+colorscheme base16-solarized-dark
+let base16colorspace=256
 set background=dark
 
 " Convenient command to see the difference between the current buffer and the
