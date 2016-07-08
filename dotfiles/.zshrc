@@ -68,7 +68,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="$HOME/.rvm/bin:$PATH:/Users/gbataille/.local/bin:/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/opt/glassfish/libexec/bin:/usr/local/opt/wildfly-as/libexec/bin:~/.cabal/bin"
+export PATH="$HOME/.rvm/bin:/Users/gbataille/.local/bin:/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/opt/glassfish/libexec/bin:/usr/local/opt/wildfly-as/libexec/bin:~/.cabal/bin:$PATH"
 
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home"
 
