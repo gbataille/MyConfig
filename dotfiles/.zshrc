@@ -63,7 +63,7 @@ fi
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(docker docker-compose git gitfast autojump brew mercurial pip cabal pyenv pylint python rails ruby rvm svn vi-mode virtualenvwrapper)
+plugins=(gitfast autojump)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
