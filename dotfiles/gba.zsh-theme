@@ -11,7 +11,7 @@ function shorter_path {
 }
 
 function docker-machine-prompt-display {
-    [ $DOCKER_MACHINE_NAME ] && echo '[DOCKER-MACHINE: '`docker-machine active`'] '
+    [ $DOCKER_MACHINE_NAME ] && echo "[DOCKER-MACHINE: $DOCKER_MACHINE_NAME] "
 }
 
 function nvm-prompt-display {
@@ -43,3 +43,5 @@ bindkey '^Y' yank
 dm-set() {
   eval "$(docker-machine env $1)"
 }
+
+set -o vi
