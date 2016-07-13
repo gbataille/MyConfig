@@ -23,7 +23,7 @@
 [color]
 	ui = true
 [init]
-	templatedir = ~/.git/templates
+	templatedir = ~/.git_templates
 [pull]
 	rebase = preserve
 [rerere]
