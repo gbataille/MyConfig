@@ -376,6 +376,7 @@ let g:ctrlp_custom_ignore = {
 "###########    Syntastic setup   ###########
 "############################################
 let g:syntastic_check_on_open = 1
+let g:syntastic_aggregate_errors = 1
 
 let g:syntastic_javascript_checkers = ['jsl']
 
@@ -385,8 +386,9 @@ let g:syntastic_typescript_tsc_fname = ''
 let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
 let g:syntastic_haskell_hdevtools_arg = '-g-isrc -g-Wall'
 
-let g:syntastic_python_python_exec = 'python3'
+let g:syntastic_python_python_exec = 'python'
 let g:syntastic_python_checkers = ['flake8', 'pylint', 'python']
+let g:syntastic_python_pylint_args = "--rcfile=/home/gbataille/.pylintrc --load-plugins pylint-django"
 
 let g:syntastic_html_tidy_exec = '/usr/local/Cellar/tidy-html5/5.0.0/bin/tidy'
 let g:syntastic_html_tidy_ignore_errors = []
@@ -432,10 +434,11 @@ if has('autocmd')
   au BufNewFile,BufRead *.py set tabstop=4
   au BufNewFile,BufRead *.py set softtabstop=4
   au BufNewFile,BufRead *.py set shiftwidth=4
-  au BufNewFile,BufRead *.py set textwidth=79
+  au BufNewFile,BufRead *.py set textwidth=99
   au BufNewFile,BufRead *.py set expandtab
   au BufNewFile,BufRead *.py set autoindent
   au BufNewFile,BufRead *.py set fileformat=unix
+  au BufNewFile,BufRead *.py set colorcolumn=100
 endif
 
 "############################################
@@ -663,4 +666,4 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 
 let python_highlight_all=1
-let g:ycm_python_binary_path = '/usr/local/bin/python3'
+let g:ycm_python_binary_path = '/usr/local/bin/python'
