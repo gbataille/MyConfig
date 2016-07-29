@@ -56,7 +56,7 @@ ZSH_THEME="gba"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(gitfast autojump)
+plugins=(autojump gitfast tmuxinator)
 source $ZSH/oh-my-zsh.sh
 
 # Would you like to use another custom folder than $ZSH/custom?
@@ -66,8 +66,8 @@ if [ -f ~/.profile ]; then
 fi
 
 # User configuration
+export PATH="$PATH:$HOME/.rvm/bin:/Users/gbataille/.local/bin:/Users/gbataille/Documents/Prog/MyConfig/scripts:/Library/Frameworks/GDAL.framework/Programs:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:~/.cabal/bin"
 
-export PATH="$HOME/.rvm/bin:/Users/gbataille/.local/bin:/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/opt/glassfish/libexec/bin:/usr/local/opt/wildfly-as/libexec/bin:~/.cabal/bin:$PATH"
 
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home"
 
@@ -89,9 +89,6 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Hom
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-
-export NVM_DIR="/Users/gbataille/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # DART / Angular2 install
 export DARTIUM_BIN="/usr/local/opt/dart/Chromium.app/Contents/MacOS/Chromium"
