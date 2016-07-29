@@ -38,23 +38,25 @@ Plugin 'ciaranm/detectindent'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-eunuch'
 Plugin 'mattn/calendar-vim'
 Plugin 'vim-scripts/utl.vim'
 Plugin 'jceb/vim-orgmode'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'airblade/vim-rooter'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'mileszs/ack.vim'
-Plugin 'raichoo/haskell-vim'
-Plugin 'enomsg/vim-haskellConcealPlus'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'eagletmt/neco-ghc'
+Plugin 'bitc/vim-hdevtools'
+Plugin 'raichoo/haskell-vim'
+Plugin 'enomsg/vim-haskellConcealPlus'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/gitignore'
 Plugin 'int3/vim-extradite'
-Plugin 'bitc/vim-hdevtools'
 Plugin 'majutsushi/tagbar'
 Plugin 'lukaszkorecki/CoffeeTags'
 Plugin 'vim-airline/vim-airline'
@@ -210,7 +212,6 @@ set lazyredraw
 set magic
 
 set cf  " Enable error files & error jumping.
-" set clipboard+=unnamed  " Yanks go on clipboard instead. Does not work in
 " tmux
 set history=256  " Number of things to remember in history.
 
@@ -220,7 +221,7 @@ set mat=5  " Bracket blinking.
 set list
 
 " Show $ at end of line and trailing space as ~
-set lcs=tab:¬\ ,eol:$,trail:~,extends:>,precedes:<
+set lcs=tab:¬\ ,trail:~,extends:>,precedes:<
 set novisualbell  " No blinking .
 set noerrorbells  " No noise.
 set laststatus=2  " Always show status line.
@@ -332,10 +333,12 @@ if exists('+colorcolumn')
 endif
 
 if $TERM == 'xterm-256color'
-  "works with a terminal configured with solarized colors.
-  highlight ColorColumn ctermbg=11
+  "works with a terminal configured with base16 solarized colors.
+  highlight ColorColumn ctermbg=238
+  highlight SignColumn ctermbg=19
 else
-  highlight ColorColumn ctermbg=7
+  highlight ColorColumn ctermbg=8
+  highlight SignColumn ctermbg=8
 end
 
 "######################################################################
@@ -388,7 +391,7 @@ let g:syntastic_haskell_hdevtools_arg = '-g-isrc -g-Wall'
 
 let g:syntastic_python_python_exec = 'python'
 let g:syntastic_python_checkers = ['flake8', 'pylint', 'python']
-let g:syntastic_python_pylint_args = "--rcfile=/home/gbataille/.pylintrc --load-plugins pylint-django"
+let g:syntastic_python_pylint_args = '--rcfile=/Users/gbataille/.pylintrc --load-plugins pylint_django'
 
 let g:syntastic_html_tidy_exec = '/usr/local/Cellar/tidy-html5/5.0.0/bin/tidy'
 let g:syntastic_html_tidy_ignore_errors = []
@@ -431,14 +434,24 @@ if has('autocmd')
   autocmd BufRead * :DetectIndent
 
   " Python special setup
-  au BufNewFile,BufRead *.py set tabstop=4
-  au BufNewFile,BufRead *.py set softtabstop=4
-  au BufNewFile,BufRead *.py set shiftwidth=4
-  au BufNewFile,BufRead *.py set textwidth=99
-  au BufNewFile,BufRead *.py set expandtab
-  au BufNewFile,BufRead *.py set autoindent
-  au BufNewFile,BufRead *.py set fileformat=unix
-  au BufNewFile,BufRead *.py set colorcolumn=100
+  au FileType python,htmldjango set tabstop=4
+  au FileType python,htmldjango set softtabstop=4
+  au FileType python,htmldjango set shiftwidth=4
+  au FileType python,htmldjango set textwidth=99
+  au FileType python,htmldjango set expandtab
+  au FileType python,htmldjango set autoindent
+  au FileType python,htmldjango set fileformat=unix
+  au FileType python,htmldjango set colorcolumn=100
+
+  " Haskell special setup
+  au FileType haskell set tabstop=2
+  au FileType haskell set softtabstop=2
+  au FileType haskell set shiftwidth=2
+  au FileType haskell set textwidth=99
+  au FileType haskell set expandtab
+  au FileType haskell set autoindent
+  au FileType haskell set fileformat=unix
+  au FileType haskell set colorcolumn=100
 endif
 
 "############################################
@@ -667,3 +680,8 @@ EOF
 
 let python_highlight_all=1
 let g:ycm_python_binary_path = '/usr/local/bin/python'
+
+"############################################
+"############### gitgutter ##################
+"############################################
+let g:gitgutter_override_sign_column_highlight = 0
