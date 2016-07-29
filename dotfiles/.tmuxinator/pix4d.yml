@@ -1,0 +1,49 @@
+# ~/.tmuxinator/pix4d.yml
+
+name: pix4d
+root: ~/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: conf
+
+windows:
+  - conf:
+      root: ~/Documents/Prog/MyConfig
+      panes:
+        - cdm
+  - mapper:
+      root: ~/Documents/Prog/Pix4d/cloud/pix4uav
+      layout: 5cef,272x69,0,0{124x69,0,0[124x54,0,0,1,124x14,0,55,4],147x69,125,0[147x34,125,0,5,147x34,125,35,9]}
+      panes:
+        - workon p4d_cloud
+        - workon p4d_cloud
+        - workon p4d_cloud
+        - workon p4d_cloud
+  - mapper-server:
+      root: ~/Documents/Prog/Pix4d/cloud/pix4uav
+      layout: 929e,272x69,0,0{136x69,0,0,2,135x69,137,0,8}
+      panes:
+        - workon p4d_cloud
+        - workon p4d_cloud
+  - worker:
+      root: ~/Documents/Prog/Pix4d/
+      layout: 8f28,272x69,0,0{146x69,0,0,3,125x69,147,0[125x34,147,0,6,125x34,147,35,7]}
+      panes:
+        - workon p4d_cloud_worker
+        - workon p4d_cloud_worker
+        - workon p4d_cloud_worker
