@@ -30,10 +30,13 @@
 	enabled = false
 [diff]
 	tool = vimdiff
+	compactionHeuristic = true
 [difftool]
 	prompt = false
 	tool = vimdiff
 	trustExitCode = true
+[merge]
+	ff = false
 [mergetool]
 	tool = vimdiff
 [difftool "sourcetree"]
@@ -42,3 +45,9 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[pager]
+	log = /usr/local/Cellar/git/2.9.1/share/git-core/contrib/diff-highlight/diff-highlight | less
+	show = /usr/local/Cellar/git/2.9.1/share/git-core/contrib/diff-highlight/diff-highlight | less
+	diff = /usr/local/Cellar/git/2.9.1/share/git-core/contrib/diff-highlight/diff-highlight | less
+[interactive]
+	diffFilter = /usr/local/Cellar/git/2.9.1/share/git-core/contrib/diff-highlight/diff-highlight
