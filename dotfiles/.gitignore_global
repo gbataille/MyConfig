@@ -13,3 +13,4 @@ Icon
 .stack-work
 node_modules/
 .ropeproject/
+bundler_stubs/
