@@ -48,6 +48,7 @@ alias restoredb='pg_restore -U pix4d -h 127.0.0.1 -d pix4ddb ~/Downloads/pix4d.b
 alias pyclean='rm $(find . -name "*.pyc")'
 alias origclean='rm $(find . -name "*.orig")'
 alias mergeclean='rm $(find . -name "*BACKUP*");rm $(find . -name "*REMOTE*");rm $(find . -name "*LOCAL*");rm $(find . -name "*BASE*")'
+alias branchclean='git branch --merged | grep -v "\*" | grep -v master | grep -v staging | xargs -n 1 git branch -d'
 
 if [ -f /usr/local/bin/vim ]; then
   alias vi='/usr/local/bin/vim'
