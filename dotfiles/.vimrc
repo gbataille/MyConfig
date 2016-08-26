@@ -327,10 +327,11 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-" Displays the 80 columns in color for wrapping indication
+" Displays the 100 columns in color for wrapping indication
 if exists('+colorcolumn')
-  set colorcolumn=80
+  set colorcolumn=100
 endif
+set textwidth=100
 
 if $TERM == 'xterm-256color'
   "works with a terminal configured with base16 solarized colors.
@@ -437,21 +438,17 @@ if has('autocmd')
   au FileType python,htmldjango set tabstop=4
   au FileType python,htmldjango set softtabstop=4
   au FileType python,htmldjango set shiftwidth=4
-  au FileType python,htmldjango set textwidth=99
   au FileType python,htmldjango set expandtab
   au FileType python,htmldjango set autoindent
   au FileType python,htmldjango set fileformat=unix
-  au FileType python,htmldjango set colorcolumn=100
 
   " Haskell special setup
   au FileType haskell set tabstop=2
   au FileType haskell set softtabstop=2
   au FileType haskell set shiftwidth=2
-  au FileType haskell set textwidth=99
   au FileType haskell set expandtab
   au FileType haskell set autoindent
   au FileType haskell set fileformat=unix
-  au FileType haskell set colorcolumn=100
 endif
 
 "############################################
