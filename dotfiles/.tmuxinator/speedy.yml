@@ -27,14 +27,14 @@ windows:
       panes:
         - cdm
   - speedyrating-app:
-      root: ~/Documents/Prog/Speedyrating/sr_survey_app
+      root: ~/Documents/Prog/Speedyrating/sr_survey_webapp
       layout: 8c58,238x60,0,0{107x60,0,0,1,130x60,108,0[130x48,108,0,5,130x11,108,49,6]}
       panes:
         - clear
         - clear
         - clear
   - speedyrating-server:
-      root: ~/Documents/Prog/Speedyrating/sr_survey_app
+      root: ~/Documents/Prog/Speedyrating/sr_survey_webapp
       layout: main-vertical
       panes:
         - clear
