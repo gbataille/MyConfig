@@ -47,3 +47,10 @@ windows:
         - workon p4d_cloud_worker
         - workon p4d_cloud_worker
         - workon p4d_cloud_worker
+  - infra:
+      root: ~/Documents/Prog/Pix4d/cloud_infra/ansible
+      layout: a986,272x69,0,0{136x69,0,0,34,135x69,137,0,35}
+      panes:
+        - workon p4d_cloud_infra
+        - workon p4d_cloud_infra
+
