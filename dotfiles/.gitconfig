@@ -37,6 +37,7 @@
 	trustExitCode = true
 [merge]
 	ff = false
+	tool = vimdiff
 [mergetool]
 	tool = vimdiff
 [difftool "sourcetree"]
