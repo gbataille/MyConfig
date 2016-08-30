@@ -331,7 +331,8 @@ nnoremap <c-l> <c-w>l
 if exists('+colorcolumn')
   set colorcolumn=100
 endif
-set textwidth=100
+" Set it as autocmd to override the ft autocmd from some plugins
+au BufRead * set textwidth=100
 
 if $TERM == 'xterm-256color'
   "works with a terminal configured with base16 solarized colors.
@@ -393,6 +394,7 @@ let g:syntastic_haskell_hdevtools_arg = '-g-isrc -g-Wall'
 let g:syntastic_python_python_exec = 'python'
 let g:syntastic_python_checkers = ['flake8', 'pylint', 'python']
 let g:syntastic_python_pylint_args = '--rcfile=/Users/gbataille/.pylintrc --load-plugins pylint_django'
+let g:syntastic_python_pylint_post_args = '--msg-template="{path}:{line}:{column}:{C}: [{symbol} {msg_id}] {msg}"'
 
 let g:syntastic_html_tidy_exec = '/usr/local/Cellar/tidy-html5/5.0.0/bin/tidy'
 let g:syntastic_html_tidy_ignore_errors = []
