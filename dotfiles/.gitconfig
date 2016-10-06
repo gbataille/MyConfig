@@ -14,6 +14,7 @@
 	d = diff -w
 	dt = difftool
 	dc = diff --cached -w
+	branch-clean = "!sh clean_remote_branches.sh"
 [core]
 	excludesfile = /Users/gbataille/.gitignore_global
 [push]
@@ -27,7 +28,7 @@
 [pull]
 	rebase = preserve
 [rerere]
-	enabled = false
+	enabled = true
 [diff]
 	tool = vimdiff
 	compactionHeuristic = true
