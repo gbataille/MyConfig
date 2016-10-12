@@ -9,6 +9,6 @@ git checkout origin/staging
 git merge $CURRENT_BRANCH --no-edit
 set +x
 
-echo '################################################'
-echo 'You still need to "git push origin HEAD:staging"'
-echo '################################################'
+echo '################################'
+echo 'You still need to "git prmerged"'
+echo '################################'
