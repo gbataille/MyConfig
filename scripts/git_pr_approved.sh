@@ -1,8 +1,8 @@
 #!/bin/bash
 set -x
+set -e
 CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
 git fetch
-git checkout $CURRENT_BRANCH
 git rebase origin/staging
 git push -f
 git checkout origin/staging
