@@ -14,3 +14,4 @@ Icon
 node_modules/
 .ropeproject/
 bundler_stubs/
+*.orig
