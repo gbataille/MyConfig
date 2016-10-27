@@ -6,7 +6,7 @@ git fetch
 git rebase origin/staging
 git push -f
 git checkout origin/staging
-git merge $CURRENT_BRANCH --no-edit
+git merge $CURRENT_BRANCH -m "Merging $CURRENT_BRANCH into staging with git_pr_approved"
 set +x
 
 echo '################################'
