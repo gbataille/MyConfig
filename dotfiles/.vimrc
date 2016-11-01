@@ -71,6 +71,8 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'tmhedberg/SimpylFold'
 " Python
 Plugin 'hynek/vim-python-pep8-indent'
+" RGB
+Plugin 'lilydjwg/colorizer'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
