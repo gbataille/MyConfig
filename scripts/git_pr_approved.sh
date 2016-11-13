@@ -1,14 +1,61 @@
-#!/bin/bash
-set -x
+#!/bin/sh
+TARGET=${1:-staging}
 set -e
 CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
+echo ""
+echo "Trying to put branch $CURRENT_BRANCH on top of $TARGET"
+echo ""
+echo "# Fetch remotes"
 git fetch
-git rebase origin/staging
-git push -f
-git checkout origin/staging
-git merge $CURRENT_BRANCH -m "Merging $CURRENT_BRANCH into staging with git_pr_approved"
-set +x
+echo "# Rebase $CURRENT_BRANCH on $TARGET"
+git rebase origin/$TARGET
 
-echo '################################'
-echo 'You still need to "git prmerged"'
-echo '################################'
+echo "# Pre-push and merge checks"
+if ! [ -z "${VIRTUAL_ENV+x}" ] && [ -d "$VIRTUAL_ENV" ]; then
+  echo "## Detected a virtualenv. Doing python checks"
+  manage=`find $PWD -name "manage.py"`
+  if [ -f "$manage" ]; then
+    echo "### Detected a django project. Checking migrations"
+    mig=`python $manage makemigrations --dry-run`
+    code=$?
+    if [ "$mig" == "No changes detected" ]; then
+      echo "### All good"
+    else
+      echo "### Found the following issues with migrations:"
+      echo "$mig"
+      echo ""
+
+      if [ $code -eq 0 ]; then
+        echo "--> Seems like you forgot to create some migrations"
+      else
+        echo "--> Seems that there are conflicting migrations that need a merge migration"
+      fi
+
+      echo ""
+      echo "### ABORTING"
+    fi
+  fi
+fi
+
+echo "# Push force $CURRENT_BRANCH to its remote"
+git push -f
+echo "# Merge $CURRENT_BRANCH into $TARGET"
+git checkout origin/$TARGET
+git merge $CURRENT_BRANCH -m "Merging $CURRENT_BRANCH into $TARGET with git_pr_approved"
+echo ""
+echo "Did not detect any errors"
+printf "Do you want to continue (push $TARGET)? (y/n)[n]: "
+read choice
+if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
+  echo "# Pushing changes to origin/$TARGET"
+  git push origin HEAD:$TARGET
+  echo "# Updating local $TARGET"
+  git co $TARGET
+  git pull
+else
+  echo ""
+  echo "ABORTED."
+  echo "  Your repo might be in an intermediary state."
+  echo "  --> Make sure to clean up what you just did."
+  echo "  (run git checkout $CURRENT_BRANCH to return to your branch)"
+fi
