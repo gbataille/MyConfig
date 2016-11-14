@@ -15,8 +15,6 @@
 	dt = difftool
 	dc = diff --cached -w
 	branch-clean = "!sh clean_remote_branches.sh"
-	prapproved = "!sh git_pr_approved.sh"
-	prmerged = "!sh git_pr_merged.sh"
 [core]
 	excludesfile = /Users/gbataille/.gitignore_global
 [push]
