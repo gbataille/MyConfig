@@ -66,7 +66,7 @@ if [ -f ~/.profile ]; then
 fi
 
 # User configuration
-export PATH="$PATH:$HOME/.rvm/bin:/Users/gbataille/.local/bin:/Users/gbataille/Documents/Prog/MyConfig/scripts:/Library/Frameworks/GDAL.framework/Programs:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:~/.cabal/bin"
+export PATH="$PATH:$HOME/.rvm/bin:/Users/gbataille/.local/bin:/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:~/.cabal/bin"
 
 
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home"
