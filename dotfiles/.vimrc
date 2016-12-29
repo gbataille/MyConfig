@@ -270,7 +270,7 @@ set foldtext=MyFoldText()
 "#############################
 "####### SimplyFold ##########
 "#############################
-let g:SimpylFold_docstring_preview = 1
+let g:SimpylFold_docstring_preview = 0
 autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 
@@ -344,6 +344,11 @@ else
   highlight ColorColumn ctermbg=8
   highlight SignColumn ctermbg=8
 end
+
+"################################
+"####### :Sw - Sudo save ########
+"################################
+command! -nargs=0 Sw w !sudo tee % > /dev/null
 
 "######################################################################
 "####### Qargs - transform the quickfix list into an args list ########
