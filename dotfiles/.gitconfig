@@ -31,7 +31,7 @@
 	enabled = true
 [diff]
 	tool = vimdiff
-	compactionHeuristic = true
+	indentHeuristic = true
 	algorithm = patience
 [difftool]
 	prompt = false
