@@ -5,6 +5,7 @@
 	st = status
 	co = checkout
 	cob = checkout -b
+	commitamend = commit --amend --no-edit
 	p = push
 	b = branch -v
 	t = tag -a
