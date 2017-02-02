@@ -1,0 +1,3 @@
+set line-graphics = utf-8
+bind main <Esc>g    view-grep
+bind main g    move-first-line
