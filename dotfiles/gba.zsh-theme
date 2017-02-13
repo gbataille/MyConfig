@@ -22,10 +22,14 @@ function rvm-prompt-display {
   command -v rvm 2>/dev/null 1>&2 && echo '[rvm: '`rvm current`'] '
 }
 
+function ansible-prompt-display {
+  [ $EC2_INI_PATH ] && echo '[EC2_INI_PATH: '`echo $EC2_INI_PATH`'] '
+}
+
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 PROMPT='
-%{$fg[green]%}$(docker-machine-prompt-display)$(nvm-prompt-display)$(rvm-prompt-display)$(virtualenv-prompt-display)%{$reset_color%}
+%{$fg[green]%}$(docker-machine-prompt-display)$(nvm-prompt-display)$(rvm-prompt-display)$(virtualenv-prompt-display)$(ansible-prompt-display)%{$reset_color%}
 %{$reset_color%}$(/Users/gbataille/.local/bin/gitHUD zsh)
 %{$fg[cyan]%}%n%{$reset_color%} %{$fg_bold[green]%}$(shorter_path) %(?,,%{${fg_bold[blue]}%}[%?]%{$reset_color%} )$ '
 

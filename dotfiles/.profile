@@ -51,6 +51,10 @@ alias origclean='rm $(find . -name "*.orig")'
 alias mergeclean='rm $(find . -name "*BACKUP*");rm $(find . -name "*REMOTE*");rm $(find . -name "*LOCAL*");rm $(find . -name "*BASE*")'
 alias branchclean='git branch --merged | grep -v "\*" | grep -v master | grep -v staging | xargs -n 1 git branch -d'
 alias mergedremotebranch='git branch -r --merged | grep origin | grep -v ">" | grep -v master | grep -v staging | grep -v "rc-" | xargs -L1'
+alias ansibledev='export EC2_INI_PATH=inventory_generator/ec2.ini'
+alias ansiblestaging='export EC2_INI_PATH=inventory_generator/staging/ec2_staging.ini'
+alias ansibleprod='export EC2_INI_PATH=inventory_generator/prod/ec2_prod.ini'
+alias ansiblenone='export EC2_INI_PATH='
 
 function clean_old_remote_merged_branches {
   for k in $(mergedremotebranch); do
