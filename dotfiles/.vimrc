@@ -271,8 +271,6 @@ set foldtext=MyFoldText()
 "####### SimplyFold ##########
 "#############################
 let g:SimpylFold_docstring_preview = 0
-autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
-autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 
 "remap toggle folding to the space bar
 nnoremap <Space> za
@@ -399,7 +397,7 @@ let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
 let g:syntastic_haskell_hdevtools_arg = '-g-isrc -g-Wall'
 
 let g:syntastic_python_python_exec = 'python'
-let g:syntastic_python_checkers = ['flake8', 'python']
+let g:syntastic_python_checkers = ['flake8', 'pylint', 'python']
 let g:syntastic_python_pylint_args = '--rcfile=' . findfile(".pylintrc", ".;")
 let g:syntastic_python_pylint_post_args = '--msg-template="{path}:{line}:{column}:{C}: [{symbol} {msg_id}] {msg}"'
 
