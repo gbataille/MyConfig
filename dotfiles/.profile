@@ -26,9 +26,9 @@ rvm use default
 BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-solarized-dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
-alias ls='ls -G'
-alias ll='ls -Gla'
-alias l='ls -Gla'
+alias ls='ls -Gh'
+alias ll='ls -Glah'
+alias l='ls -Glah'
 alias cdm='cd ~/Documents/Prog/MyConfig'
 alias cdp='cd ~/Documents/Prog/'
 alias cdg='cd ~/Documents/Prog/GregsSandbox/'
@@ -45,7 +45,7 @@ alias mux='tmuxinator'
 alias getproddb='cp ~/Downloads/pix4d.back ~/Downloads/pix4d_old.back; scp ubuntu@mapper1:/opt/db-backup/pix4d.back ~/Downloads/pix4d.back'
 alias resettempdb='export PGPASSWORD="fly"; dropdb -U pix4d -h localhost --if-exists temppix4ddb; createdb -U pix4d -h localhost -T template0 -E "UTF-8" temppix4ddb; restoretempdb'
 alias restoretempdb='pg_restore -U pix4d -h 127.0.0.1 -d temppix4ddb ~/Downloads/pix4d.back'
-alias switchdb='export PGPASSWORD="fly"; dropdb -U pix4d -h localhost --if-exists pix4ddb; psql -U gbataille -h localhost -c "ALTER DATABASE temppix4ddb RENAME TO pix4ddb"'
+alias switchdb='export PGPASSWORD="fly"; dropdb -U pix4d -h localhost --if-exists pix4ddb; psql -U gbataille -h localhost -c "CREATE DATABASE pix4ddb WITH TEMPLATE temppix4ddb OWNER pix4d;"'
 alias pyclean='rm $(find . -name "*.pyc")'
 alias origclean='rm $(find . -name "*.orig")'
 alias mergeclean='rm $(find . -name "*BACKUP*");rm $(find . -name "*REMOTE*");rm $(find . -name "*LOCAL*");rm $(find . -name "*BASE*")'
@@ -55,15 +55,6 @@ alias ansibledev='export EC2_INI_PATH=inventory_generator/ec2.ini'
 alias ansiblestaging='export EC2_INI_PATH=inventory_generator/staging/ec2_staging.ini'
 alias ansibleprod='export EC2_INI_PATH=inventory_generator/prod/ec2_prod.ini'
 alias ansiblenone='export EC2_INI_PATH='
-
-function clean_old_remote_merged_branches {
-  for k in $(mergedremotebranch); do
-    if [ -z "$(git log -1 --since='1 week ago' -s $k)" ]; then
-      branch=$(echo $k | sed 's/origin\///')
-      git push origin :$branch
-    fi
-  done
-}
 
 if [ -f /usr/local/bin/vim ]; then
   alias vi='/usr/local/bin/vim'
