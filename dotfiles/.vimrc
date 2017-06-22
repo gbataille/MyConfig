@@ -20,6 +20,7 @@ Plugin 'VundleVim/Vundle.vim'
 " original repos on github
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rbenv'
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-surround'
