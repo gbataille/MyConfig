@@ -62,3 +62,6 @@ fi
 if [ -f /usr/local/bin/find ]; then
   alias find='/usr/local/bin/find'
 fi
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
