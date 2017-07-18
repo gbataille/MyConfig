@@ -32,8 +32,7 @@ if ! [ -z "${VIRTUAL_ENV+x}" ] && [ -d "$VIRTUAL_ENV" ]; then
       fi
 
       echo ""
-      echo "### ABORTING"
-      exit 1
+      echo "### CHECK"
     fi
   fi
 fi
