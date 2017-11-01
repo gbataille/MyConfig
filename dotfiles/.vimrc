@@ -42,7 +42,6 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-eunuch'
 Plugin 'mattn/calendar-vim'
 Plugin 'vim-scripts/utl.vim'
-Plugin 'jceb/vim-orgmode'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'airblade/vim-rooter'
 Plugin 'airblade/vim-gitgutter'
@@ -55,11 +54,8 @@ Plugin 'eagletmt/neco-ghc'
 Plugin 'bitc/vim-hdevtools'
 Plugin 'raichoo/haskell-vim'
 Plugin 'enomsg/vim-haskellConcealPlus'
-Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/gitignore'
-Plugin 'int3/vim-extradite'
 Plugin 'majutsushi/tagbar'
-Plugin 'lukaszkorecki/CoffeeTags'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mustache/vim-mustache-handlebars'
@@ -292,6 +288,8 @@ nnoremap <leader><Space> mz:%s/ *$//g<CR>:nohlsearch<CR>`z
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 "reindent the entire buffer
 nnoremap <leader>= gg=G
+"Bufdo quick access
+nnoremap <leader>b :bufdo 
 "Remap Tcomment
 nmap <leader>c <c-_><c-_>
 vmap <leader>c <c-_><c-_>
@@ -366,6 +364,7 @@ endfunction
 "######## Special file configuration ########
 "############################################
 if has('autocmd')
+  au FileType ruby setlocal norelativenumber
   au BufRead Guardfile set ft=ruby
   au BufRead *.thor set ft=ruby
 endif
