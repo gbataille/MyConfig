@@ -41,7 +41,7 @@ echo "# Push force $CURRENT_BRANCH to its remote"
 git push -f
 echo "# Merge $CURRENT_BRANCH into $TARGET"
 git -c advice.detachedHead=false checkout origin/$TARGET
-git merge $CURRENT_BRANCH -m "Merging $CURRENT_BRANCH into $TARGET with git_pr_approved"
+git merge $CURRENT_BRANCH --no-ff -m "Merging $CURRENT_BRANCH into $TARGET with git_pr_approved"
 echo ""
 echo "Did not detect any errors"
 printf "Do you want to continue (push $TARGET)? (y/n)[n]: "
