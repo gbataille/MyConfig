@@ -52,6 +52,7 @@ if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
   echo "# Updating local $TARGET"
   git checkout $TARGET
   git pull
+  git branch -d $CURRENT_BRANCH
 else
   echo ""
   echo "ABORTED."

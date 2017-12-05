@@ -53,4 +53,10 @@ windows:
       panes:
         - clear
         - clear
-
+  - supervisor:
+      root: ~/Documents/Prog/Pix4d/cloud_supervisor
+      layout: 7a04,272x69,0,0{136x69,0,0,12,135x69,137,0[135x34,137,0,13,135x34,137,35,14]}
+      panes:
+        - clear
+        - clear
+        - clear
