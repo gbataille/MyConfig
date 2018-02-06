@@ -97,10 +97,6 @@ if has("autocmd")
   augroup vimrcEx
   au!
 
-  " Configure vim-dispatch
-  autocmd FileType ruby let b:dispatch = 'ruby -c %'
-  autocmd FileType java let b:dispatch = 'javac %'
-
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
   " (happens when dropping a file on gvim).
@@ -416,9 +412,15 @@ let g:ycm_complete_in_strings = 1
 let g:ycm_filepath_completion_use_working_dir = 1
 let g:ycm_register_as_syntastic_checker = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_max_num_candidates = 10
 let g:ycm_semantic_triggers = {
   \ 'typescript': ['.'],
   \ 'haskell': ['.']
+  \ }
+let g:ycm_filetype_blacklist = {
+  \ 'gitcommit' : 1,
+  \ 'vim' : 1,
+  \ 'ruby' : 1,
   \ }
 " Oddly enough, it seems that the semantic completion triggers for ruby while
 " YCM has no logic to handle it. Gives odd results
