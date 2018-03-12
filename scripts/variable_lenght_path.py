@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/local/bin/python
 
 # Used in the zsh prompt to give a not too long path
 import os
