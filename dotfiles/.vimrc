@@ -60,6 +60,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'osyo-manga/vim-over'
+Plugin 'Konfekt/FastFold'
 " Typescript
 Plugin 'leafgarland/typescript-vim'
 Plugin 'Quramy/tsuquyomi'
@@ -70,6 +71,7 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'hynek/vim-python-pep8-indent'
 " RGB
 Plugin 'lilydjwg/colorizer'
+
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -221,6 +223,8 @@ set novisualbell  " No blinking .
 set noerrorbells  " No noise.
 set laststatus=2  " Always show status line.
 
+set cul   " cursor line highlight
+
 let mapleader = ","
 
 nmap <silent> <leader>s :set spell!<CR>
@@ -361,6 +365,9 @@ endfunction
 "############################################
 if has('autocmd')
   au FileType ruby setlocal norelativenumber
+  au FileType ruby set re=1
+  au FileType ruby set noballooneval
+  au FileType ruby set nocul
   au BufRead Guardfile set ft=ruby
   au BufRead *.thor set ft=ruby
 endif
@@ -397,6 +404,8 @@ let g:syntastic_python_checkers = ['flake8', 'python']
 let g:syntastic_python_pylint_args = '--rcfile=' . findfile(".pylintrc", ".;")
 let g:syntastic_python_pylint_post_args = '--msg-template="{path}:{line}:{column}:{C}: [{symbol} {msg_id}] {msg}"'
 
+let g:syntastic_ruby_checkers = ['mri']
+
 let g:syntastic_html_tidy_exec = '/usr/local/Cellar/tidy-html5/5.0.0/bin/tidy'
 let g:syntastic_html_tidy_ignore_errors = []
 let g:syntastic_html_tidy_quiet_messages = {
@@ -420,13 +429,11 @@ let g:ycm_semantic_triggers = {
 let g:ycm_filetype_blacklist = {
   \ 'gitcommit' : 1,
   \ 'vim' : 1,
-  \ 'ruby' : 1,
   \ }
 " Oddly enough, it seems that the semantic completion triggers for ruby while
 " YCM has no logic to handle it. Gives odd results
 let g:ycm_filetype_specific_completion_to_disable = {
   \ 'gitcommit': 1,
-  \ 'ruby': 1
   \ }
 
 "############################################
