@@ -16,6 +16,7 @@
 	dt = difftool
 	dc = diff --cached -w
 	branch-clean = "!sh clean_remote_branches.sh"
+	g = grep -W
 [core]
 	excludesfile = /Users/gbataille/.gitignore_global
 [push]
@@ -34,6 +35,7 @@
 	tool = vimdiff
 	indentHeuristic = true
 	algorithm = patience
+	colorMoved = zebra
 [difftool]
 	prompt = false
 	tool = vimdiff
@@ -53,5 +55,8 @@
 	log = /usr/local/Cellar/git/2.15.0/share/git-core/contrib/diff-highlight/diff-highlight | less
 	show = /usr/local/Cellar/git/2.15.0/share/git-core/contrib/diff-highlight/diff-highlight | less
 	diff = /usr/local/Cellar/git/2.15.0/share/git-core/contrib/diff-highlight/diff-highlight | less
+	branch = false
 [interactive]
 	diffFilter = /usr/local/Cellar/git/2.15.0/share/git-core/contrib/diff-highlight/diff-highlight
+[grep]
+	lineNumber = true
