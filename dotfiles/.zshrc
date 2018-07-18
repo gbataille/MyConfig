@@ -1,11 +1,16 @@
+# https://stackoverflow.com/questions/20357441/zsh-on-10-9-widgets-can-only-be-called-when-zle-is-active
+TRAPWINCH() {
+  zle && { zle reset-prompt; zle -R }
+}
+
 export EDITOR="vim"
 bindkey -v 
 
 # vi style incremental search
-bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward 
+bindkey '^R' fzf-history-widget
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
@@ -56,7 +61,7 @@ ZSH_THEME="gba"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump gitfast tmuxinator zsh-syntax-highlighting)
+plugins=(autojump gitfast fzf-zsh tmuxinator zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # Would you like to use another custom folder than $ZSH/custom?

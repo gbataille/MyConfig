@@ -1,4 +1,5 @@
 --ignore-ack-defaults
+--ignore-directory=is:COMPILED
 --ignore-directory=is:.bzr
 --ignore-directory=is:.cdv
 --ignore-directory=is:~.dep

@@ -16,3 +16,5 @@ node_modules/
 bundler_stubs/
 *.orig
 .python-version
+.ssh/
+*.pem
