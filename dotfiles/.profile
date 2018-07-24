@@ -49,10 +49,7 @@ alias origclean='rm $(find . -name "*.orig")'
 alias mergeclean='rm $(find . -name "*BACKUP*");rm $(find . -name "*REMOTE*");rm $(find . -name "*LOCAL*");rm $(find . -name "*BASE*")'
 alias branchclean='git branch --merged | grep -v "\*" | grep -v master | grep -v staging | xargs -n 1 git branch -d'
 alias mergedremotebranch='git branch -r --merged | grep origin | grep -v ">" | grep -v master | grep -v staging | grep -v "rc-" | xargs -L1'
-alias aws='aws-vault exec pix4d -- aws '
-alias awsstaging='aws-vault exec staging -- aws '
-alias awsprod='aws-vault exec prod -- aws '
-alias awsadmin='aws-vault exec admin -- aws '
+alias tf='terraform'
 
 if [ -f /usr/local/bin/vim ]; then
   alias vi='/usr/local/bin/vim'
