@@ -14,6 +14,11 @@ function docker-machine-prompt-display {
     [ $DOCKER_MACHINE_NAME ] && echo "[DOCKER-MACHINE: $DOCKER_MACHINE_NAME] "
 }
 
+function terraform-prompt-display {
+  ft_workspace=`terraform workspace show`
+  [ $ft_workspace ] && echo "[Terraform workspace: $ft_workspace] "
+}
+
 function nvm-prompt-display {
   command -v nvm 2>/dev/null 1>&2 && echo '[nvm: '`nvm current`'] '
 }
@@ -29,7 +34,7 @@ function ansible-prompt-display {
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 PROMPT='
-%{$fg[green]%}$(docker-machine-prompt-display)$(nvm-prompt-display)$(rvm-prompt-display)$(virtualenv-prompt-display)$(ansible-prompt-display)%{$reset_color%}
+%{$fg[green]%}$(docker-machine-prompt-display)$(terraform-prompt-display)$(nvm-prompt-display)$(rvm-prompt-display)$(virtualenv-prompt-display)$(ansible-prompt-display)%{$reset_color%}
 %{$reset_color%}$(/Users/gbataille/.local/bin/githud zsh)
 %{$fg[cyan]%}%n%{$reset_color%} %{$fg_bold[green]%}$(shorter_path) %(?,,%{${fg_bold[blue]}%}[%?]%{$reset_color%} )$ '
 
