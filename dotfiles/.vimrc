@@ -71,6 +71,8 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'hynek/vim-python-pep8-indent'
 " RGB
 Plugin 'lilydjwg/colorizer'
+" Terraform
+Plugin 'hashivim/vim-terraform'
 
 
 call vundle#end()            " required
