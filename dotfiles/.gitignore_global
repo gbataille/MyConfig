@@ -18,3 +18,4 @@ bundler_stubs/
 .python-version
 .ssh/
 *.pem
+.terraform

@@ -333,7 +333,8 @@ if exists('+colorcolumn')
   set colorcolumn=100
 endif
 " Set it as autocmd to override the ft autocmd from some plugins
-au BufRead * set textwidth=100
+au FileType python,ruby,haskell,go,java,markdown set textwidth=100
+au FileType javascript,html,text set textwidth=0
 
 if $TERM == 'xterm-256color'
   "works with a terminal configured with base16 solarized colors.
