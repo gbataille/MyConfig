@@ -18,7 +18,7 @@ if ! [ -z "${VIRTUAL_ENV+x}" ] && [ -d "$VIRTUAL_ENV" ]; then
     echo "### Detected a django project. Checking migrations"
     mig=`python $manage makemigrations --dry-run`
     code=$?
-    if [ "$mig" == "No changes detected" ]; then
+    if [ "${mig##*$'\n'}" == "No changes detected" ]; then
       echo "### All good"
     else
       echo "### Found the following issues with migrations:"
