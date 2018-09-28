@@ -48,12 +48,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'mileszs/ack.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'eagletmt/neco-ghc'
-Plugin 'bitc/vim-hdevtools'
-Plugin 'raichoo/haskell-vim'
-Plugin 'enomsg/vim-haskellConcealPlus'
 Plugin 'vim-scripts/gitignore'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
@@ -73,6 +67,17 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'lilydjwg/colorizer'
 " Terraform
 Plugin 'hashivim/vim-terraform'
+" Plantuml
+Plugin 'aklt/plantuml-syntax'
+" Nix
+Plugin 'LnL7/vim-nix'
+" Haskell
+" Plugin 'Shougo/vimproc.vim'
+" Plugin 'eagletmt/ghcmod-vim'
+" Plugin 'eagletmt/neco-ghc'
+" Plugin 'bitc/vim-hdevtools'
+Plugin 'raichoo/haskell-vim'
+Plugin 'enomsg/vim-haskellConcealPlus'
 
 
 call vundle#end()            " required
@@ -381,12 +386,15 @@ endif
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_root_markers = ['.root']
+let g:ctrlp_root_markers = ['.root', '.git']
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|dist$\|bower_components$\|node_modules$\|\.docsets$',
-  \ 'file': '\.exe$\|\.so$\|\.dll$\|\.o$\|\.dylib$\|\.d$\|\.dia$\|Icon$',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|dist$\|dist-newstyle$\|bower_components$\|node_modules$\|\.docsets$',
+  \ 'file': '\.exe$\|\.so$\|\.dll$\|\.o$\|\.dylib$\|\.d$\|\.dia$\|Icon\\$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+" https://github.com/kien/ctrlp.vim/issues/174
+" ignore what's in the gitignore
+let g:ctrlp_user_command = ['git ls-files -oc --exclude-standard']
 
 "############################################
 "###########    Syntastic setup   ###########
@@ -399,8 +407,7 @@ let g:syntastic_javascript_checkers = ['jsl']
 let g:syntastic_typescript_checkers = ['tslint']
 let g:syntastic_typescript_tsc_fname = ''
 
-let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
-let g:syntastic_haskell_hdevtools_arg = '-g-isrc -g-Wall'
+let g:syntastic_haskell_checkers = ['hlint']
 
 let g:syntastic_python_python_exec = 'python'
 let g:syntastic_python_checkers = ['flake8', 'python']
@@ -442,7 +449,7 @@ let g:ycm_filetype_specific_completion_to_disable = {
 "############################################
 "##############    Neco-GHC    ##############
 "############################################
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+" autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 "############################################
 "########## DetectIndent setup ##############
