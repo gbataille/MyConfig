@@ -19,3 +19,6 @@ bundler_stubs/
 .ssh/
 *.pem
 .terraform
+.ghc.environment*
+dist/
+dist-newstyle/
