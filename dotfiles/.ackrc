@@ -10,6 +10,7 @@
 --ignore-directory=is:.hg
 --ignore-directory=is:.pc
 --ignore-directory=is:.svn
+--ignore-directory=is:.tox
 --ignore-directory=is:_MTN
 --ignore-directory=is:CVS
 --ignore-directory=is:RCS
