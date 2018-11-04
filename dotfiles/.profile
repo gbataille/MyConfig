@@ -1,24 +1,16 @@
-function parse_git_branch_and_add_brackets {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
-}
+# COLOR
+BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-solarized-dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+# BASIC CONFIGS
+set -o vi
 
 export EDITOR=vim
 export CC=clang
 export TZ=Europe/Paris
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
-
-set -o vi
-
 export WORKON_HOME=$HOME/.virtualenvs
-
-export NVM_DIR="/Users/gbataille/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-source $HOME/.rvm/scripts/rvm
-
-BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-solarized-dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 alias ls='ls -Gh'
 alias ll='ls -Glah'
@@ -53,11 +45,23 @@ if [ -f /usr/local/bin/find ]; then
   alias find='/usr/local/bin/find'
 fi
 
+# TOOLS
+[[ -f `brew --prefix`/etc/bash_completion ]] && . `brew --prefix`/etc/bash_completion
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
+## Node
+export NVM_DIR="/Users/gbataille/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+## Ruby
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+## Python
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# auto pipenv
-eval "$(pipenv --completion)"
+### auto pipenv
+# eval "$(pipenv --completion)"
 
 function auto_pipenv_shell {
     if [ ! -n "${PIPENV_ACTIVE+1}" ]; then

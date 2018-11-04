@@ -64,15 +64,6 @@ ZSH_THEME="gba"
 plugins=(autojump gitfast fzf-zsh tmuxinator zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-if [ -f ~/.profile ]; then
-  source ~/.profile
-fi
-
-# User configuration
-export PATH="$PATH:$HOME/.rvm/bin:/Users/gbataille/.local/bin:/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:~/.cabal/bin"
-
 # Nix
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
@@ -80,27 +71,3 @@ fi
 # End Nix
 
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home"
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-
-# DART / Angular2 install
-export DARTIUM_BIN="/usr/local/opt/dart/Chromium.app/Contents/MacOS/Chromium"
-export DART_SDK="/usr/local/bin/dart"
-export PUB_CACHE="/Users/gbataille/.pub-cache"
