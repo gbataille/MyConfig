@@ -34,7 +34,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'scrooloose/syntastic'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ciaranm/detectindent'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
@@ -45,8 +45,8 @@ Plugin 'vim-scripts/utl.vim'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'airblade/vim-rooter'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 Plugin 'mileszs/ack.vim'
 Plugin 'vim-scripts/gitignore'
 Plugin 'majutsushi/tagbar'
@@ -389,12 +389,12 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['.root', '.git']
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$\|dist$\|dist-newstyle$\|bower_components$\|node_modules$\|\.docsets$',
-  \ 'file': '\.exe$\|\.so$\|\.dll$\|\.o$\|\.dylib$\|\.d$\|\.dia$\|Icon\\$',
+  \ 'file': '\.exe$\|\.so$\|\.dll$\|\.o$\|\.dylib$\|\.d$\|\.dia$\|Icon\\\\$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
 " https://github.com/kien/ctrlp.vim/issues/174
 " ignore what's in the gitignore
-let g:ctrlp_user_command = ['git ls-files -oc --exclude-standard']
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 "############################################
 "###########    Syntastic setup   ###########
@@ -535,13 +535,6 @@ if has('autocmd')
           \*.hs
           \ :Rooter
   augroup END
-endif
-
-"############################################
-"############ javascript setup ##############
-"############################################
-if has('autocmd')
-  au BufRead *.js call JavaScriptFold()
 endif
 
 "############################################
@@ -707,3 +700,9 @@ let python_highlight_all=1
 "############### gitgutter ##################
 "############################################
 let g:gitgutter_override_sign_column_highlight = 0
+
+"############################################
+"############### JavaScript #################
+"############################################
+let g:javascript_plugin_flow = 1
+let g:jsx_ext_required = 0
