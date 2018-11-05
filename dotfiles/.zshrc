@@ -71,3 +71,5 @@ fi
 # End Nix
 
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home"
+
+set -o vi

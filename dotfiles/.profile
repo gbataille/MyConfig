@@ -2,9 +2,6 @@
 BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-solarized-dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
-# BASIC CONFIGS
-set -o vi
-
 export EDITOR=vim
 export CC=clang
 export TZ=Europe/Paris
