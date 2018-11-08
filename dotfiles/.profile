@@ -8,6 +8,7 @@ export TZ=Europe/Paris
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export WORKON_HOME=$HOME/.virtualenvs
+export PATH=/Users/gbataille/Documents/Prog/MyConfig/scripts:$PATH
 
 alias ls='ls -Gh'
 alias ll='ls -Glah'
