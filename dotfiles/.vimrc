@@ -128,6 +128,7 @@ endif " has("autocmd")
 set hidden
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
+set previewheight=20
 
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
@@ -324,6 +325,7 @@ nnoremap <leader>r :OverCommandLine<CR>:%s/
 vnoremap <leader>t :Tabularize /
 "map a quick buffer close key
 nnoremap <leader>q :BD<CR>
+nnoremap <leader>Q :bufdo BD<CR>
 "map a quick window cycle key
 nnoremap <leader>w <C-w><C-w>
 
@@ -675,6 +677,13 @@ au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
+
+"############################################
+"############## fugitive ####################
+"############################################
+
+command Greview :Git! diff --staged
+nnoremap <leader>gr :Greview<cr>
 
 "############################################
 "############### tsuquyomi ##################
