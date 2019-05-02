@@ -8,7 +8,12 @@ export TZ=Europe/Paris
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export WORKON_HOME=$HOME/.virtualenvs
-export PATH=/Users/gbataille/Documents/Prog/MyConfig/scripts:$PATH
+export PATH=/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/opt/postgresql@10/bin:$PATH
+export AWS_ASSUME_ROLE_TTL=1h
+export AWS_SESSION_TTL=8h
+export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
+export CPPFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
+export LDFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 
 alias ls='ls -Gh'
 alias ll='ls -Glah'
@@ -23,11 +28,14 @@ alias ctest='cabal test --show-details=streaming'
 alias npmr='npm run'
 alias npmrs='npm run -s'
 alias pm='python manage.py'
-alias pms='aws-vault exec pix4d -- python manage.py shell_plus'
-alias pmr='aws-vault exec pix4d -- python manage.py runserver 0.0.0.0:8000'
+alias pms='aws-vault exec pix4d --assume-role-ttl=1h -- python manage.py shell_plus'
+alias pmr='aws-vault exec pix4d --assume-role-ttl=1h -- python manage.py runserver 0.0.0.0:8000'
+alias pcspms='aws-vault exec pcs_staging_admin --assume-role-ttl=1h -- python manage.py shell_plus'
+alias pcspmr='aws-vault exec pcs_staging_admin --assume-role-ttl=1h -- python manage.py runserver 0.0.0.0:8888'
 alias pmt='python manage.py test'
 alias pmtk='python manage.py test --keepdb'
 alias droptestdb='dropdb test_pix4ddb'
+alias pcsdroptestdb='dropdb test_pcs'
 alias mux='tmuxinator'
 alias pyclean='rm $(find . -name "*.pyc")'
 alias origclean='rm $(find . -name "*.orig")'
