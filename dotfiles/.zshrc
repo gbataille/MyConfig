@@ -64,12 +64,15 @@ ZSH_THEME="gba"
 plugins=(autojump gitfast fzf-zsh tmuxinator zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
-# Nix
-if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-fi
-# End Nix
-
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home"
 
+if [ -e /Users/gbataille/.nix-profile/etc/profile.d/nix.sh ]; then
+  . /Users/gbataille/.nix-profile/etc/profile.d/nix.sh;
+fi
+
+# Override some thing that zsh has broken from my .profile
 set -o vi
+
+alias ls='ls -Gh'
+alias ll='ls -Glah'
+alias l='ls -Glah'
