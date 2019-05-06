@@ -1,0 +1,9 @@
+output_template: [Terraform workspace: {{tf}}] [node: {{node}}] [ruby: {{ruby}}] [python: {{python}}] [venv: {{virtualenv}}]
+   {{githud}}
+
+virtualenv: bash -c "basename $VIRTUAL_ENV"
+ruby: bash -c "ruby --version | cut -d ' ' -f 2"
+node: node --version
+tf: terraform workspace show
+python: bash -c "python --version | cut -d ' ' -f 2"
+githud: githud zsh
