@@ -36,7 +36,7 @@ Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ciaranm/detectindent'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-eunuch'
@@ -63,6 +63,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'tmhedberg/SimpylFold'
 " Python
 Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'davidhalter/jedi-vim'
 " RGB
 Plugin 'lilydjwg/colorizer'
 " Terraform
@@ -78,6 +79,15 @@ Plugin 'LnL7/vim-nix'
 " Plugin 'bitc/vim-hdevtools'
 Plugin 'raichoo/haskell-vim'
 Plugin 'enomsg/vim-haskellConcealPlus'
+" Autocompletion
+if has('nvim')
+  Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plugin 'Shougo/deoplete.nvim'
+  Plugin 'roxma/nvim-yarp'
+  Plugin 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 
 
 call vundle#end()            " required
@@ -449,6 +459,10 @@ let g:ycm_filetype_specific_completion_to_disable = {
   \ }
 
 "############################################
+"##############    Deoplete    ##############
+"############################################
+
+"############################################
 "##############    Neco-GHC    ##############
 "############################################
 " autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
@@ -704,6 +718,8 @@ let g:tsuquyomi_disable_quickfix = 1
 " EOF
 
 let python_highlight_all=1
+let g:jedi#usages_command = "<leader>u"
+let g:jedi#popup_select_first = 0
 
 "############################################
 "############### gitgutter ##################
