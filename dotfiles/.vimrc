@@ -8,90 +8,90 @@ endif
 set nocompatible
 filetype off      "mandatory for vundle init
 
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" let Vundle manage Vundle
-" required!
-Plugin 'VundleVim/Vundle.vim'
-
+call plug#begin()
 " My Plugins here:
 "
 " original repos on github
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rbenv'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-surround'
-Plugin 'godlygeek/tabular'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'chriskempson/base16-vim'
-Plugin 'vim-scripts/bufkill.vim'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'scrooloose/syntastic'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'ciaranm/detectindent'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'SirVer/ultisnips'
-Plugin 'tpope/vim-speeddating'
-Plugin 'tpope/vim-eunuch'
-Plugin 'mattn/calendar-vim'
-Plugin 'vim-scripts/utl.vim'
-Plugin 'jnwhiteh/vim-golang'
-Plugin 'airblade/vim-rooter'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'mileszs/ack.vim'
-Plugin 'vim-scripts/gitignore'
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'osyo-manga/vim-over'
-Plugin 'Konfekt/FastFold'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rbenv'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-surround'
+Plug 'godlygeek/tabular'
+Plug 'kchmck/vim-coffee-script'
+Plug 'tomtom/tcomment_vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
+Plug 'vim-scripts/bufkill.vim'
+Plug 'tpope/vim-unimpaired'
+Plug 'scrooloose/syntastic'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ciaranm/detectindent'
+Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-eunuch'
+Plug 'mattn/calendar-vim'
+Plug 'vim-scripts/utl.vim'
+Plug 'jnwhiteh/vim-golang'
+Plug 'airblade/vim-rooter'
+Plug 'airblade/vim-gitgutter'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'mileszs/ack.vim'
+Plug 'vim-scripts/gitignore'
+Plug 'majutsushi/tagbar'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'osyo-manga/vim-over'
+Plug 'Konfekt/FastFold'
 " Typescript
-Plugin 'leafgarland/typescript-vim'
-Plugin 'Quramy/tsuquyomi'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
 " Editorconfig
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'tmhedberg/SimpylFold'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tmhedberg/SimpylFold'
 " Python
-Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'davidhalter/jedi-vim'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'davidhalter/jedi-vim'
 " RGB
-Plugin 'lilydjwg/colorizer'
+Plug 'lilydjwg/colorizer'
 " Terraform
-Plugin 'hashivim/vim-terraform'
+Plug 'hashivim/vim-terraform'
 " Plantuml
-Plugin 'aklt/plantuml-syntax'
+Plug 'aklt/plantuml-syntax'
 " Nix
-Plugin 'LnL7/vim-nix'
+Plug 'LnL7/vim-nix'
 " Haskell
-" Plugin 'Shougo/vimproc.vim'
-" Plugin 'eagletmt/ghcmod-vim'
-" Plugin 'eagletmt/neco-ghc'
-" Plugin 'bitc/vim-hdevtools'
-Plugin 'raichoo/haskell-vim'
-Plugin 'enomsg/vim-haskellConcealPlus'
+" Plug 'Shougo/vimproc.vim'
+" Plug 'eagletmt/ghcmod-vim'
+" Plug 'eagletmt/neco-ghc'
+" Plug 'bitc/vim-hdevtools'
+Plug 'raichoo/haskell-vim'
+Plug 'enomsg/vim-haskellConcealPlus'
+" FZF
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 " Autocompletion
 if has('nvim')
-  Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugs' }
 else
-  Plugin 'Shougo/deoplete.nvim'
-  Plugin 'roxma/nvim-yarp'
-  Plugin 'roxma/vim-hug-neovim-rpc'
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
 
-
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
 " Mac specific config
 if has("unix")
@@ -311,20 +311,16 @@ nnoremap <leader>b :bufdo
 "Remap Tcomment
 nmap <leader>c <c-_><c-_>
 vmap <leader>c <c-_><c-_>
-" shortcut for python doc
-au BufNewFile,BufRead *.py
-      \ nnoremap <leader>d :YcmCompleter GetDoc<CR>
+" remap fzf
+nnoremap <leader>e :FZF<CR>
+nnoremap <C-e> :GFiles<CR>
 "Remap CtrlP
-nnoremap <leader>e :CtrlP<CR>
 nnoremap <C-t> :CtrlPTag<CR>
 "shortcut to GhcMod
 au BufNewFile,BufRead *.hs
       \ nnoremap <leader>f :GhcModTypeClear<CR>
 au BufNewFile,BufRead *.hs
       \ nnoremap <leader>g :GhcModType<CR>
-"shortcut to Python goto definition
-au BufNewFile,BufRead *.py
-      \ nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "map a buffer cycling shortcut
 nnoremap <leader>l :ls<CR>:b<Space>
 nnoremap <leader>n :bnext<CR>
@@ -395,7 +391,7 @@ endif
 "############################################
 "###########    Ctrlp setup   ###############
 "############################################
-let g:ctrlp_map = '<c-p>'
+let g:ctrlp_map = '<c-P>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['.root', '.git']
