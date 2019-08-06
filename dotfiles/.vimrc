@@ -34,7 +34,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/syntastic'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ciaranm/detectindent'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-speeddating'
@@ -69,6 +69,8 @@ Plug 'lilydjwg/colorizer'
 Plug 'hashivim/vim-terraform'
 " Plantuml
 Plug 'aklt/plantuml-syntax'
+" Scala
+Plug 'derekwyatt/vim-scala'
 " Nix
 Plug 'LnL7/vim-nix'
 " Haskell
@@ -391,18 +393,18 @@ endif
 "############################################
 "###########    Ctrlp setup   ###############
 "############################################
-let g:ctrlp_map = '<c-P>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_root_markers = ['.root', '.git']
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|dist$\|dist-newstyle$\|bower_components$\|node_modules$\|\.docsets$',
-  \ 'file': '\.exe$\|\.so$\|\.dll$\|\.o$\|\.dylib$\|\.d$\|\.dia$\|Icon\\\\$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-" https://github.com/kien/ctrlp.vim/issues/174
-" ignore what's in the gitignore
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" let g:ctrlp_map = '<c-P>'
+" let g:ctrlp_cmd = 'CtrlP'
+" let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_root_markers = ['.root', '.git']
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\.git$\|\.hg$\|\.svn$\|dist$\|dist-newstyle$\|bower_components$\|node_modules$\|\.docsets$',
+"   \ 'file': '\.exe$\|\.so$\|\.dll$\|\.o$\|\.dylib$\|\.d$\|\.dia$\|Icon\\\\\$',
+"   \ 'link': 'some_bad_symbolic_links',
+"   \ }
+" " https://github.com/kien/ctrlp.vim/issues/174
+" " ignore what's in the gitignore
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 "############################################
 "###########    Syntastic setup   ###########
@@ -727,3 +729,8 @@ let g:gitgutter_override_sign_column_highlight = 0
 "############################################
 let g:javascript_plugin_flow = 1
 let g:jsx_ext_required = 0
+
+"############################################
+"################## Scala ###################
+"############################################
+let g:scala_scaladoc_indent = 1
