@@ -28,10 +28,6 @@ alias ctest='cabal test --show-details=streaming'
 alias npmr='npm run'
 alias npmrs='npm run -s'
 alias pm='python manage.py'
-alias pms='aws-vault exec pix4d --no-session --assume-role-ttl=12h -- python manage.py shell_plus'
-alias pmr='aws-vault exec pix4d --no-session --assume-role-ttl=12h -- python manage.py runserver 0.0.0.0:8000'
-alias pcspms='aws-vault exec pcs_staging_admin --no-session --assume-role-ttl=12h -- python manage.py shell_plus'
-alias pcspmr='aws-vault exec pcs_staging_admin --no-session --assume-role-ttl=12h -- python manage.py runserver 0.0.0.0:8888'
 alias pmt='python manage.py test'
 alias pmtk='python manage.py test --keepdb'
 alias droptestdb='dropdb test_pix4ddb'
@@ -51,6 +47,10 @@ avl()
 {
   aws-vault login -t `ykman oath code | grep pix4d-users | awk '{print $NF}'` $@
 }
+alias pms='ave pix4d --no-session --assume-role-ttl=12h -- python manage.py shell_plus'
+alias pmr='ave pix4d --no-session --assume-role-ttl=12h -- python manage.py runserver 0.0.0.0:8000'
+alias pcspms='ave pcs_staging_admin --no-session --assume-role-ttl=12h -- python manage.py shell_plus'
+alias pcspmr='ave pcs_staging_admin --no-session --assume-role-ttl=12h -- python manage.py runserver 0.0.0.0:8888'
 
 if [ -f /usr/local/bin/vim ]; then
   alias vi='/usr/local/bin/vim'
