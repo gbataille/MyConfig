@@ -43,8 +43,14 @@ alias mergeclean='rm $(find . -name "*BACKUP*");rm $(find . -name "*REMOTE*");rm
 alias branchclean='git branch --merged | grep -v "\*" | grep -v master | grep -v staging | xargs -n 1 git branch -d'
 alias mergedremotebranch='git branch -r --merged | grep origin | grep -v ">" | grep -v master | grep -v staging | grep -v "rc-" | xargs -L1'
 alias tf='terraform'
-alias ave="aws-vault exec -m `ykman oath code | grep pix4d-users | awk '{print $NF}'`"
-alias avl="aws-vault login -t `ykman oath code | grep pix4d-users | awk '{print $NF}'`"
+ave()
+{
+  aws-vault exec -m `ykman oath code | grep pix4d-users | awk '{print $NF}'` $@
+}
+avl()
+{
+  aws-vault login -t `ykman oath code | grep pix4d-users | awk '{print $NF}'` $@
+}
 
 if [ -f /usr/local/bin/vim ]; then
   alias vi='/usr/local/bin/vim'
