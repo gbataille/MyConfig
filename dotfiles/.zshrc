@@ -72,9 +72,89 @@ if [ -e /Users/gbataille/.nix-profile/etc/profile.d/nix.sh ]; then
   . /Users/gbataille/.nix-profile/etc/profile.d/nix.sh;
 fi
 
-# Override some thing that zsh has broken from my .profile
-set -o vi
+BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-solarized-dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+export EDITOR=vim
+export CC=clang
+export TZ=Europe/Paris
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export WORKON_HOME=$HOME/.virtualenvs
+export PATH=/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/opt/postgresql@10/bin:$PATH:/Users/gbataille/.cabal/bin
+export AWS_ASSUME_ROLE_TTL=1h
+export AWS_SESSION_TTL=8h
+export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
+export CPPFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
+export LDFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 
 alias ls='ls -Gh'
-alias ll='ls -Glah'
-alias l='ls -Glah'
+alias cdm='cd ~/Documents/Prog/MyConfig'
+alias cdp='cd ~/Documents/Prog/'
+alias cdg='cd ~/Documents/Prog/GregsSandbox/'
+alias c='clear'
+alias ..='cd ..'
+alias gitk='gitk --all'
+alias ctest='cabal test --show-details=streaming'
+alias npmr='npm run'
+alias npmrs='npm run -s'
+alias pm='python manage.py'
+alias pmt='python manage.py test'
+alias pmtk='python manage.py test --keepdb'
+alias droptestdb='dropdb test_pix4ddb'
+alias pcsdroptestdb='dropdb test_pcs'
+alias mux='tmuxinator'
+alias pyclean='rm $(find . -name "*.pyc"); rm -r $(find . -name "__pycache__")'
+alias origclean='rm $(find . -name "*.orig")'
+alias mergeclean='rm $(find . -name "*BACKUP*");rm $(find . -name "*REMOTE*");rm $(find . -name "*LOCAL*");rm $(find . -name "*BASE*")'
+alias branchclean='git branch --merged | grep -v "\*" | grep -v master | grep -v staging | xargs -n 1 git branch -d'
+alias mergedremotebranch='git branch -r --merged | grep origin | grep -v ">" | grep -v master | grep -v staging | grep -v "rc-" | xargs -L1'
+alias tf='terraform'
+ave()
+{
+  aws-vault exec -m `ykman oath code | grep pix4d-users | awk '{print $NF}'` $@
+}
+avl()
+{
+  aws-vault login -t `ykman oath code | grep pix4d-users | awk '{print $NF}'` $@
+}
+alias pms='ave pix4d --no-session --assume-role-ttl=12h -- python manage.py shell_plus'
+alias pmr='ave pix4d --no-session --assume-role-ttl=12h -- python manage.py runserver 0.0.0.0:8000'
+alias pcspms='ave pcs_staging_admin --no-session --assume-role-ttl=12h -- python manage.py shell_plus'
+alias pcspmr='ave pcs_staging_admin --no-session --assume-role-ttl=12h -- python manage.py runserver 0.0.0.0:8888'
+cat()
+{
+  bat $@ || (/bin/cat $@; echo -e "\x1b[31m\n-----\nWARN: bat not found, used cat\n-----\n\x1b[0m")
+}
+unalias ll
+ll()
+{
+  exa -l --git $@ || (/bin/ls $@; echo -e "\x1b[31m\n-----\nWARN: exa not found, used ls\n-----\n\x1b[0m")
+}
+alias l='ll'
+tree()
+{
+  exa -l --git -T $@ || (/usr/local/bin/tree $@; echo -e "\x1b[31m\n-----\nWARN: exa not found, used tree\n-----\n\x1b[0m")
+}
+
+if [ -f /usr/local/bin/vim ]; then
+  alias vi='/usr/local/bin/vim'
+fi
+if [ -f /usr/local/bin/find ]; then
+  alias find='/usr/local/bin/find'
+fi
+
+# TOOLS
+[[ -f `brew --prefix`/etc/bash_completion ]] && . `brew --prefix`/etc/bash_completion
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
+## Node
+export NVM_DIR="/Users/gbataille/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+## Ruby
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+## Python
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
