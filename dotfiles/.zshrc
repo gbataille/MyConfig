@@ -66,6 +66,8 @@ ZSH_THEME="gba"
 plugins=(autojump gitfast tmuxinator zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
+set -o vi
+
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home"
 
 if [ -e /Users/gbataille/.nix-profile/etc/profile.d/nix.sh ]; then
@@ -129,12 +131,12 @@ cat()
 unalias ll
 ll()
 {
-  exa -l --git $@ || (/bin/ls $@; echo -e "\x1b[31m\n-----\nWARN: exa not found, used ls\n-----\n\x1b[0m")
+  exa -l --git -F $@ || (/bin/ls $@; echo -e "\x1b[31m\n-----\nWARN: exa not found, used ls\n-----\n\x1b[0m")
 }
 alias l='ll'
 tree()
 {
-  exa -l --git -T $@ || (/usr/local/bin/tree $@; echo -e "\x1b[31m\n-----\nWARN: exa not found, used tree\n-----\n\x1b[0m")
+  exa -l --git -F -T $@ || (/usr/local/bin/tree $@; echo -e "\x1b[31m\n-----\nWARN: exa not found, used tree\n-----\n\x1b[0m")
 }
 
 if [ -f /usr/local/bin/vim ]; then
