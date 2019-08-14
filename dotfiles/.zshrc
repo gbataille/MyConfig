@@ -131,12 +131,12 @@ cat()
 unalias ll
 ll()
 {
-  exa -l --git -F $@ || (/bin/ls $@; echo -e "\x1b[31m\n-----\nWARN: exa not found, used ls\n-----\n\x1b[0m")
+  exa -la --git -F $@ || (/bin/ls $@; echo -e "\x1b[31m\n-----\nWARN: exa not found, used ls\n-----\n\x1b[0m")
 }
 alias l='ll'
 tree()
 {
-  exa -l --git -F -T $@ || (/usr/local/bin/tree $@; echo -e "\x1b[31m\n-----\nWARN: exa not found, used tree\n-----\n\x1b[0m")
+  exa -la --git -F -T $@ || (/usr/local/bin/tree $@; echo -e "\x1b[31m\n-----\nWARN: exa not found, used tree\n-----\n\x1b[0m")
 }
 
 if [ -f /usr/local/bin/vim ]; then
@@ -145,6 +145,14 @@ fi
 if [ -f /usr/local/bin/find ]; then
   alias find='/usr/local/bin/find'
 fi
+aws_get_account_id()
+{
+  ave $1 -- aws sts get-caller-identity --output text --query 'Account'
+}
+aws_get_canonical_account_id()
+{
+  ave $1 -- aws s3api list-buckets --query Owner.ID
+}
 
 # TOOLS
 [[ -f `brew --prefix`/etc/bash_completion ]] && . `brew --prefix`/etc/bash_completion
