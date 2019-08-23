@@ -4,7 +4,9 @@
 [alias]
 	st = status
 	co = checkout
-	cob = checkout -b
+	cob = switch -c
+	sw = switch
+	swc = switch -c
 	commitamend = commit --amend --no-edit
 	p = push
 	b = branch -v
@@ -52,11 +54,11 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [pager]
-	log = /usr/local/Cellar/git/2.22.0_1/share/git-core/contrib/diff-highlight/diff-highlight | less
-	show = /usr/local/Cellar/git/2.22.0_1/share/git-core/contrib/diff-highlight/diff-highlight | less
-	diff = /usr/local/Cellar/git/2.22.0_1/share/git-core/contrib/diff-highlight/diff-highlight | less
+	log = /usr/local/Cellar/git/2.23.0/share/git-core/contrib/diff-highlight/diff-highlight | less
+	show = /usr/local/Cellar/git/2.23.0/share/git-core/contrib/diff-highlight/diff-highlight | less
+	diff = /usr/local/Cellar/git/2.23.0/share/git-core/contrib/diff-highlight/diff-highlight | less
 	branch = false
 [interactive]
-	diffFilter = /usr/local/Cellar/git/2.22.0_1/share/git-core/contrib/diff-highlight/diff-highlight
+	diffFilter = /usr/local/Cellar/git/2.23.0/share/git-core/contrib/diff-highlight/diff-highlight
 [grep]
 	lineNumber = true
