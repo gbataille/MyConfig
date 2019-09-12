@@ -116,6 +116,10 @@ ave()
 {
   aws-vault exec -m `ykman oath code | grep pix4d-users | awk '{print $NF}'` $@
 }
+ave_admin()
+{
+  aws-vault exec -m `ykman oath code | grep "greg@pix4d" | awk '{print $NF}'` aws_account_management $@
+}
 avl()
 {
   aws-vault login -t `ykman oath code | grep pix4d-users | awk '{print $NF}'` $@
