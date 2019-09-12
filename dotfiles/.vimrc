@@ -31,7 +31,8 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
 Plug 'vim-scripts/bufkill.vim'
 Plug 'tpope/vim-unimpaired'
-Plug 'scrooloose/syntastic'
+Plug 'dense-analysis/ale'   " Async syntastic
+" Plug 'scrooloose/syntastic'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
 " Plug 'ctrlpvim/ctrlp.vim'
@@ -409,28 +410,28 @@ endif
 "############################################
 "###########    Syntastic setup   ###########
 "############################################
-let g:syntastic_check_on_open = 1
-let g:syntastic_aggregate_errors = 1
-
-let g:syntastic_javascript_checkers = ['jsl']
-
-let g:syntastic_typescript_checkers = ['tslint']
-let g:syntastic_typescript_tsc_fname = ''
-
-let g:syntastic_haskell_checkers = ['hlint']
-
-let g:syntastic_python_python_exec = 'python'
-let g:syntastic_python_checkers = ['flake8', 'python']
-let g:syntastic_python_pylint_args = '--rcfile=' . findfile(".pylintrc", ".;")
-let g:syntastic_python_pylint_post_args = '--msg-template="{path}:{line}:{column}:{C}: [{symbol} {msg_id}] {msg}"'
-
-let g:syntastic_ruby_checkers = ['mri']
-
-let g:syntastic_html_tidy_exec = '/usr/local/Cellar/tidy-html5/5.0.0/bin/tidy'
-let g:syntastic_html_tidy_ignore_errors = []
-let g:syntastic_html_tidy_quiet_messages = {
-  \ "regex": '\m^<.*> is not recognized!'
-  \ }
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_aggregate_errors = 1
+"
+" let g:syntastic_javascript_checkers = ['jsl']
+"
+" let g:syntastic_typescript_checkers = ['tslint']
+" let g:syntastic_typescript_tsc_fname = ''
+"
+" let g:syntastic_haskell_checkers = ['hlint']
+"
+" let g:syntastic_python_python_exec = 'python'
+" let g:syntastic_python_checkers = ['flake8', 'python']
+" let g:syntastic_python_pylint_args = '--rcfile=' . findfile(".pylintrc", ".;")
+" let g:syntastic_python_pylint_post_args = '--msg-template="{path}:{line}:{column}:{C}: [{symbol} {msg_id}] {msg}"'
+"
+" let g:syntastic_ruby_checkers = ['mri']
+"
+" let g:syntastic_html_tidy_exec = '/usr/local/Cellar/tidy-html5/5.0.0/bin/tidy'
+" let g:syntastic_html_tidy_ignore_errors = []
+" let g:syntastic_html_tidy_quiet_messages = {
+"   \ "regex": '\m^<.*> is not recognized!'
+"   \ }
 
 "############################################
 "##############    YCM setup   ##############
@@ -562,7 +563,7 @@ endif
 "############ json pretty-print #############
 "############################################
 function! DoPrettyJson()
-  clone the current buffer, we want a scratch buffer.
+  " clone the current buffer, we want a scratch buffer.
   badd %
   setlocal buftype=nofile bufhidden=wipe nobuflisted
   noswapfile nowrap
@@ -734,3 +735,8 @@ let g:jsx_ext_required = 0
 "################## Scala ###################
 "############################################
 let g:scala_scaladoc_indent = 1
+
+"############################################
+"################### ALE ####################
+"############################################
+let g:ale_completion_enabled = 0
