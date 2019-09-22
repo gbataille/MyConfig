@@ -1,4 +1,4 @@
-output_template: [Terraform workspace: {{tf}}] [node: {{node}}] [ruby: {{ruby}}] [python: {{python}}] [venv: {{virtualenv}}]
+output_template: [Terraform workspace: {{tf}}] [node: {{node}}] [ruby: {{ruby}}] [python: {{python}}] [venv: {{virtualenv}}] [In nix: {{nix}}]
    {{githud}}
 
 virtualenv: bash -c "basename $VIRTUAL_ENV"
@@ -7,3 +7,4 @@ node: node --version
 tf: terraform workspace show
 python: bash -c "python --version | cut -d ' ' -f 2"
 githud: githud zsh
+nix: bash -c "if ! [ -z '$IN_NIX_SHELL' ]; then echo $IN_NIX_SHELL; fi;"
