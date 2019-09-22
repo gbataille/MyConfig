@@ -63,7 +63,7 @@ ZSH_THEME="gba"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump gitfast tmuxinator zsh-syntax-highlighting)
+plugins=(autojump gitfast tmuxinator zsh-syntax-highlighting nix-shell)
 source $ZSH/oh-my-zsh.sh
 
 set -o vi
@@ -114,7 +114,7 @@ alias mergedremotebranch='git branch -r --merged | grep origin | grep -v ">" | g
 alias tf='terraform'
 ave()
 {
-  aws-vault exec -m `ykman oath code | grep pix4d-users | awk '{print $NF}'` $@
+  aws-vault exec -m `ykman oath code | grep "gregory.bataille@pix4d.com@pix4d-users" | awk '{print $NF}'` $@
 }
 ave_admin()
 {
@@ -122,7 +122,7 @@ ave_admin()
 }
 avl()
 {
-  aws-vault login -t `ykman oath code | grep pix4d-users | awk '{print $NF}'` $@
+  aws-vault login -t `ykman oath code | grep "gregory.bataille@pix4d.com@pix4d-users" | awk '{print $NF}'` $@
 }
 alias pms='ave pix4d --no-session --assume-role-ttl=12h -- python manage.py shell_plus'
 alias pmr='ave pix4d --no-session --assume-role-ttl=12h -- python manage.py runserver 0.0.0.0:8000'
@@ -143,7 +143,9 @@ tree()
   exa -la --git -F -T $@ || (/usr/local/bin/tree $@; echo -e "\x1b[31m\n-----\nWARN: exa not found, used tree\n-----\n\x1b[0m")
 }
 
-if [ -f /usr/local/bin/vim ]; then
+if [ -f /usr/local/bin/nvim ]; then
+  alias vi='/usr/local/bin/nvim'
+elif [ -f /usr/local/bin/vim ]; then
   alias vi='/usr/local/bin/vim'
 fi
 if [ -f /usr/local/bin/find ]; then
