@@ -35,9 +35,7 @@ Plug 'dense-analysis/ale'   " Async syntastic
 " Plug 'scrooloose/syntastic'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
-" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ciaranm/detectindent'
-Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-eunuch'
 Plug 'mattn/calendar-vim'
@@ -92,6 +90,7 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+Plug 'deoplete-plugins/deoplete-jedi'
 let g:deoplete#enable_at_startup = 1
 
 call plug#end()
@@ -392,22 +391,6 @@ if has('autocmd')
 endif
 
 "############################################
-"###########    Ctrlp setup   ###############
-"############################################
-" let g:ctrlp_map = '<c-P>'
-" let g:ctrlp_cmd = 'CtrlP'
-" let g:ctrlp_working_path_mode = 'ra'
-" let g:ctrlp_root_markers = ['.root', '.git']
-" let g:ctrlp_custom_ignore = {
-"   \ 'dir':  '\.git$\|\.hg$\|\.svn$\|dist$\|dist-newstyle$\|bower_components$\|node_modules$\|\.docsets$',
-"   \ 'file': '\.exe$\|\.so$\|\.dll$\|\.o$\|\.dylib$\|\.d$\|\.dia$\|Icon\\\\\$',
-"   \ 'link': 'some_bad_symbolic_links',
-"   \ }
-" " https://github.com/kien/ctrlp.vim/issues/174
-" " ignore what's in the gitignore
-" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-
-"############################################
 "###########    Syntastic setup   ###########
 "############################################
 " let g:syntastic_check_on_open = 1
@@ -495,29 +478,10 @@ endif
 "############################################
 "############ UltiSnips setup ###############
 "############################################
-" Forces Tab to be used for both YCM and UtilSnips
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
+" let g:UltiSnipsExpandTrigger="<c-r>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
-
-if has('autocmd')
-  au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-endif
-"
 "############################################
 "############ Org-mode setup ################
 "############################################
@@ -740,3 +704,20 @@ let g:scala_scaladoc_indent = 1
 "################### ALE ####################
 "############################################
 let g:ale_completion_enabled = 0
+let g:ale_completion_delay = 500
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_set_highlights = 0
+let g:ale_linters = {
+\   'haskell': ['cabal_ghc','stack_build','stack_ghc','hlint'],
+\}
+" ghc needs the source of the program
+au BufEnter * let b:ale_haskell_stack_ghc_options = '-fno-code -v0 -i' . getcwd() . '/src'
+
+"############################################
+"################# DEOPLETE #################
+"############################################
+call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
+au BufNewFile,BufRead,BufWinEnter * set completeopt+=noinsert,noselect
+" Tab completion in pmenu
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
