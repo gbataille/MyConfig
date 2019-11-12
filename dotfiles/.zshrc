@@ -122,7 +122,7 @@ ave_admin()
 }
 avl()
 {
-  aws-vault login -t `ykman oath code | grep "gregory.bataille@pix4d.com@pix4d-users" | awk '{print $NF}'` $@
+  aws-vault login --no-session --assume-role-ttl=8h -t `ykman oath code | grep "gregory.bataille@pix4d.com@pix4d-users" | awk '{print $NF}'` $@
 }
 alias pms='ave pix4d --no-session --assume-role-ttl=12h -- python manage.py shell_plus'
 alias pmr='ave pix4d --no-session --assume-role-ttl=12h -- python manage.py runserver 0.0.0.0:8000'
