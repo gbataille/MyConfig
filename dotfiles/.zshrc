@@ -135,7 +135,7 @@ cat()
 unalias ll
 ll()
 {
-  exa -la --git -F $@ || (/bin/ls $@; echo -e "\x1b[31m\n-----\nWARN: exa not found, used ls\n-----\n\x1b[0m")
+  exa -la --git -F $@ || (/bin/ls -la $@; echo -e "\x1b[31m\n-----\nWARN: exa not found, used ls\n-----\n\x1b[0m")
 }
 alias l='ll'
 tree()
