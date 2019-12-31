@@ -92,6 +92,8 @@ else
 endif
 Plug 'deoplete-plugins/deoplete-jedi'
 let g:deoplete#enable_at_startup = 1
+" Dash integration
+Plug 'rizzatti/dash.vim'
 
 call plug#end()
 
