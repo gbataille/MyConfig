@@ -714,7 +714,7 @@ let g:ale_linters = {
 \   'haskell': ['cabal_ghc','stack_build','stack_ghc','hlint'],
 \}
 " ghc needs the source of the program
-au BufEnter * let b:ale_haskell_stack_ghc_options = '-fno-code -v0 -i' . getcwd() . '/src'
+let b:ale_haskell_stack_ghc_options = '-fno-code -v0 -i' . getcwd() . '/src'
 
 "############################################
 "################# DEOPLETE #################
