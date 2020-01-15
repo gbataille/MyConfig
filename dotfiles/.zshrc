@@ -114,20 +114,20 @@ alias mergedremotebranch='git branch -r --merged | grep origin | grep -v ">" | g
 alias tf='terraform'
 ave()
 {
-  aws-vault exec -m `ykman oath code | grep "gregory.bataille@pix4d.com@pix4d-users" | awk '{print $NF}'` $@
+  aws-vault exec -t `ykman oath code | grep "gregory.bataille@pix4d.com@pix4d-users" | awk '{print $NF}'` $@
 }
 ave_admin()
 {
-  aws-vault exec -m `ykman oath code | grep "greg@pix4d" | awk '{print $NF}'` aws_account_management $@
+  aws-vault exec -t `ykman oath code | grep "greg@pix4d" | awk '{print $NF}'` aws_account_management $@
 }
 avl()
 {
-  aws-vault login --no-session --assume-role-ttl=8h -t `ykman oath code | grep "gregory.bataille@pix4d.com@pix4d-users" | awk '{print $NF}'` $@
+  aws-vault login -d 1h -t `ykman oath code | grep "gregory.bataille@pix4d.com@pix4d-users" | awk '{print $NF}'` $@
 }
-alias pms='ave pix4d --no-session --assume-role-ttl=12h -- python manage.py shell_plus'
-alias pmr='ave pix4d --no-session --assume-role-ttl=12h -- python manage.py runserver 0.0.0.0:8000'
-alias pcspms='ave pcs_staging_admin --no-session --assume-role-ttl=12h -- python manage.py shell_plus'
-alias pcspmr='ave pcs_staging_admin --no-session --assume-role-ttl=12h -- python manage.py runserver 0.0.0.0:8888'
+alias pms='ave pix4d -- python manage.py shell_plus'
+alias pmr='ave pix4d -- python manage.py runserver 0.0.0.0:8000'
+alias pcspms='ave pcs_staging_admin -- python manage.py shell_plus'
+alias pcspmr='ave pcs_staging_admin -- python manage.py runserver 0.0.0.0:8888'
 cat()
 {
   bat $@ || (/bin/cat $@; echo -e "\x1b[31m\n-----\nWARN: bat not found, used cat\n-----\n\x1b[0m")
