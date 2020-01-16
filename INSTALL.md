@@ -1,0 +1,7 @@
+- iterm2
+- base16
+- oh-my-zsh
+- brew
+- exa
+- bat
+- pyenv
