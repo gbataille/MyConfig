@@ -130,17 +130,17 @@ alias pcspms='ave pcs_staging_admin -- python manage.py shell_plus'
 alias pcspmr='ave pcs_staging_admin -- python manage.py runserver 0.0.0.0:8888'
 cat()
 {
-  bat $@ || (/bin/cat $@; echo -e "\x1b[31m\n-----\nWARN: bat not found, used cat\n-----\n\x1b[0m")
+  bat $@
 }
 unalias ll
 ll()
 {
-  exa -la --git -F $@ || (/bin/ls -la $@; echo -e "\x1b[31m\n-----\nWARN: exa not found, used ls\n-----\n\x1b[0m")
+  exa -la --git -F $@
 }
 alias l='ll'
 tree()
 {
-  exa -la --git -F -T $@ || (/usr/local/bin/tree $@; echo -e "\x1b[31m\n-----\nWARN: exa not found, used tree\n-----\n\x1b[0m")
+  exa -la --git -F -T $@
 }
 
 if [ -f /usr/local/bin/nvim ]; then
