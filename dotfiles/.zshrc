@@ -3,6 +3,8 @@ TRAPWINCH() {
   zle && { zle reset-prompt; zle -R }
 }
 
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 export EDITOR="vim"
 bindkey -v 
 
@@ -63,7 +65,7 @@ ZSH_THEME="gba"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump gitfast tmuxinator zsh-syntax-highlighting nix-shell)
+plugins=(autojump gitfast tmuxinator nix-shell)
 source $ZSH/oh-my-zsh.sh
 
 set -o vi
