@@ -15,7 +15,6 @@ ln -s /Users/gbataille/Documents/Prog/MyConfig/dotfiles/.hgrc                 /U
 ln -s /Users/gbataille/Documents/Prog/MyConfig/dotfiles/.irssi                /Users/gbataille/.irssi
 ln -s /Users/gbataille/Documents/Prog/MyConfig/dotfiles/.rspec                /Users/gbataille/.rspec
 ln -s /Users/gbataille/Documents/Prog/MyConfig/dotfiles/.rtorrent.rc          /Users/gbataille/.rtorrent.rc
-ln -s /Users/gbataille/Documents/Prog/MyConfig/dotfiles/.ssh                  /Users/gbataille/.ssh
 ln -s /Users/gbataille/Documents/Prog/MyConfig/dotfiles/.terraformrc          /Users/gbataille/.terraformrc
 ln -s /Users/gbataille/Documents/Prog/MyConfig/dotfiles/.tigrc                /Users/gbataille/.tigrc
 ln -s /Users/gbataille/Documents/Prog/MyConfig/dotfiles/.tmux.conf            /Users/gbataille/.tmux.conf
@@ -29,3 +28,4 @@ ln -s /Users/gbataille/Documents/Prog/MyConfig/dotfiles/.zshrc                /U
 # exception
 ln -s /Users/gbataille/Documents/Prog/MyConfig/dotfiles/gba.zsh-theme         /Users/gbataille/.oh-my-zsh/themes/gba.zsh-theme
 ln -s /Users/gbataille/Documents/Prog/MyConfig/dotfiles/nvim                  /Users/gbataille/.config/nvim
+ln -s /Users/gbataille/Documents/Prog/MyConfig/dotfiles/.ssh/config           /Users/gbataille/.ssh/config
