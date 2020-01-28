@@ -108,6 +108,7 @@ alias mergeclean='rm $(find . -name "*BACKUP*");rm $(find . -name "*REMOTE*");rm
 alias branchclean='git branch --merged | grep -v "\*" | grep -v master | grep -v staging | xargs -n 1 git branch -d'
 alias mergedremotebranch='git branch -r --merged | grep origin | grep -v ">" | grep -v master | grep -v staging | grep -v "rc-" | xargs -L1'
 alias tf='terraform'
+alias sshadd='ssh-add ~/.ssh/id_rsa'
 ave()
 {
   aws-vault exec -t `ykman oath code | grep "gregory.bataille@pix4d.com@pix4d-users" | awk '{print $NF}'` $@
