@@ -70,10 +70,6 @@ set -o vi
 
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home"
 
-if [ -e /Users/gbataille/.nix-profile/etc/profile.d/nix.sh ]; then
-  . /Users/gbataille/.nix-profile/etc/profile.d/nix.sh;
-fi
-
 BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-solarized-dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
