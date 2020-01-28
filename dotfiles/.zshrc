@@ -171,3 +171,6 @@ export NVM_DIR="/Users/gbataille/.nvm"
 ## Python
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+# Init SSH keys
+init_ssh_keys.sh
