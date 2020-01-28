@@ -3,7 +3,7 @@ TRAPWINCH() {
   zle && { zle reset-prompt; zle -R }
 }
 
-export EDITOR="vim"
+export EDITOR="vi"
 bindkey -v 
 
 # vi style incremental search
