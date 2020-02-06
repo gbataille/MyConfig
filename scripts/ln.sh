@@ -1,7 +1,6 @@
 #!/bin/bash
 
 ln -s /Users/gbataille/Documents/Prog/MyConfig/dotfiles/.ackrc                /Users/gbataille/.ackrc
-ln -s /Users/gbataille/Documents/Prog/MyConfig/dotfiles/.aws                  /Users/gbataille/.aws
 ln -s /Users/gbataille/Documents/Prog/MyConfig/dotfiles/.bash_profile         /Users/gbataille/.bash_profile
 ln -s /Users/gbataille/Documents/Prog/MyConfig/dotfiles/.bashrc               /Users/gbataille/.bashrc
 ln -s /Users/gbataille/Documents/Prog/MyConfig/dotfiles/.envstatusrc          /Users/gbataille/.envstatusrc
