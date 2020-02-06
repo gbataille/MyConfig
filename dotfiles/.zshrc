@@ -3,7 +3,6 @@ TRAPWINCH() {
   zle && { zle reset-prompt; zle -R }
 }
 
-export EDITOR="vi"
 bindkey -v 
 
 # vi style incremental search
@@ -63,7 +62,7 @@ ZSH_THEME="gba"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump gitfast tmuxinator nix-shell zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(autojump gitfast tmuxinator nix-shell zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 set -o vi
@@ -73,7 +72,7 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Ho
 BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-solarized-dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
-export EDITOR=vim
+export EDITOR="vi"
 export CC=clang
 export TZ=Europe/Paris
 export LANG=en_US.UTF-8
@@ -174,3 +173,7 @@ eval "$(pyenv virtualenv-init -)"
 
 # Init SSH keys
 init_ssh_keys.sh
+
+# Retinai VPN
+alias vpn_up='sudo wg-quick up utun0'
+alias vpn_down='sudo wg-quick down utun0'
