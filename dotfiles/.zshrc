@@ -177,3 +177,5 @@ init_ssh_keys.sh
 # Retinai VPN
 alias vpn_up='sudo wg-quick up utun0'
 alias vpn_down='sudo wg-quick down utun0'
+
+. /Users/gbataille/.nix-profile/etc/profile.d/nix.sh
