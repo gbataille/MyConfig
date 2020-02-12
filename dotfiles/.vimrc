@@ -55,7 +55,6 @@ Plug 'osyo-manga/vim-over'
 Plug 'Konfekt/FastFold'
 " Typescript
 Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
 " Editorconfig
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tmhedberg/SimpylFold'
@@ -338,6 +337,9 @@ nnoremap <leader>q :BD<CR>
 nnoremap <leader>Q :bufdo BD<CR>
 "map a quick window cycle key
 nnoremap <leader>w <C-w><C-w>
+" Go to definition
+nnoremap <leader>g :ALEGoToDefinition<CR>
+nnoremap <leader>h :ALEFindReferences<CR>
 
 " Move between splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
