@@ -396,6 +396,7 @@ if has('autocmd')
   au FileType ruby set nocul
   au BufRead Guardfile set ft=ruby
   au BufRead *.thor set ft=ruby
+  au BufRead .env.* set ft=sh
 endif
 
 "############################################
