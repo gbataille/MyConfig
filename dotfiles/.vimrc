@@ -78,6 +78,8 @@ Plug 'LnL7/vim-nix'
 " Plug 'bitc/vim-hdevtools'
 Plug 'raichoo/haskell-vim'
 Plug 'enomsg/vim-haskellConcealPlus'
+" Graphql
+Plug 'jparise/vim-graphql'
 " FZF
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -93,6 +95,8 @@ Plug 'deoplete-plugins/deoplete-jedi'
 let g:deoplete#enable_at_startup = 1
 " Dash integration
 Plug 'rizzatti/dash.vim'
+" Debugger
+Plug 'vim-vdebug/vdebug'
 
 call plug#end()
 
