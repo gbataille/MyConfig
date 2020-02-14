@@ -399,6 +399,12 @@ if has('autocmd')
   au BufRead .env.* set ft=sh
 endif
 
+"#######################################################
+"######## Go to first line in git commit buffer ########
+"#######################################################
+au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
+
 "############################################
 "###########    Syntastic setup   ###########
 "############################################
