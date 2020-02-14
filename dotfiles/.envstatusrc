@@ -1,9 +1,9 @@
-output_template: [Terraform workspace: {{tf}}] [ruby: {{ruby}}] [python: {{python}}] [venv: {{virtualenv}}] [In nix: {{nix}}]
+output_template: [Terraform workspace: {{tf}}] [node: {{node}}] [python: {{python}}] [venv: {{virtualenv}}] [In nix: {{nix}}]
    {{githud}}
 
-virtualenv: bash -c "basename $VIRTUAL_ENV"
-ruby: bash -c "ruby --version | cut -d ' ' -f 2"
+virtualenv: /bin/zsh -c "basename $VIRTUAL_ENV"
+node: /bin/zsh -c "node --version"
 tf: terraform workspace show
-python: bash -c "python --version | cut -d ' ' -f 2"
+python: /bin/zsh -c "python --version | cut -d ' ' -f 2"
 githud: githud zsh
-nix: bash -c "if ! [ -z '$IN_NIX_SHELL' ]; then echo $IN_NIX_SHELL; fi;"
+nix: /bin/zsh -c "if ! [ -z '$IN_NIX_SHELL' ]; then echo $IN_NIX_SHELL; fi;"
