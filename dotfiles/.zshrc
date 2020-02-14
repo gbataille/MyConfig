@@ -108,18 +108,6 @@ alias branchclean='git branch --merged | grep -v "\*" | grep -v master | grep -v
 alias mergedremotebranch='git branch -r --merged | grep origin | grep -v ">" | grep -v master | grep -v staging | grep -v "rc-" | xargs -L1'
 alias tf='terraform'
 alias sshadd='ssh-add ~/.ssh/id_rsa'
-ave()
-{
-  aws-vault exec -t `ykman oath code | grep "gregory.bataille@pix4d.com@pix4d-users" | awk '{print $NF}'` $@
-}
-ave_admin()
-{
-  aws-vault exec -t `ykman oath code | grep "greg@pix4d" | awk '{print $NF}'` aws_account_management $@
-}
-avl()
-{
-  aws-vault login -d 1h -t `ykman oath code | grep "gregory.bataille@pix4d.com@pix4d-users" | awk '{print $NF}'` $@
-}
 alias pms='ave pix4d -- python manage.py shell_plus'
 alias pmr='ave pix4d -- python manage.py runserver 0.0.0.0:8000'
 alias pcspms='ave pcs_staging_admin -- python manage.py shell_plus'
@@ -161,8 +149,10 @@ aws_get_canonical_account_id()
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
 ## Node
-export NVM_DIR="/Users/gbataille/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
 
 ## Ruby
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
@@ -177,5 +167,26 @@ init_ssh_keys.sh
 # Retinai VPN
 alias vpn_up='sudo wg-quick up utun0'
 alias vpn_down='sudo wg-quick down utun0'
+
+# Retinai projects
+alias yz='yarn --cwd server workspace @sphere/zenith'
+alias yc='yarn --cwd server workspace @sphere/core'
+alias yd='yarn --cwd discovery'
+ave()
+{
+  aws-vault exec -t `ykman oath code | grep "gregory.bataille@retinai" | awk '{print $NF}'` $@
+}
+avl()
+{
+  aws-vault login -d 1h -t `ykman oath code | grep "gregory.bataille@retinai" | awk '{print $NF}'` $@
+}
+avez()
+{
+  ave $1 -- yarn --cwd server workspace @sphere/zenith "${@:2}"
+}
+avec()
+{
+  ave $1 -- yarn --cwd server workspace @sphere/core "${@:2}"
+}
 
 . /Users/gbataille/.nix-profile/etc/profile.d/nix.sh
