@@ -356,7 +356,7 @@ if exists('+colorcolumn')
   set colorcolumn=100
 endif
 " Set it as autocmd to override the ft autocmd from some plugins
-au FileType python,ruby,haskell,go,java,markdown set textwidth=100
+au FileType ruby,haskell,go,java,markdown set textwidth=100
 au FileType javascript,html,text set textwidth=0
 
 if $TERM == 'xterm-256color'
@@ -480,6 +480,11 @@ if has('autocmd')
   au FileType python,htmldjango set expandtab
   au FileType python,htmldjango set autoindent
   au FileType python,htmldjango set fileformat=unix
+  au FileType python setlocal formatprg=yapf
+  au FileType python set textwidth=120
+  if exists('+colorcolumn')
+    au FileType python set colorcolumn=120
+  endif
 
   " Haskell special setup
   au FileType haskell set tabstop=2
