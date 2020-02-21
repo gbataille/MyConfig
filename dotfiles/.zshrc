@@ -79,8 +79,10 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export WORKON_HOME=$HOME/.virtualenvs
 export PATH=/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/opt/postgresql@10/bin:$PATH:/Users/gbataille/.cabal/bin
-export AWS_ASSUME_ROLE_TTL=1h
-export AWS_SESSION_TTL=8h
+export AWS_SESSION_TOKEN_TTL=12h
+export AWS_CHAINED_SESSION_TOKEN_TTL=12h
+export AWS_ASSUME_ROLE_TTL=12h
+export AWS_FEDERATION_TOKEN_TTL=12h
 export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 export CPPFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 export LDFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
@@ -190,3 +192,5 @@ avec()
 }
 
 . /Users/gbataille/.nix-profile/etc/profile.d/nix.sh
+
+eval "$(direnv hook zsh)"
