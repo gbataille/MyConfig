@@ -173,6 +173,7 @@ alias vpn_down='sudo wg-quick down utun0'
 # Retinai projects
 alias yz='yarn --cwd server workspace @sphere/zenith'
 alias yc='yarn --cwd server workspace @sphere/core'
+alias yt='yarn --cwd server workspace @sphere/test-utils'
 alias yd='yarn --cwd discovery'
 ave()
 {
