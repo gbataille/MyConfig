@@ -32,7 +32,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'vim-scripts/bufkill.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'dense-analysis/ale'   " Async syntastic
-" Plug 'scrooloose/syntastic'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
 Plug 'ciaranm/detectindent'
@@ -78,6 +77,7 @@ Plug 'LnL7/vim-nix'
 " Plug 'bitc/vim-hdevtools'
 Plug 'raichoo/haskell-vim'
 Plug 'enomsg/vim-haskellConcealPlus'
+Plug 'sdiehl/vim-ormolu'    " Formatting
 " Graphql
 Plug 'jparise/vim-graphql'
 " FZF
@@ -470,6 +470,33 @@ let g:ycm_filetype_specific_completion_to_disable = {
 let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 2
 
+" See the vim-ormolu plugin
+function! s:OverwriteBuffer(output)
+  let winview = winsaveview()
+  silent! undojoin
+  normal! gg"_dG
+  call append(0, split(a:output, '\v\n'))
+  normal! G"_dd
+  call winrestview(winview)
+endfunction
+function! s:RunYapf()
+  let output = system("yapf " . bufname("%"))
+  if v:shell_error != 0
+    echom output
+  else
+    call s:OverwriteBuffer(output)
+    write
+  endif
+endfunction
+function! s:YapfPython()
+  if executable("yapf")
+    call s:RunYapf()
+  elseif !exists("s:exec_warned")
+    let s:exec_warned = 1
+    echom "yapf executable not found"
+  endif
+endfunction
+
 if has('autocmd')
   autocmd BufRead * :DetectIndent
 
@@ -481,6 +508,7 @@ if has('autocmd')
   au FileType python,htmldjango set autoindent
   au FileType python,htmldjango set fileformat=unix
   au FileType python setlocal formatprg=yapf
+  au BufWritePost *.py call s:YapfPython()
   au FileType python set textwidth=120
   if exists('+colorcolumn')
     au FileType python set colorcolumn=120
