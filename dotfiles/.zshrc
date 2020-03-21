@@ -62,7 +62,7 @@ ZSH_THEME="gba"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump gitfast tmuxinator nix-shell zsh-syntax-highlighting)
+plugins=(autojump gitfast nix-shell zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 set -o vi
@@ -79,13 +79,14 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export WORKON_HOME=$HOME/.virtualenvs
 export PATH=/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/opt/postgresql@10/bin:$PATH:/Users/gbataille/.cabal/bin
-export AWS_SESSION_TOKEN_TTL=12h
-export AWS_CHAINED_SESSION_TOKEN_TTL=12h
-export AWS_ASSUME_ROLE_TTL=12h
-export AWS_FEDERATION_TOKEN_TTL=12h
+export AWS_SESSION_TOKEN_TTL=1h
+export AWS_CHAINED_SESSION_TOKEN_TTL=1h
+export AWS_ASSUME_ROLE_TTL=1h
+export AWS_FEDERATION_TOKEN_TTL=1h
 export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 export CPPFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 export LDFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
+export ZSH_HIGHLIGHT_MAXLENGTH=60     # For perf on text paste
 
 alias ls='ls -Gh'
 alias cdm='cd ~/Documents/Prog/MyConfig'
@@ -149,6 +150,18 @@ aws_get_canonical_account_id()
 # TOOLS
 [[ -f `brew --prefix`/etc/bash_completion ]] && . `brew --prefix`/etc/bash_completion
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
+generate_random_alpha()
+{
+  if [ -z "$1" ]; then; echo "Please pass a length as parameter"; return; fi
+  LC_ALL=C tr -dc 'A-Za-z0-9' </dev/urandom | head -c $1 | pbcopy
+}
+
+generate_random()
+{
+  if [ -z "$1" ]; then; echo "Please pass a length as parameter"; return; fi
+  LC_ALL=C tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' </dev/urandom | head -c $1 | pbcopy
+}
 
 ## Node
 export NVM_DIR="$HOME/.nvm"
