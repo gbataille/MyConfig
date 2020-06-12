@@ -8,6 +8,8 @@
 	sw = switch
 	swc = switch -c
 	commitamend = commit --amend --no-edit
+	ca = commit --amend
+	ce = commit --amend --no-edit
 	p = push
 	b = branch -v
 	t = tag -a
