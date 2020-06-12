@@ -78,7 +78,7 @@ export TZ=Europe/Paris
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export WORKON_HOME=$HOME/.virtualenvs
-export PATH=/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/opt/postgresql@10/bin:$PATH:/Users/gbataille/.cabal/bin
+export PATH=/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/opt/postgresql@10/bin:$PATH:/Users/gbataille/.cabal/bin:/Users/gbataille/Documents/Prog/RetinAI/scripts
 export AWS_SESSION_TOKEN_TTL=1h
 export AWS_CHAINED_SESSION_TOKEN_TTL=1h
 export AWS_ASSUME_ROLE_TTL=1h
@@ -178,15 +178,17 @@ eval "$(pyenv virtualenv-init -)"
 
 # Init SSH keys
 init_ssh_keys.sh
+# Setup local DNS
+setup_host_file.sh
 
 # Retinai VPN
 alias vpn_up='sudo wg-quick up utun0'
 alias vpn_down='sudo wg-quick down utun0'
 
 # Retinai projects
-alias yz='yarn --cwd server workspace @sphere/zenith'
-alias yc='yarn --cwd server workspace @sphere/core'
-alias yt='yarn --cwd server workspace @sphere/test-utils'
+alias yz='yarn --cwd server workspace "@sphere/zenith"'
+alias yc='yarn --cwd server workspace "@sphere/core"'
+alias yt='yarn --cwd server workspace "@sphere/test-utils"'
 alias yd='yarn --cwd discovery'
 ave()
 {
@@ -203,6 +205,16 @@ avez()
 avec()
 {
   ave $1 -- yarn --cwd server workspace @sphere/core "${@:2}"
+}
+
+get_db_password()
+{
+  ave $1 -- aws secretsmanager get-secret-value --secret-id backend_appserver/db_retinai_admin | jq -r '.SecretString' | pbcopy
+}
+
+get_rabbit_password()
+{
+  ave $1 -- aws secretsmanager get-secret-value --secret-id backend_appserver/rabbitmq | jq -r '.SecretString' | pbcopy
 }
 
 . /Users/gbataille/.nix-profile/etc/profile.d/nix.sh
