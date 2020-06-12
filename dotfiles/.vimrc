@@ -143,9 +143,16 @@ endif " has("autocmd")
 
 " Allows unsaved buffer to exist
 set hidden
+autocmd FileType netrw setl bufhidden=wipe
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 set previewheight=20
+
+" https://www.youtube.com/watch?v=XA2WjJbmmoM
+set path+=**
+let g:netrw_banner=0
+let g:netrw_liststyle=3
 
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
@@ -479,6 +486,25 @@ function! s:OverwriteBuffer(output)
   normal! G"_dd
   call winrestview(winview)
 endfunction
+
+function! s:RunISort()
+  let output = system("isort -d " . bufname("%"))
+  if v:shell_error != 0
+    echom output
+  else
+    call s:OverwriteBuffer(output)
+    write
+  endif
+endfunction
+function! s:ISortPython()
+  if executable("isort")
+    call s:RunISort()
+  elseif !exists("s:exec_warned")
+    let s:exec_warned = 1
+    echom "isort executable not found"
+  endif
+endfunction
+
 function! s:RunYapf()
   let output = system("yapf " . bufname("%"))
   if v:shell_error != 0
@@ -497,6 +523,42 @@ function! s:YapfPython()
   endif
 endfunction
 
+function! s:RunJSFmt()
+  let output = system("jsfmt " . bufname("%"))
+  if v:shell_error != 0
+    echom output
+  else
+    call s:OverwriteBuffer(output)
+    write
+  endif
+endfunction
+function! s:JSFmt()
+  if executable("jsfmt")
+    call s:RunJSFmt()
+  elseif !exists("s:exec_warned")
+    let s:exec_warned = 1
+    echom "jsfmt executable not found"
+  endif
+endfunction
+
+function! s:RunTSFmt()
+  let output = system("tsfmt " . bufname("%"))
+  if v:shell_error != 0
+    echom output
+  else
+    call s:OverwriteBuffer(output)
+    write
+  endif
+endfunction
+function! s:TSFmt()
+  if executable("tsfmt")
+    call s:RunTSFmt()
+  elseif !exists("s:exec_warned")
+    let s:exec_warned = 1
+    echom "tsfmt executable not found"
+  endif
+endfunction
+
 if has('autocmd')
   autocmd BufRead * :DetectIndent
 
@@ -509,10 +571,17 @@ if has('autocmd')
   au FileType python,htmldjango set fileformat=unix
   au FileType python setlocal formatprg=yapf
   au BufWritePost *.py call s:YapfPython()
+  au BufWritePost *.py call s:ISortPython()
   au FileType python set textwidth=120
   if exists('+colorcolumn')
     au FileType python set colorcolumn=120
   endif
+
+  " Javascript
+  au BufWritePost *.js call s:TSFmt()
+
+  " Typescript
+  au BufWritePost *.ts call s:TSFmt()
 
   " Haskell special setup
   au FileType haskell set tabstop=2
