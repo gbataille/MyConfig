@@ -67,8 +67,6 @@ source $ZSH/oh-my-zsh.sh
 
 set -o vi
 
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home"
-
 BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-solarized-dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
@@ -79,10 +77,10 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export WORKON_HOME=$HOME/.virtualenvs
 export PATH=/Users/gbataille/Documents/Prog/MyConfig/scripts:/usr/local/opt/postgresql@10/bin:$PATH:/Users/gbataille/.cabal/bin:/Users/gbataille/Documents/Prog/RetinAI/scripts
-export AWS_SESSION_TOKEN_TTL=1h
+export AWS_ASSUME_ROLE_TTL=4h
 export AWS_CHAINED_SESSION_TOKEN_TTL=1h
-export AWS_ASSUME_ROLE_TTL=1h
-export AWS_FEDERATION_TOKEN_TTL=1h
+export AWS_FEDERATION_TOKEN_TTL=4h
+export AWS_SESSION_TOKEN_TTL=4h
 export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 export CPPFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 export LDFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
@@ -115,6 +113,7 @@ alias pms='ave pix4d -- python manage.py shell_plus'
 alias pmr='ave pix4d -- python manage.py runserver 0.0.0.0:8000'
 alias pcspms='ave pcs_staging_admin -- python manage.py shell_plus'
 alias pcspmr='ave pcs_staging_admin -- python manage.py runserver 0.0.0.0:8888'
+alias rgall='rg --hidden --no-ignore'
 cat()
 {
   bat $@
