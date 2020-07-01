@@ -54,6 +54,7 @@ Plug 'osyo-manga/vim-over'
 Plug 'Konfekt/FastFold'
 " Typescript
 Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 " Editorconfig
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tmhedberg/SimpylFold'
@@ -97,6 +98,9 @@ let g:deoplete#enable_at_startup = 1
 Plug 'rizzatti/dash.vim'
 " Debugger
 Plug 'vim-vdebug/vdebug'
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -595,9 +599,11 @@ endif
 "############################################
 "############ UltiSnips setup ###############
 "############################################
-" let g:UltiSnipsExpandTrigger="<c-r>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<leader>s"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsSnippetDirectories=["snips", "UltiSnips"]
+
 
 "############################################
 "############ Org-mode setup ################
