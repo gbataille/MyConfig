@@ -415,57 +415,6 @@ endif
 "#######################################################
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
-
-"############################################
-"###########    Syntastic setup   ###########
-"############################################
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_aggregate_errors = 1
-"
-" let g:syntastic_javascript_checkers = ['jsl']
-"
-" let g:syntastic_typescript_checkers = ['tslint']
-" let g:syntastic_typescript_tsc_fname = ''
-"
-" let g:syntastic_haskell_checkers = ['hlint']
-"
-" let g:syntastic_python_python_exec = 'python'
-" let g:syntastic_python_checkers = ['flake8', 'python']
-" let g:syntastic_python_pylint_args = '--rcfile=' . findfile(".pylintrc", ".;")
-" let g:syntastic_python_pylint_post_args = '--msg-template="{path}:{line}:{column}:{C}: [{symbol} {msg_id}] {msg}"'
-"
-" let g:syntastic_ruby_checkers = ['mri']
-"
-" let g:syntastic_html_tidy_exec = '/usr/local/Cellar/tidy-html5/5.0.0/bin/tidy'
-" let g:syntastic_html_tidy_ignore_errors = []
-" let g:syntastic_html_tidy_quiet_messages = {
-"   \ "regex": '\m^<.*> is not recognized!'
-"   \ }
-
-"############################################
-"##############    YCM setup   ##############
-"############################################
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_complete_in_comments = 1
-let g:ycm_complete_in_strings = 1
-let g:ycm_filepath_completion_use_working_dir = 1
-let g:ycm_register_as_syntastic_checker = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_max_num_candidates = 10
-let g:ycm_semantic_triggers = {
-  \ 'typescript': ['.'],
-  \ 'haskell': ['.']
-  \ }
-let g:ycm_filetype_blacklist = {
-  \ 'gitcommit' : 1,
-  \ 'vim' : 1,
-  \ }
-" Oddly enough, it seems that the semantic completion triggers for ruby while
-" YCM has no logic to handle it. Gives odd results
-let g:ycm_filetype_specific_completion_to_disable = {
-  \ 'gitcommit': 1,
-  \ }
-
 "############################################
 "##############    Deoplete    ##############
 "############################################
@@ -582,10 +531,14 @@ if has('autocmd')
   endif
 
   " Javascript
-  au BufWritePost *.js call s:TSFmt()
+  au BufWritePost *.js,*.jsx call s:TSFmt()
+  " The preview pane annoyingly stays open in TS
+  au InsertLeave *.js,*.jsx :pc
 
   " Typescript
-  au BufWritePost *.ts call s:TSFmt()
+  au BufWritePost *.ts,*.tsx call s:TSFmt()
+  " The preview pane annoyingly stays open in TS
+  au InsertLeave *.ts,*.tsx :pc
 
   " Haskell special setup
   au FileType haskell set tabstop=2
@@ -600,10 +553,9 @@ endif
 "############ UltiSnips setup ###############
 "############################################
 let g:UltiSnipsExpandTrigger="<leader>s"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<leader>n"
+let g:UltiSnipsJumpBackwardTrigger="<leader>p"
 let g:UltiSnipsSnippetDirectories=["snips", "UltiSnips"]
-
 
 "############################################
 "############ Org-mode setup ################
