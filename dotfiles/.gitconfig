@@ -23,6 +23,7 @@
 	g = grep -W
 [core]
 	excludesfile = /Users/gbataille/.gitignore_global
+	hooksPath = /Users/gbataille/Documents/Prog/MyConfig/dotfiles/.git_hooks
 [push]
 	default = simple
 [github]
