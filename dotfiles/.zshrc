@@ -85,6 +85,8 @@ export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 export CPPFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 export LDFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 export ZSH_HIGHLIGHT_MAXLENGTH=60     # For perf on text paste
+export GITHUD_DEBUG=TRUE
+export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
 alias ls='ls -Gh'
 alias cdm='cd ~/Documents/Prog/MyConfig'
