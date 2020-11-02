@@ -220,4 +220,19 @@ get_rabbit_password()
 
 . /Users/gbataille/.nix-profile/etc/profile.d/nix.sh
 
+int_dump()
+{
+  pg_dump -h main-db.cluster-ci9m4d8dhtnf.eu-central-1.rds.amazonaws.com -U retinai_admin -d sphere --format=c -f /var/local/retinai/dumps/`date +"%Y%m%d"`_int_db.dump
+}
+
+int_run()
+{
+  docker run --rm -p 35432:5432 -e POSTGRES_USER=retinai_admin -e POSTGRES_PASSWORD=test -e POSTGRES_DB=sphere -v /private/var/local/retinai/int_run:/var/lib/postgresql/data postgres:11-alpine
+}
+
+int_load()
+{
+  pg_restore -h localhost -p 35432 -U retinai_admin -d sphere /var/local/retinai/dumps/`ls -l /var/local/retinai/dumps/ | tail -1 | awk '{print $9}'`
+}
+
 eval "$(direnv hook zsh)"

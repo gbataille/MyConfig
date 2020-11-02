@@ -334,11 +334,6 @@ nnoremap <leader>e :FZF<CR>
 nnoremap <C-e> :GFiles<CR>
 "Remap CtrlP
 nnoremap <C-t> :CtrlPTag<CR>
-"shortcut to GhcMod
-au BufNewFile,BufRead *.hs
-      \ nnoremap <leader>f :GhcModTypeClear<CR>
-au BufNewFile,BufRead *.hs
-      \ nnoremap <leader>g :GhcModType<CR>
 "map a buffer cycling shortcut
 nnoremap <leader>l :ls<CR>:b<Space>
 nnoremap <leader>n :bnext<CR>
@@ -355,6 +350,8 @@ nnoremap <leader>w <C-w><C-w>
 " Go to definition
 nnoremap <leader>g :ALEGoToDefinition<CR>
 nnoremap <leader>h :ALEFindReferences<CR>
+" RipGrep word under cursor
+nnoremap <leader>f :Rg <C-R><C-W><CR>
 
 " Move between splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
@@ -512,6 +509,24 @@ function! s:TSFmt()
   endif
 endfunction
 
+function! s:RunPrettier()
+  let output = system("prettier " . bufname("%"))
+  if v:shell_error != 0
+    echom output
+  else
+    call s:OverwriteBuffer(output)
+    write
+  endif
+endfunction
+function! s:Prettier()
+  if executable("prettier")
+    call s:RunPrettier()
+  elseif !exists("s:exec_warned")
+    let s:exec_warned = 1
+    echom "prettier executable not found"
+  endif
+endfunction
+
 if has('autocmd')
   autocmd BufRead * :DetectIndent
 
@@ -531,14 +546,17 @@ if has('autocmd')
   endif
 
   " Javascript
-  au BufWritePost *.js,*.jsx call s:TSFmt()
+  au BufWritePost *.js,*.jsx call s:Prettier()
   " The preview pane annoyingly stays open in TS
   au InsertLeave *.js,*.jsx :pc
 
   " Typescript
-  au BufWritePost *.ts,*.tsx call s:TSFmt()
+  au BufWritePost *.ts,*.tsx call s:Prettier()
   " The preview pane annoyingly stays open in TS
   au InsertLeave *.ts,*.tsx :pc
+
+  " Graphql
+  au BufWritePost *.graphql call s:Prettier()
 
   " Haskell special setup
   au FileType haskell set tabstop=2
@@ -778,6 +796,8 @@ let g:scala_scaladoc_indent = 1
 "############################################
 "################### ALE ####################
 "############################################
+let g:ale_sign_error = '✘✘'
+let g:ale_sign_warning = '⚠⚠'
 let g:ale_completion_enabled = 0
 let g:ale_completion_delay = 500
 let g:ale_lint_on_text_changed = 'never'
