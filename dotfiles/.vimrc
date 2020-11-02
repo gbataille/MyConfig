@@ -101,6 +101,7 @@ Plug 'vim-vdebug/vdebug'
 " Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'liuchengxu/vim-which-key'
 
 call plug#end()
 
@@ -262,7 +263,11 @@ set laststatus=2  " Always show status line.
 set cul   " cursor line highlight
 
 let mapleader = ","
+nnoremap <silent> <leader> :WhichKey ','<CR>
+set timeoutlen=1000
 
+map <leader>lo :lopen<CR>
+map <leader>lc :lclose<CR>
 nmap <silent> <leader>s :set spell!<CR>
 
 if has("autocmd")
