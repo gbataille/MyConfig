@@ -418,6 +418,7 @@ endif
 "######## Go to first line in git commit buffer ########
 "#######################################################
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+au FileType gitrebase au! BufEnter git-rebase-todo call setpos('.', [0, 1, 1, 0])
 
 "############################################
 "##############    Deoplete    ##############

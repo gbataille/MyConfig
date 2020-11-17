@@ -112,5 +112,6 @@ merge_branch_commits_push_pull_infix= ⇆
 # run_fetcher_daemon=False
 # githudd_sleep_seconds=30      # how long does the daemon sleep between cycles
 # githudd_pid_file_path=/usr/local/var/run/githudd.pid
+# githudd_lock_file_path=/Users/gbataille/Downloads/githud.lock
 # githudd_socket_file_path=/usr/local/var/run/githudd.socket
 # githudd_log_file_path=/dev/null
