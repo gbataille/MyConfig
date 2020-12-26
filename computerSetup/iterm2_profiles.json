@@ -294,7 +294,7 @@
       "Text" : "[1;2P"
     }
   },
-  "Window Type" : 0,
+  "Window Type" : 15,
   "Background Image Location" : "",
   "Blur" : false,
   "Badge Color" : {
@@ -447,7 +447,7 @@
     "Blue Component" : 0.59607843137254901,
     "Green Component" : 0.63137254901960782
   },
-  "Normal Font" : "MesloLGSForPowerline-Regular 11",
+  "Normal Font" : "MesloLGSForPowerline-Regular 13",
   "Ansi 0 Color" : {
     "Red Component" : 0.027450980392156866,
     "Color Space" : "sRGB",
@@ -1638,7 +1638,7 @@
     "Alpha Component" : 0.5,
     "Green Component" : 0.1491314172744751
   },
-  "Initial Text" : "export SHELL_USER=GuyInTheShell; clear",
+  "Initial Text" : "",
   "Scrollback Lines" : 0,
   "Send Code When Idle" : false,
   "Close Sessions On End" : true,
@@ -1777,7 +1777,7 @@
   "Custom Directory" : "No",
   "Use Non-ASCII Font" : false,
   "Has Hotkey" : false,
-  "Normal Font" : "MesloLGSForPowerline-Regular 24",
+  "Normal Font" : "MesloLGSForPowerline-Regular 32",
   "Ansi 6 Color" : {
     "Red Component" : 0.16470588235294117,
     "Color Space" : "sRGB",
