@@ -45,7 +45,7 @@ ZSH_THEME="gba"
 # DISABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -183,57 +183,15 @@ init_ssh_keys.sh
 # Setup local DNS
 setup_host_file.sh
 
-# Retinai VPN
-alias vpn_up='sudo wg-quick up utun0'
-alias vpn_down='sudo wg-quick down utun0'
-
-# Retinai projects
-alias yz='yarn --cwd server workspace "@sphere/zenith"'
-alias yc='yarn --cwd server workspace "@sphere/core"'
-alias yt='yarn --cwd server workspace "@sphere/test-utils"'
-alias yd='yarn --cwd discovery'
 ave()
 {
-  aws-vault exec -t `ykman oath code | grep "gregory.bataille@retinai" | awk '{print $NF}'` $@
+  aws-vault exec -t `ykman oath code | grep "gregory.bataille@swissdecode" | awk '{print $NF}'` $@
 }
 avl()
 {
-  aws-vault login -d 1h -t `ykman oath code | grep "gregory.bataille@retinai" | awk '{print $NF}'` $@
-}
-avez()
-{
-  ave $1 -- yarn --cwd server workspace @sphere/zenith "${@:2}"
-}
-avec()
-{
-  ave $1 -- yarn --cwd server workspace @sphere/core "${@:2}"
-}
-
-get_db_password()
-{
-  ave $1 -- aws secretsmanager get-secret-value --secret-id backend_appserver/db_retinai_admin | jq -r '.SecretString' | pbcopy
-}
-
-get_rabbit_password()
-{
-  ave $1 -- aws secretsmanager get-secret-value --secret-id backend_appserver/rabbitmq | jq -r '.SecretString' | pbcopy
+  aws-vault login -d 1h -t `ykman oath code | grep "gregory.bataille@swissdecode" | awk '{print $NF}'` $@
 }
 
 . /Users/gbataille/.nix-profile/etc/profile.d/nix.sh
-
-int_dump()
-{
-  pg_dump -h main-db.cluster-ci9m4d8dhtnf.eu-central-1.rds.amazonaws.com -U retinai_admin -d sphere --format=c -f /var/local/retinai/dumps/`date +"%Y%m%d"`_int_db.dump
-}
-
-int_run()
-{
-  docker run --rm -p 35432:5432 -e POSTGRES_USER=retinai_admin -e POSTGRES_PASSWORD=test -e POSTGRES_DB=sphere -v /private/var/local/retinai/int_run:/var/lib/postgresql/data postgres:11-alpine
-}
-
-int_load()
-{
-  pg_restore -h localhost -p 35432 -U retinai_admin -d sphere /var/local/retinai/dumps/`ls -l /var/local/retinai/dumps/ | tail -1 | awk '{print $9}'`
-}
 
 eval "$(direnv hook zsh)"
