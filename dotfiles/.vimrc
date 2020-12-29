@@ -537,6 +537,7 @@ endfunction
 
 if has('autocmd')
   autocmd BufRead * :DetectIndent
+  autocmd BufRead *.nasm set ft=nasm
 
   " Python special setup
   au FileType python,htmldjango set tabstop=4
@@ -816,6 +817,8 @@ let g:ale_linters = {
 \}
 " ghc needs the source of the program
 let b:ale_haskell_stack_ghc_options = '-fno-code -v0 -i' . getcwd() . '/src'
+" configure nasm to use elf64
+let g:ale_nasm_nasm_options = '-f elf64'
 
 "############################################
 "################# DEOPLETE #################
