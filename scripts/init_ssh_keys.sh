@@ -1,5 +1,5 @@
 #!/bin/zsh
-existing_key=`ssh-add -l | grep "ED25519"`
+existing_key=`ssh-add -l | grep "gregory.bataille"`
 if [ -z "$existing_key" ]; then
   echo -e "Main SSH key not loaded - doing it now\n"
   ssh-add ~/.ssh/id_ed25519
