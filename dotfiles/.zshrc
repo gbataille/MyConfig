@@ -113,10 +113,8 @@ alias branchclean='git branch --merged | grep -v "\*" | grep -v master | grep -v
 alias mergedremotebranch='git branch -r --merged | grep origin | grep -v ">" | grep -v master | grep -v staging | grep -v "rc-" | xargs -L1'
 alias tf='terraform'
 alias sshadd='ssh-add ~/.ssh/id_rsa'
-alias pms='ave pix4d -- python manage.py shell_plus'
-alias pmr='ave pix4d -- python manage.py runserver 0.0.0.0:8000'
-alias pcspms='ave pcs_staging_admin -- python manage.py shell_plus'
-alias pcspmr='ave pcs_staging_admin -- python manage.py runserver 0.0.0.0:8888'
+alias pms='python manage.py shell_plus'
+alias pmr='python manage.py runserver 0.0.0.0:8000'
 alias rgall='rg --hidden --no-ignore'
 cat()
 {
@@ -184,13 +182,16 @@ init_ssh_keys.sh
 # Setup local DNS
 setup_host_file.sh
 
+avmfa() {
+  ykman oath code | grep aws-sdc | awk '{print $2}' | pbcopy
+}
 ave()
 {
-  aws-vault exec -t `ykman oath code | grep "gregory.bataille@swissdecode" | awk '{print $NF}'` $@
+  aws-vault exec -t `ykman oath code | grep "aws-sdc" | awk '{print $NF}'` $@
 }
 avl()
 {
-  aws-vault login -d 1h -t `ykman oath code | grep "gregory.bataille@swissdecode" | awk '{print $NF}'` $@
+  aws-vault login -d 1h -t `ykman oath code | grep "aws-sdc" | awk '{print $NF}'` $@
 }
 
 # . $HOME/.nix-profile/etc/profile.d/nix.sh

@@ -555,7 +555,7 @@ if has('autocmd')
   endif
 
   " Javascript
-  au BufWritePost *.js,*.jsx call s:Prettier()
+  au BufWritePost *.js,*.jsx,*.json call s:Prettier()
   " The preview pane annoyingly stays open in TS
   au InsertLeave *.js,*.jsx :pc
 
