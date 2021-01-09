@@ -102,7 +102,7 @@ alias npmr='npm run'
 alias npmrs='npm run -s'
 alias pm='python manage.py'
 alias pmt='python manage.py test'
-alias pmtk='LOG_LEVEL=WARNING python manage.py test -v 2 --no-buffer --keepdb'
+alias pmtk='LOG_LEVEL=WARNING python manage.py test -v 2 --keepdb'
 alias droptestdb='dropdb test_pix4ddb'
 alias pcsdroptestdb='dropdb test_pcs'
 alias mux='tmuxinator'
@@ -128,7 +128,7 @@ ll()
 alias l='ll'
 tree()
 {
-  exa -la --git -F -T $@
+  exa -la --git -F -T -I ".mypy_cache|.DS_Store|__pycache__|.git" $@
 }
 
 if [ -f /usr/local/bin/nvim ]; then
