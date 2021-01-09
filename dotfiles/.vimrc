@@ -284,6 +284,8 @@ set wildignore+=*.swp,*.back,*.class,*/tmp/*,*.o
 "Shortcuts for Git actions
 nnoremap <leader>gg :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gp :Git push<CR>
+nnoremap <leader>gpf :Git push -f<CR>
 
 "Folding setup
 set foldmethod=manual
