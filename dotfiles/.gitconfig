@@ -21,6 +21,7 @@
 	dc = diff --cached -w
 	branch-clean = "!sh clean_remote_branches.sh"
 	g = grep -W
+	clb = clean_local_branches
 [core]
 	excludesfile = /Users/gbataille/.gitignore_global
 	hooksPath = /Users/gbataille/Documents/Prog/MyConfig/dotfiles/.git_hooks

@@ -1,7 +1,7 @@
 #!/bin/sh
-echo "Setting up local.sdc.com with your local IP"
+echo "Setting up local.swissdecode.com with your local IP"
 
-dns=local.sdc.com
+dns=local.swissdecode.com
 ip=`ifconfig en0 | grep inet | grep -v inet6 | cut -d ' ' -f2`
 existing_ip=`grep $dns /etc/hosts | awk '{print $1}'`
 

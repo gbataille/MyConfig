@@ -103,6 +103,8 @@ Plug 'vim-vdebug/vdebug'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'liuchengxu/vim-which-key'
+" TOML
+Plug 'cespare/vim-toml'
 
 call plug#end()
 
@@ -371,6 +373,10 @@ nnoremap <c-l> <c-w>l
 " Displays the 100 columns in color for wrapping indication
 if exists('+colorcolumn')
   set colorcolumn=100
+
+  if has('autocmd')
+    au FileType typescript,typescriptreact,javascript,javascriptreact set colorcolumn=120
+  endif
 endif
 " Set it as autocmd to override the ft autocmd from some plugins
 au FileType ruby,haskell,go,java,markdown set textwidth=100
@@ -549,8 +555,8 @@ if has('autocmd')
   au FileType python,htmldjango set autoindent
   au FileType python,htmldjango set fileformat=unix
   au FileType python setlocal formatprg=yapf
-  au BufWritePost *.py call s:YapfPython()
   au BufWritePost *.py call s:ISortPython()
+  au BufWritePost *.py call s:YapfPython()
   au FileType python set textwidth=120
   if exists('+colorcolumn')
     au FileType python set colorcolumn=120

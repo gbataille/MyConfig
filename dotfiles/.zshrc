@@ -78,10 +78,12 @@ export LC_CTYPE=en_US.UTF-8
 export WORKON_HOME=$HOME/.virtualenvs
 export PATH=$HOME/Documents/Prog/MyConfig/scripts:/usr/local/opt/postgresql@10/bin:$PATH:$HOME/.cabal/bin
 export PYTHONPATH=$HOME/Documents/Prog/Perso/pytoolkit:$PYTHONPATH
+export PYTHONBREAKPOINT=ipdb.set_trace
 export AWS_ASSUME_ROLE_TTL=4h
 export AWS_CHAINED_SESSION_TOKEN_TTL=1h
 export AWS_FEDERATION_TOKEN_TTL=4h
 export AWS_SESSION_TOKEN_TTL=4h
+export AWS_PAGER=
 export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 export CPPFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 export LDFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
@@ -90,32 +92,32 @@ export GITHUD_DEBUG=TRUE
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 export SHELL_USER=gbataille
 
-alias ls='ls -Gh'
+alias ..='cd ..'
+alias branchclean='git branch --merged | grep -v "\*" | grep -v master | grep -v staging | xargs -n 1 git branch -d'
+alias c='clear'
+alias cdg='cd ~/Documents/Prog/GregsSandbox/'
 alias cdm='cd ~/Documents/Prog/MyConfig'
 alias cdp='cd ~/Documents/Prog/'
-alias cdg='cd ~/Documents/Prog/GregsSandbox/'
-alias c='clear'
-alias ..='cd ..'
 alias gitk='gitk --all'
-alias ctest='cabal test --show-details=streaming'
+alias ls='ls -Gh'
+alias mergeclean='rm $(find . -name "*BACKUP*");rm $(find . -name "*REMOTE*");rm $(find . -name "*LOCAL*");rm $(find . -name "*BASE*")'
+alias mergedremotebranch='git branch -r --merged | grep origin | grep -v ">" | grep -v master | grep -v staging | grep -v "rc-" | xargs -L1'
 alias npmr='npm run'
 alias npmrs='npm run -s'
+alias origclean='rm $(find . -name "*.orig")'
 alias pm='python manage.py'
+alias pmr='python manage.py runserver 0.0.0.0:8000'
+alias pms='python manage.py shell_plus'
 alias pmt='python manage.py test'
 alias pmtk='LOG_LEVEL=WARNING python manage.py test -v 2 --keepdb'
-alias droptestdb='dropdb test_pix4ddb'
-alias pcsdroptestdb='dropdb test_pcs'
-alias mux='tmuxinator'
 alias pyclean='rm $(find . -name "*.pyc"); rm -r $(find . -name "__pycache__")'
-alias origclean='rm $(find . -name "*.orig")'
-alias mergeclean='rm $(find . -name "*BACKUP*");rm $(find . -name "*REMOTE*");rm $(find . -name "*LOCAL*");rm $(find . -name "*BASE*")'
-alias branchclean='git branch --merged | grep -v "\*" | grep -v master | grep -v staging | xargs -n 1 git branch -d'
-alias mergedremotebranch='git branch -r --merged | grep origin | grep -v ">" | grep -v master | grep -v staging | grep -v "rc-" | xargs -L1'
-alias tf='terraform'
-alias sshadd='ssh-add ~/.ssh/id_rsa'
-alias pms='python manage.py shell_plus'
-alias pmr='python manage.py runserver 0.0.0.0:8000'
 alias rgall='rg --hidden --no-ignore'
+alias sshadd='ssh-add ~/.ssh/id_rsa'
+alias tf='terraform'
+alias vpn_down='sudo wg-quick down wg0'
+alias vpn_up='sudo wg-quick up wg0'
+alias ys='yarn start'
+alias yt='yarn test -- --verbose'
 cat()
 {
   bat $@
@@ -128,7 +130,7 @@ ll()
 alias l='ll'
 tree()
 {
-  exa -la --git -F -T -I ".mypy_cache|.DS_Store|__pycache__|.git" $@
+  exa -la --git -F -T -I ".mypy_cache|.DS_Store|__pycache__|.git|node_modules" $@
 }
 
 if [ -f /usr/local/bin/nvim ]; then
@@ -192,6 +194,14 @@ ave()
 avl()
 {
   aws-vault login -d 1h -t `ykman oath code | grep "aws-sdc" | awk '{print $NF}'` $@
+}
+avpmr()
+{
+  aws-vault exec -t `ykman oath code | grep "aws-sdc" | awk '{print $NF}'` $1 -- python manage.py runserver 0.0.0.0:8000
+}
+avpms()
+{
+  aws-vault exec -t `ykman oath code | grep "aws-sdc" | awk '{print $NF}'` $1 -- python manage.py shell_plus
 }
 
 # . $HOME/.nix-profile/etc/profile.d/nix.sh
