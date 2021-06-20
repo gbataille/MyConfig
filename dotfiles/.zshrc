@@ -76,7 +76,6 @@ export TZ=Europe/Paris
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export WORKON_HOME=$HOME/.virtualenvs
-export PATH=$HOME/Documents/Prog/MyConfig/scripts:/usr/local/opt/postgresql@10/bin:$PATH:$HOME/.cabal/bin
 export PYTHONPATH=$HOME/Documents/Prog/Perso/pytoolkit:$PYTHONPATH
 export PYTHONBREAKPOINT=ipdb.set_trace
 export AWS_ASSUME_ROLE_TTL=4h
@@ -114,8 +113,6 @@ alias pyclean='rm $(find . -name "*.pyc"); rm -r $(find . -name "__pycache__")'
 alias rgall='rg --hidden --no-ignore'
 alias sshadd='ssh-add ~/.ssh/id_rsa'
 alias tf='terraform'
-alias vpn_down='sudo wg-quick down wg0'
-alias vpn_up='sudo wg-quick up wg0'
 alias ys='yarn start'
 alias yt='yarn test -- --verbose'
 cat()
@@ -182,26 +179,34 @@ eval "$(pyenv virtualenv-init -)"
 # Init SSH keys
 init_ssh_keys.sh
 # Setup local DNS
-setup_host_file.sh
+# setup_host_file.sh
 
 avmfa() {
-  ykman oath code | grep aws-sdc | awk '{print $2}' | pbcopy
+  ykman oath accounts code | grep aws-sdc | awk '{print $2}' | pbcopy
 }
 ave()
 {
-  aws-vault exec -t `ykman oath code | grep "aws-sdc" | awk '{print $NF}'` $@
+  aws-vault exec --prompt=ykman $@
 }
 avl()
 {
-  aws-vault login -d 1h -t `ykman oath code | grep "aws-sdc" | awk '{print $NF}'` $@
+  aws-vault login -d 1h --prompt=ykman $@
 }
 avpmr()
 {
-  aws-vault exec -t `ykman oath code | grep "aws-sdc" | awk '{print $NF}'` $1 -- python manage.py runserver 0.0.0.0:8000
+  aws-vault exec --prompt=ykman $@ -- python manage.py runserver 0.0.0.0:8000
 }
 avpms()
 {
-  aws-vault exec -t `ykman oath code | grep "aws-sdc" | awk '{print $NF}'` $1 -- python manage.py shell_plus
+  aws-vault exec --prompt=ykman $@ -- python manage.py shell_plus
+}
+vpn_down()
+{
+  sudo wg-quick down $1
+}
+vpn_up()
+{
+  sudo wg-quick up $1
 }
 
 # . $HOME/.nix-profile/etc/profile.d/nix.sh
