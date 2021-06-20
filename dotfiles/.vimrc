@@ -18,6 +18,7 @@ call plug#begin()
 " My Plugins here:
 "
 " original repos on github
+" Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rbenv'
 Plug 'vim-ruby/vim-ruby'
@@ -100,7 +101,7 @@ Plug 'rizzatti/dash.vim'
 " Debugger
 Plug 'vim-vdebug/vdebug'
 " Snippets
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'liuchengxu/vim-which-key'
 " TOML
