@@ -1,9 +1,0 @@
-output_template: [TF: {{tf}}] [node: {{node}}] [python: {{python}}] [venv: {{virtualenv}}] [Nix: {{nix}}]
-   {{githud}}
-
-virtualenv: /bin/zsh -c "basename $VIRTUAL_ENV"
-node: /bin/zsh -c "node --version"
-tf: terraform workspace show
-python: /bin/zsh -c "python --version | cut -d ' ' -f 2"
-githud: githud zsh
-nix: /bin/zsh -c "if ! [ -z '$IN_NIX_SHELL' ]; then echo $IN_NIX_SHELL; fi;"
