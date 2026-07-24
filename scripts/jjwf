@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if ! jj root >/dev/null 2>&1; then
+  echo "Error: not inside a jj repository" >&2
+  exit 1
+fi
+
+workspaces=()
+while IFS= read -r name; do
+  [[ -n "$name" && "$name" != "default" ]] && workspaces+=("$name")
+done < <(jj workspace list -T 'name ++ "\n"' --no-pager)
+
+if [[ ${#workspaces[@]} -eq 0 ]]; then
+  echo "No workspaces found" >&2
+  exit 1
+fi
+
+echo "Workspaces:"
+i=0
+while [[ $i -lt ${#workspaces[@]} ]]; do
+  printf "  %d) %s\n" "$((i + 1))" "${workspaces[$i]}"
+  i=$((i + 1))
+done
+echo
+
+read -r -p "Select workspace to delete [1-${#workspaces[@]}]: " selection
+
+if ! [[ "$selection" =~ ^[0-9]+$ ]] ||
+  [[ "$selection" -lt 1 || "$selection" -gt ${#workspaces[@]} ]]; then
+  echo "Invalid selection" >&2
+  exit 1
+fi
+
+workspace="${workspaces[$((selection - 1))]}"
+workspace_root=$(jj workspace root --name "$workspace")
+
+echo
+echo "Forgetting workspace: $workspace"
+jj workspace forget "$workspace"
+
+echo
+echo "About to delete all files at:"
+echo "  $workspace_root"
+read -r -p "Confirm deletion? [y/N] " confirm
+
+if [[ ! "$confirm" =~ ^[yY]$ ]]; then
+  echo "Aborted. Workspace forgotten but files left on disk."
+  exit 0
+fi
+
+rm -rf -- "$workspace_root"
+echo "Deleted $workspace_root"
