@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+script_path=${(%):-%x}
+here=${script_path:A:h}
+result=$(mktemp)
+trap 'rm -f "$result"' EXIT
+
+uv run --project "$here/jw-app" python -m jw --result "$result"
+if [[ ! -s $result ]]; then
+  exit 0
+fi
+dest=$(<"$result")
+
+if [[ $ZSH_EVAL_CONTEXT == *file* ]]; then
+  pushd -- "$dest"
+  return
+fi
+
+cd -- "$dest"
+exec "${SHELL:-/bin/zsh}"
